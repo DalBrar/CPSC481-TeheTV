@@ -1,0 +1,14 @@
+﻿<Page x:Class="TeheTV.pages.NowPlaying"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TeheTV.pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="1024"
+      Title="NowPlaying">
+
+    <Grid>
+        <TextBlock Margin="0" TextWrapping="Wrap" Text="Placeholder for Now Playing" FontWeight="Bold" FontSize="72"/>
+    </Grid>
+</Page>
