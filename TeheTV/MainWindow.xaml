@@ -114,6 +114,6 @@
             <Button x:Name="btnClose" Content="X" HorizontalAlignment="Right" Height="50" Margin="0,0,0,8" Style="{DynamicResource TabletButton}" Width="50" FontWeight="Bold" FontSize="24" Foreground="#FF999999" PreviewMouseLeftButtonDown="closeApp"/>
             <Button x:Name="btnClose_Copy" Content="--" HorizontalAlignment="Left" Height="50" Margin="0,11,0,19" Style="{DynamicResource TabletButton}" Width="50" FontWeight="Bold" FontSize="24" Foreground="#FF999999" PreviewMouseLeftButtonDown="minimizeApp"/>
         </Grid>
-        <Frame x:Name="ScreenFrame" Content="" Margin="80"/>
+        <Frame x:Name="ScreenFrame" Content="" Margin="80" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

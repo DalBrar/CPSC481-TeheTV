@@ -166,7 +166,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="resources\TeheTV.wav" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="resources\teheTV_tablet.png" />
   </ItemGroup>
