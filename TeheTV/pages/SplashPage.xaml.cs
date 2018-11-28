@@ -22,6 +22,30 @@ namespace TeheTV.pages
         {
             app = instance;
             InitializeComponent();
+            this.Loaded += animateSplash;
         }
+
+        private void animateSplash(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Media.Animation.Storyboard sb = this.FindResource("BGfadeIn") as System.Windows.Media.Animation.Storyboard;
+            System.Windows.Media.Animation.Storyboard.SetTarget(sb, this.blackBGD);
+            sb.Completed += FadeIn_Completed;
+            sb.Begin();
+        }
+
+        private void FadeIn_Completed(object sender, EventArgs e)
+        {
+            System.Windows.Media.Animation.Storyboard sb = this.FindResource("BGfadeOut") as System.Windows.Media.Animation.Storyboard;
+            System.Windows.Media.Animation.Storyboard.SetTarget(sb, this.blackBGD);
+            sb.Completed += FadeOut_Complete;
+            sb.Begin();
+        }
+
+        private void FadeOut_Complete(object sender, EventArgs e)
+        {
+            
+        }
+
+        //  Style="{DynamicResource BGAnimation}"
     }
 }

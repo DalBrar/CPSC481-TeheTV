@@ -62,31 +62,31 @@ namespace TeheTV
         }
 
         /// <summary>
-        /// This can be used statically from any page as long as you pass it the "app" instance variable.
+        /// This can be used from any page using the app variable: app.changeScreen(SCREEN.<Screen_you_desire>);
         /// Use this to change the screen frame
         /// </summary>
         /// <param name="instance"></param>
         /// <param name="screen"></param>
-        public static void changeScreen(MainWindow instance, SCREEN screen)
+        public void changeScreen(SCREEN screen)
         {
             if (screen == SCREEN.CreateNewAccount)
-                instance.ScreenFrame.NavigationService.Navigate(createNewAccount);
+                ScreenFrame.NavigationService.Navigate(createNewAccount);
             else if (screen == SCREEN.Initialize)
-                instance.ScreenFrame.NavigationService.Navigate(initialize);
+                ScreenFrame.NavigationService.Navigate(initialize);
             else if (screen == SCREEN.Navigator)
-                instance.ScreenFrame.NavigationService.Navigate(navigator);
+                ScreenFrame.NavigationService.Navigate(navigator);
             else if (screen == SCREEN.NowPlaying)
-                instance.ScreenFrame.NavigationService.Navigate(nowPlaying);
+                ScreenFrame.NavigationService.Navigate(nowPlaying);
             else if (screen == SCREEN.Options)
-                instance.ScreenFrame.NavigationService.Navigate(options);
+                ScreenFrame.NavigationService.Navigate(options);
             else if (screen == SCREEN.ParentSettings)
-                instance.ScreenFrame.NavigationService.Navigate(parentSettings);
+                ScreenFrame.NavigationService.Navigate(parentSettings);
             else if (screen == SCREEN.ProfileSelector)
-                instance.ScreenFrame.NavigationService.Navigate(profileSelector);
+                ScreenFrame.NavigationService.Navigate(profileSelector);
         }
-        public static void changeScreen(MainWindow instance, Page nextPage)
+        public void changeScreen(Page nextPage)
         {
-            instance.ScreenFrame.NavigationService.Navigate(nextPage);
+            ScreenFrame.NavigationService.Navigate(nextPage);
         }
     }
 }
