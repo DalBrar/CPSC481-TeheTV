@@ -4,11 +4,196 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:TeheTV.pages"
-      mc:Ignorable="d" 
+      mc:Ignorable="d" Background="White"
       d:DesignHeight="700" d:DesignWidth="1024"
       Title="Navigator">
 
     <Grid>
-        <TextBlock Margin="0" TextWrapping="Wrap" Text="Placeholder for NAVIGATOR" FontWeight="Bold" FontSize="72"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="0"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="0"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="0"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition Width="50"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="300"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <Button Grid.Column="1" Grid.Row="1" Grid.RowSpan="1" 
+                Background="White" BorderThickness="0"
+                Margin="10,10,10,10" Opacity="0.7">
+            <StackPanel>
+                <Image Source="/resources/Settings-icon.png"
+                       MaxHeight="60"/>
+            </StackPanel>
+        </Button>
+
+        <Button Grid.Column="3" Grid.Row="1"
+                Background="White" BorderThickness="0"
+                Opacity="0.5">
+            <StackPanel>
+                <Image Source="/resources/direction_top_l.png"
+                       MaxHeight="40"/>
+            </StackPanel>
+        </Button>
+
+        <Button Grid.Column="4" Grid.Row="1"  
+                Background="White" BorderThickness="0"
+                Opacity="1">
+            <StackPanel>
+                <Image Source="/resources/top.png"
+                       MaxHeight="70"/>
+            </StackPanel>
+        </Button>
+
+        <Button Grid.Column="6" Grid.Row="1"  
+                Background="White" BorderThickness="0"
+                Opacity="1">
+            <StackPanel>
+                <Image Source="/resources/top.png"
+                       MaxHeight="70"/>
+            </StackPanel>
+        </Button>
+
+        <Button Grid.Column="8" Grid.Row="1"  
+                Background="White" BorderThickness="0"
+                Opacity="1">
+            <StackPanel>
+                <Image Source="/resources/top.png"
+                       MaxHeight="70"/>
+            </StackPanel>
+        </Button>
+
+        <Button Grid.Column="10" Grid.Row="1"  
+                Background="White" BorderThickness="0"
+                Opacity="1">
+            <StackPanel>
+                <Image Source="/resources/top.png"
+                       MaxHeight="70"/>
+            </StackPanel>
+        </Button>
+
+        <Button Grid.Column="11" Grid.Row="1"
+                Background="White" BorderThickness="0"
+                 Opacity="0.5">
+            <StackPanel>
+                <Image Source="/resources/direction_top_r.png"
+                       MaxHeight="40"/>
+            </StackPanel>
+        </Button>
+
+        <Button Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="1"
+                Background="White" BorderThickness="0"
+                Opacity="1" Margin="20,0,0,0">
+            <StackPanel>
+                <Image Source="/resources/direction_mid_l.png"
+                       MaxWidth="30" MaxHeight="150"/>
+            </StackPanel>
+        </Button>
+
+        <Button Grid.Column="14" Grid.Row="3" Grid.ColumnSpan="1"
+                Background="White" BorderThickness="0"
+                Opacity="1" Margin="0,0,20,0">
+            <StackPanel>
+                <Image Source="/resources/direction_mid_r.png"
+                       MaxWidth="30" MaxHeight="150"/>
+            </StackPanel>
+        </Button>
+
+        <Button Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="4"
+                Background="White" BorderThickness="0"
+                Opacity="1" Margin="10,19.6,15.4,0.4" Grid.RowSpan="2">
+            <StackPanel>
+                <Image Source="/resources/middle.png"
+                       Height="175" Width="260"/>
+            </StackPanel>
+        </Button>
+
+        <Button Grid.Column="4" Grid.Row="3" Grid.ColumnSpan="7"
+                Background="White" BorderThickness="0"
+                Opacity="1" Margin="70,0,50,0">
+            <StackPanel>
+                <Image Source="/resources/middle.png"
+                       Height="207" Width="258"/>
+            </StackPanel>
+        </Button>
+
+        <Button Grid.Column="10" Grid.Row="3" Grid.ColumnSpan="4"
+                Background="White" BorderThickness="0"
+                Opacity="1" Margin="40,0,10,0"  Grid.RowSpan="1">
+            <StackPanel>
+                <Image Source="/resources/middle.png"
+                       Height="175" Width="260"/>
+            </StackPanel>
+        </Button>
+
+
+        <Button Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="3"
+                Background="White" BorderThickness="0"
+                Opacity="1" Margin="72.4,0.4,15.4,0" >
+            <StackPanel>
+                <Image Source="/resources/bottom.png"
+                       Height="100" Width="100"/>
+            </StackPanel>
+        </Button>
+
+        <Button Grid.Column="4" Grid.Row="5" Grid.ColumnSpan="5"
+                Background="White" BorderThickness="0"
+                Opacity="1" Margin="69.6,0.4,74.4,0">
+            <StackPanel>
+                <Image Source="/resources/bottom.png"
+                       Height="100" Width="100"/>
+            </StackPanel>
+        </Button>
+
+        <Button Grid.Column="6" Grid.Row="5" Grid.ColumnSpan="5"
+                Background="White" BorderThickness="0"
+                Opacity="1" Margin="99.6,0.4,31.4,0">
+            <StackPanel>
+                <Image Source="/resources/bottom.png"
+                       Height="100" Width="100"/>
+            </StackPanel>
+        </Button>
+
+        <Button Grid.Column="10" Grid.Row="5" Grid.ColumnSpan="3"
+                Background="White" BorderThickness="0"
+                Opacity="1" Margin="50.6,0,61.4,0" Height="102" VerticalAlignment="Bottom" >
+            <StackPanel>
+                <Image Source="/resources/bottom.png"
+                       Height="100" Width="100"/>
+            </StackPanel>
+        </Button>
+
+        <Button Grid.Column="12" Grid.Row="5" Grid.ColumnSpan="2"
+                Background="White" BorderThickness="0"
+                Opacity="1" Margin="102,0.4,0.4,0">
+            <StackPanel>
+                <Image Source="/resources/search_circle.png"
+                       Height="100" Width="260"/>
+            </StackPanel>
+        </Button>
+
+
+
+
     </Grid>
 </Page>

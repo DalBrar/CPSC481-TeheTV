@@ -167,7 +167,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="resources\bottom.png" />
+    <Resource Include="resources\direction_mid_l.png" />
+    <Resource Include="resources\direction_mid_r.png" />
+    <Resource Include="resources\direction_top_l.png" />
+    <Resource Include="resources\direction_top_r.png" />
+    <Resource Include="resources\middle.png" />
+    <Resource Include="resources\search_circle.png" />
+    <Resource Include="resources\Settings-icon.png" />
     <Content Include="resources\TeheTV.wav" />
+    <Resource Include="resources\top.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="resources\teheTV_tablet.png" />
