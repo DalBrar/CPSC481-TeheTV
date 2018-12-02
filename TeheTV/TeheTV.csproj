@@ -62,6 +62,9 @@
     <Compile Include="pages\navigation\NaviTemplate.xaml.cs">
       <DependentUpon>NaviTemplate.xaml</DependentUpon>
     </Compile>
+    <Compile Include="pages\ProfileAdjustment.xaml.cs">
+      <DependentUpon>ProfileAdjustment.xaml</DependentUpon>
+    </Compile>
     <Compile Include="pages\ProfileSelector.xaml.cs">
       <DependentUpon>ProfileSelector.xaml</DependentUpon>
     </Compile>
@@ -101,6 +104,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="pages\navigation\NaviTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pages\ProfileAdjustment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -170,6 +177,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="resources\time_limit.png" />
     <Resource Include="resources\bottom.png" />
     <Resource Include="resources\direction_mid_l.png" />
     <Resource Include="resources\direction_mid_r.png" />
@@ -181,6 +189,10 @@
     <Resource Include="resources\home.png" />
     <Resource Include="resources\profiles.png" />
     <Resource Include="resources\change.png" />
+    <Resource Include="resources\back.png" />
+    <Resource Include="resources\log.png" />
+    <Resource Include="resources\recommendations.png" />
+    <Resource Include="resources\profile-info-change-icon.png" />
     <Content Include="resources\TeheTV.wav" />
     <Resource Include="resources\top.png" />
   </ItemGroup>

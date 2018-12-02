@@ -16,29 +16,32 @@ using System.Windows.Shapes;
 
 namespace TeheTV.pages
 {
-    public partial class Options : Page, INotifyPropertyChanged
+    /// <summary>
+    /// Interaction logic for ProfileAdjustment.xaml
+    /// </summary>
+    public partial class ProfileAdjustment : Page, INotifyPropertyChanged
     {
-        MainWindow app;
-        private string _currentProfile;
+        private string _profileName = "Joseph";
         public event PropertyChangedEventHandler PropertyChanged;
+        MainWindow app;
 
-        public Options(MainWindow instance)
+        public ProfileAdjustment()
         {
-            app = instance;
             InitializeComponent();
+            ProfileName = "2";
         }
 
-        public string CurrentProfile
+        public string ProfileName
         {
             get
             {
-                return _currentProfile;
+                return _profileName;
             }
             set
             {
-                _currentProfile = value;
+                _profileName = value;
                 // If anywhere uses CurrentProfile, then update their information
-                OnPropertyChanged("CurrentProfile");
+                OnPropertyChanged("ProfileName");
             }
         }
 
@@ -51,6 +54,5 @@ namespace TeheTV.pages
                 handler(this, new PropertyChangedEventArgs(name));
             }
         }
-
     }
 }

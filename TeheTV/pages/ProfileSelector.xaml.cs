@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,10 +19,12 @@ namespace TeheTV.pages
     public partial class ProfileSelector : Page
     {
         MainWindow app;
+
         public ProfileSelector(MainWindow instance)
         {
             app = instance;
             InitializeComponent();
         }
+
     }
 }
