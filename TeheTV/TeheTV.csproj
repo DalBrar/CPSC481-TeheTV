@@ -178,6 +178,9 @@
     <Resource Include="resources\middle.png" />
     <Resource Include="resources\search_circle.png" />
     <Resource Include="resources\Settings-icon.png" />
+    <Resource Include="resources\home.png" />
+    <Resource Include="resources\profiles.png" />
+    <Resource Include="resources\change.png" />
     <Content Include="resources\TeheTV.wav" />
     <Resource Include="resources\top.png" />
   </ItemGroup>

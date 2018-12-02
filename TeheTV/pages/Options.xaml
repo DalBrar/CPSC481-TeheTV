@@ -4,11 +4,61 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:TeheTV.pages"
-      mc:Ignorable="d" 
+      mc:Ignorable="d"
       d:DesignHeight="700" d:DesignWidth="1024"
       Title="Options">
 
     <Grid>
-        <TextBlock Margin="0" TextWrapping="Wrap" Text="Placeholder OPTIONS" FontWeight="Bold" FontSize="72"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width ="50"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="73"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width ="50"/>
+        </Grid.ColumnDefinitions>
+
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height ="50"/>
+            <RowDefinition Height ="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height ="150"/>
+        </Grid.RowDefinitions>
+
+        <Button Grid.Row="1" Grid.Column="1"
+                BorderThickness="0" Background="White">
+            <StackPanel>
+                <Image Source="/resources/home.png"
+                       MaxWidth="100"/>
+            </StackPanel>
+        </Button>
+
+        <Button Grid.Row="3" Grid.Column="3"
+                BorderThickness="0" Background="White">
+            <StackPanel>
+                <!-- Icon changes depends on which child's profile is currently selected -->
+                <!-- The line below can be use for later when we have an attribute that stores the
+                current profile name -->
+                <!-- image is bind to currentProfile attribute, read only -->
+                <Image Source="{Binding Path = CurrentProfile, Mode=OneWay}"/>
+
+                <!-- placeholder -->
+                <Image Source="/resources/profiles.png"
+                       MaxWidth="200"/>
+            </StackPanel>
+        </Button>
+
+        <Button Grid.Row="3" Grid.Column="5"
+                BorderThickness="0" Background="White">
+            <StackPanel>
+                <Image Source="/resources/change.png"
+                       MaxWidth="200"/>
+            </StackPanel>
+        </Button>
     </Grid>
 </Page>

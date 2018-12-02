@@ -7,7 +7,7 @@
       mc:Ignorable="d"
       d:DesignHeight="700" d:DesignWidth="1024"
       Title="Navigator">
-
+    
     <Grid x:Name="navigatorGrid">
         <Frame x:Name="naviFrame" Content="" Margin="0" NavigationUIVisibility="Hidden" Height="500" VerticalAlignment="Top"/>
         <Grid Margin="0,500,0,0">
@@ -82,4 +82,5 @@
             </Button>
         </Grid>
     </Grid>
+
 </Page>

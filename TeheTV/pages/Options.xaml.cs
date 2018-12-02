@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,10 +19,38 @@ namespace TeheTV.pages
     public partial class Options : Page
     {
         MainWindow app;
+        private string _currentProfile;
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public Options(MainWindow instance)
         {
             app = instance;
             InitializeComponent();
         }
+
+        public string CurrentProfile
+        {
+            get
+            {
+                return _currentProfile;
+            }
+            set
+            {
+                _currentProfile = value;
+                // If anywhere uses CurrentProfile, then update their information
+                OnPropertyChanged("CurrentProfile");
+            }
+        }
+
+        // Create the OnPropertyChanged method to raise the event
+        protected void OnPropertyChanged(string name)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(name));
+            }
+        }
+
     }
 }
