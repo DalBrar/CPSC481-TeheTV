@@ -30,6 +30,7 @@ namespace TeheTV
         public MainWindow()
         {
             InitializeComponent();
+            SettingsManager.initialize();
 
             // instantiate all pages here
             createNewAccount = new pages.CreateNewAccount(this);

@@ -9,6 +9,6 @@
       Title="Initialize">
 
     <Grid>
-        <TextBlock Margin="0" TextWrapping="Wrap" Text="Placeholder for Initialization Screen" FontWeight="Bold" FontSize="72"/>
+        <TextBlock x:Name="temp" Margin="0" TextWrapping="Wrap" Text="Placeholder for Initialization Screen" FontWeight="Bold" FontSize="72"/>
     </Grid>
 </Page>

@@ -77,7 +77,10 @@
     <Compile Include="pages\Initialize.xaml.cs">
       <DependentUpon>Initialize.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Profile.cs" />
+    <Compile Include="SettingsManager.cs" />
     <Compile Include="SCREEN.cs" />
+    <Compile Include="TimeManager.cs" />
     <Compile Include="TVScreen.xaml.cs">
       <DependentUpon>TVScreen.xaml</DependentUpon>
     </Compile>
