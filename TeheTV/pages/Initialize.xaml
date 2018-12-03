@@ -9,6 +9,49 @@
       Title="Initialize">
 
     <Grid>
-        <TextBlock x:Name="temp" Margin="0" TextWrapping="Wrap" Text="Placeholder for Initialization Screen" FontWeight="Bold" FontSize="72"/>
+        <TextBlock x:Name="textWelcome" Margin="0,50,0,0" Text="Welcome to TeheTV!" FontWeight="ExtraBold" FontSize="72" Foreground="White" FontFamily="Comic Sans MS" VerticalAlignment="Top" TextAlignment="Center" Padding="0">
+            <TextBlock.Effect>
+                <DropShadowEffect/>
+            </TextBlock.Effect>
+        </TextBlock>
+        <TextBlock x:Name="textGetParent" Margin="0,200,0,0" Text="Get a parent to unlock the app for you." FontWeight="ExtraBold" FontSize="48" Foreground="Yellow" FontFamily="Comic Sans MS" VerticalAlignment="Top" TextAlignment="Center" Padding="0">
+            <TextBlock.Effect>
+                <DropShadowEffect/>
+            </TextBlock.Effect>
+        </TextBlock>
+        <TextBlock x:Name="textParentMsg" Margin="0,0,0,200" FontWeight="ExtraBold" FontSize="48" Foreground="White" FontFamily="Comic Sans MS" VerticalAlignment="Bottom" TextAlignment="Center" Padding="0" TextWrapping="Wrap" Text="Hello parent, we just need to set up a few things before your child can get started.">
+            <TextBlock.Effect>
+                <DropShadowEffect/>
+            </TextBlock.Effect></TextBlock>
+        <Button Content="Start" Height="100" Margin="0,0,0,50" Style="{DynamicResource NaviButton}" VerticalAlignment="Bottom" Width="500" FontSize="48" FontWeight="ExtraBold" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontFamily="Comic Sans MS">
+            <Button.Resources>
+                <Style x:Key="NaviButton" TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Grid>
+                                    <Rectangle x:Name="rectangle" RadiusY="25" RadiusX="25" Stroke="#FF009700" StrokeThickness="3">
+                                        <Rectangle.Fill>
+                                            <RadialGradientBrush>
+                                                <GradientStop Color="Lime" Offset="0"/>
+                                                <GradientStop Color="#9700FF00" Offset="1"/>
+                                            </RadialGradientBrush>
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                    <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" OpacityMask="Red"/>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsFocused" Value="True"/>
+                                    <Trigger Property="IsDefaulted" Value="True"/>
+                                    <Trigger Property="IsMouseOver" Value="True"/>
+                                    <Trigger Property="IsPressed" Value="True"/>
+                                    <Trigger Property="IsEnabled" Value="False"/>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Resources>
+        </Button>
     </Grid>
 </Page>

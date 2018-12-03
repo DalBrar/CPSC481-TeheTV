@@ -52,7 +52,7 @@ namespace TeheTV.pages
 
         private void ExitSplash(object sender, EventArgs e)
         {
-            if (File.Exists("profiles.ini"))
+            if (SettingsManager.doesPINexist())
                 app.changeScreen(SCREEN.ProfileSelector);
             else
                 app.changeScreen(SCREEN.Initialize);

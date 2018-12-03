@@ -9,6 +9,7 @@
       Title="ProfileSelector">
 
     <Grid>
-        <TextBlock Margin="0" TextWrapping="Wrap" Text="Placeholder Profile Selection" FontWeight="Bold" FontSize="72"/>
+        <TextBlock x:Name="textSelectProfile" Margin="0" TextWrapping="Wrap" Text="Placeholder Profile Selection" FontWeight="Bold" FontSize="72"/>
+        <DataGrid x:Name="ProfilesDataGrid" Margin="0" Width="800" Height="400"/>
     </Grid>
 </Page>

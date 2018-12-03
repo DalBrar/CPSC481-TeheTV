@@ -1,16 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace TeheTV
 {
     class SettingsManager
     {
-        private static string appFolder = "appdata/";
+        private static string appFolder = Environment.CurrentDirectory + "/appdata/";
         private static string pinFilename = appFolder + "pin.ini";
         public static string profilesFolder = appFolder + "profiles/";
         private static List<Profile> profiles = new List<Profile>();
@@ -18,6 +21,7 @@ namespace TeheTV
         public static void initialize()
         {
             Directory.CreateDirectory(profilesFolder);
+            loadProfiles();
         }
 
         /// <summary>
@@ -72,6 +76,45 @@ namespace TeheTV
         }
 
         /// <summary>
+        /// Get list of all loaded profiles.
+        /// </summary>
+        /// <returns>List of Profiles</returns>
+        public static List<Profile> GetProfiles()
+        {
+            return profiles;
+        }
+
+        /// <summary>
+        /// Get Profile by given name.
+        /// Given name must match exactly (case sensitive).
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns>Profile if match, null otherwise.</returns>
+        public static Profile GetProfileByName(string name)
+        {
+            foreach (Profile p in profiles)
+            {
+                if (p.getName().Equals(name))
+                    return p;
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// get list of all Profile Names
+        /// </summary>
+        /// <returns>List of strings</returns>
+        public static List<string> GetProfileNames()
+        {
+            List<string> names = new List<string>();
+            foreach (Profile p in profiles)
+            {
+                names.Add(p.getName());
+            }
+            return names;
+        }
+
+        /// <summary>
         /// Creates a new profile and adds it to the profile manager.
         /// </summary>
         /// <param name="name"></param>
@@ -80,7 +123,9 @@ namespace TeheTV
         /// <param name="year"></param>
         public static void createNewProfile(string name, int month, int day, int year)
         {
-            profiles.Add(new Profile(name, month, day, year));
+            Profile p = new Profile(name, month, day, year);
+            p.saveProfile();
+            profiles.Add(p);
         }
 
         /// <summary>
@@ -111,6 +156,60 @@ namespace TeheTV
         private static string getPin()
         {
             return File.ReadAllText(pinFilename);
+        }
+
+        private static void loadProfiles()
+        {
+            profiles = new List<Profile>();
+            string info = "/info.profile";
+
+            List<string> profileFolders;
+            try
+            {
+                profileFolders = Directory.GetDirectories(profilesFolder).ToList();
+            }
+            catch (UnauthorizedAccessException)
+            {
+                profileFolders = new List<string>();
+            }
+
+            foreach (string prfl in profileFolders)
+            {
+                string name = "";
+                int month, day, year;
+                month = day = year = 0;
+
+                //MessageBox.Show(prfl);
+                List<string> files = Directory.GetFiles(prfl + "/").ToList();
+                if (files.Contains(prfl + info))
+                {
+                    string[] lines = File.ReadAllLines(prfl + info);
+                    foreach (string line in lines)
+                    {
+                        if (line.Contains("name= "))
+                            name = line.Replace("name= ", "");
+                        try
+                        {
+                            if (line.Contains("mm= "))
+                                month = int.Parse(line.Replace("mm= ", ""));
+                            if (line.Contains("dd= "))
+                                day = int.Parse(line.Replace("dd= ", ""));
+                            if (line.Contains("yy= "))
+                                year = int.Parse(line.Replace("yy= ", ""));
+                        }
+                        catch (FormatException)
+                        {
+                            continue;
+                        }
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(name) && month != 0 && day != 0 && year != 0)
+                {
+                    Profile p = new Profile(name, month, day, year);
+                    profiles.Add(p);
+                }
+            }
         }
     }
 }

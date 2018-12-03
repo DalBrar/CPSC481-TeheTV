@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,18 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TeheTV.pages
+namespace TeheTV
 {
-    public partial class ProfileSelector : Page
+    /// <summary>
+    /// Interaction logic for NaviButton.xaml
+    /// </summary>
+    public partial class NaviButton : UserControl
     {
-        MainWindow app;
-
-        public ProfileSelector(MainWindow instance)
+        public NaviButton()
         {
-            app = instance;
             InitializeComponent();
-
-            ProfilesDataGrid.ItemsSource = SettingsManager.GetProfiles();
         }
     }
 }
