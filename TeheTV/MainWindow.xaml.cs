@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -9,9 +10,11 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace TeheTV
 {
@@ -54,40 +57,113 @@ namespace TeheTV
         
         private void closeApp(object sender, MouseButtonEventArgs e)
         {
+            Sounds.PlayNWait(Properties.Resources.soundButtonPress);
             System.Windows.Application.Current.Shutdown();
         }
 
         private void minimizeApp(object sender, MouseButtonEventArgs e)
         {
+            Sounds.Play(Properties.Resources.soundButtonPress);
             WindowState = WindowState.Minimized;
         }
 
         /// <summary>
-        /// This can be used from any page using the app variable: app.changeScreen(SCREEN.<Screen_you_desire>);
+        /// This can be used from any page using the app variable: app.changeScreen(SCREEN.<Screen_you_desire>, bool fadeEffect);
         /// Use this to change the screen frame
         /// </summary>
-        /// <param name="instance"></param>
-        /// <param name="screen"></param>
-        public void changeScreen(SCREEN screen)
+        /// <param name="screen">SCREEN</param>
+        /// <param name="fadeEffect">true/false</param>
+        public void ScreenChangeTo(SCREEN screen, bool fadeEffect)
         {
             if (screen == SCREEN.CreateNewAccount)
-                ScreenFrame.NavigationService.Navigate(createNewAccount);
+                ScreenChangeTo(createNewAccount, fadeEffect);
             else if (screen == SCREEN.Initialize)
-                ScreenFrame.NavigationService.Navigate(initialize);
+                ScreenChangeTo(initialize, fadeEffect);
             else if (screen == SCREEN.Navigator)
-                ScreenFrame.NavigationService.Navigate(navigator);
+                ScreenChangeTo(navigator, fadeEffect);
             else if (screen == SCREEN.NowPlaying)
-                ScreenFrame.NavigationService.Navigate(nowPlaying);
+                ScreenChangeTo(nowPlaying, fadeEffect);
             else if (screen == SCREEN.Options)
-                ScreenFrame.NavigationService.Navigate(options);
+                ScreenChangeTo(options, fadeEffect);
             else if (screen == SCREEN.ParentSettings)
-                ScreenFrame.NavigationService.Navigate(parentSettings);
+                ScreenChangeTo(parentSettings, fadeEffect);
             else if (screen == SCREEN.ProfileSelector)
-                ScreenFrame.NavigationService.Navigate(profileSelector);
+                ScreenChangeTo(profileSelector, fadeEffect);
         }
-        public void changeScreen(Page nextPage)
+       
+        /// <summary>
+        /// This can be used from any page using the app variable:
+        ///      app.changeScreen(SCREEN.<Screen_you_desire>, bool fadeEffect);
+        /// </summary>
+        /// <param name="nextPage">Page</param>
+        /// <param name="fadeEffect">true/false</param>
+        public void ScreenChangeTo(Page nextPage, bool fadeEffect)
         {
-            ScreenFrame.NavigationService.Navigate(nextPage);
+            changeScreen(nextPage, fadeEffect, false);
+        }
+
+        public void ScreenGoBack()
+        {
+            changeScreen(null, true, true);
+        } 
+
+        private void changeScreen(Page nextPage, bool fadeEffect, bool goBack)
+        {
+            _goBack = goBack;
+
+            if (fadeEffect)
+            {
+                _nextPage = nextPage;
+                frame_Navigating();
+            }
+            else
+            {
+                ScreenFrame.NavigationService.Navigate(nextPage);
+            }
+        }
+
+        // *****************************************
+        //  ScreenFrame Navigation Transition stuff
+        // *****************************************
+        private Page _nextPage;
+        private DependencyProperty _effect = FrameworkElement.OpacityProperty;
+        private double _depToChange = 0;
+        private double _depOffset = 0;
+        private Duration _durFadeOut = new Duration(TimeSpan.FromMilliseconds(100));
+        private Duration _durFadeIn = new Duration(TimeSpan.FromMilliseconds(750));
+        private bool _goBack = false;
+
+        private void frame_Navigating()
+        {
+            if (Content != null)
+            {
+                _depToChange = ScreenFrame.Opacity;
+
+                DoubleAnimation animation0 = new DoubleAnimation();
+                animation0.From = _depToChange;
+                animation0.To = _depOffset;
+                animation0.Duration = _durFadeOut;
+                animation0.Completed += SlideCompleted;
+                ScreenFrame.BeginAnimation(_effect, animation0);
+            }
+        }
+
+        private void SlideCompleted(object senderNotUsed, EventArgs eNotUsed)
+        {
+            if (_goBack)
+                ScreenFrame.GoBack();
+            else
+                ScreenFrame.NavigationService.Navigate(_nextPage);
+
+            Dispatcher.BeginInvoke(DispatcherPriority.Loaded,
+                (ThreadStart)delegate ()
+                {
+                    DoubleAnimation animation0 = new DoubleAnimation();
+                    animation0.From = _depOffset;
+                    animation0.To = _depToChange;
+                    animation0.Duration = _durFadeIn;
+                    ScreenFrame.BeginAnimation(_effect, animation0);
+                });
         }
     }
 }

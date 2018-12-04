@@ -21,16 +21,11 @@ namespace TeheTV.pages
     public partial class SplashPage : Page
     {
         MainWindow app;
-        SoundPlayer player;
 
         public SplashPage(MainWindow instance)
         {
             app = instance;
             InitializeComponent();
-
-            Stream strm = Properties.Resources.TeheTVwav;
-            player = new SoundPlayer(strm);
-            player.Load();
 
             this.Loaded += animateSplash;
         }
@@ -44,7 +39,7 @@ namespace TeheTV.pages
 
         private void FadeOut(object sender, EventArgs e)
         {
-            player.Play();
+            Sounds.Play(Properties.Resources.TeheTVwav);
             Storyboard sb = this.FindResource("BGfadeOut") as Storyboard;
             sb.Completed += ExitSplash;
             sb.Begin();
@@ -53,9 +48,9 @@ namespace TeheTV.pages
         private void ExitSplash(object sender, EventArgs e)
         {
             if (SettingsManager.doesPINexist())
-                app.changeScreen(SCREEN.ProfileSelector);
+                app.ScreenChangeTo(SCREEN.ProfileSelector, true);
             else
-                app.changeScreen(SCREEN.Initialize);
+                app.ScreenChangeTo(SCREEN.Initialize, true);
         }
     }
 }

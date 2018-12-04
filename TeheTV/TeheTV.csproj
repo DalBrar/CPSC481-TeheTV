@@ -63,6 +63,9 @@
     <Compile Include="pages\CreateNewAccount.xaml.cs">
       <DependentUpon>CreateNewAccount.xaml</DependentUpon>
     </Compile>
+    <Compile Include="pages\Initialize_2.xaml.cs">
+      <DependentUpon>Initialize_2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="pages\navigation\NaviTemplate.xaml.cs">
       <DependentUpon>NaviTemplate.xaml</DependentUpon>
     </Compile>
@@ -84,6 +87,7 @@
     <Compile Include="pages\Initialize.xaml.cs">
       <DependentUpon>Initialize.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Sounds.cs" />
     <Compile Include="Profile.cs" />
     <Compile Include="SettingsManager.cs" />
     <Compile Include="SCREEN.cs" />
@@ -108,6 +112,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="pages\CreateNewAccount.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\Initialize_2.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -203,6 +211,17 @@
     <Resource Include="resources\profile-info-change-icon.png" />
     <Resource Include="profilePics\profilepic.png" />
     <None Include="resources\profilepic.png" />
+    <None Include="resources\soundAlert.wav" />
+    <None Include="resources\soundButtonClick.wav" />
+    <None Include="resources\soundDelete.wav" />
+    <None Include="resources\soundKeypress.wav" />
+    <None Include="resources\soundPassCorrect.wav" />
+    <None Include="resources\soundPassWrong.wav" />
+    <None Include="resources\soundPop.wav" />
+    <None Include="resources\soundReward.wav" />
+    <None Include="resources\soundToggle.wav" />
+    <None Include="resources\soundButtonPress.wav" />
+    <None Include="resources\soundUhOh.wav" />
     <Content Include="resources\TeheTV.wav" />
     <Resource Include="resources\top.png" />
   </ItemGroup>

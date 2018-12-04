@@ -97,7 +97,7 @@
         </Style>
     </Window.Resources>
     <Grid x:Name="tabletGrid">
-        <Rectangle x:Name="background" Height="780" Margin="40" Stroke="Black" Width="1104" RenderTransformOrigin="0,0">
+        <Rectangle x:Name="background" Height="780" Margin="40" Stroke="Black" Width="1104" RenderTransformOrigin="0,0" d:IsLocked="True">
             <Rectangle.Fill>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="0.5,1" MappingMode="RelativeToBoundingBox">
                     <GradientStop Color="Cyan"/>
