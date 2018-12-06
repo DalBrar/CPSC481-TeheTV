@@ -63,6 +63,9 @@
     <Compile Include="pages\CreateNewAccount.xaml.cs">
       <DependentUpon>CreateNewAccount.xaml</DependentUpon>
     </Compile>
+    <Compile Include="pages\Histroy.xaml.cs">
+      <DependentUpon>Histroy.xaml</DependentUpon>
+    </Compile>
     <Compile Include="pages\Initialize_2.xaml.cs">
       <DependentUpon>Initialize_2.xaml</DependentUpon>
     </Compile>
@@ -86,6 +89,9 @@
     </Compile>
     <Compile Include="pages\Initialize.xaml.cs">
       <DependentUpon>Initialize.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pages\TimeAdjustment.xaml.cs">
+      <DependentUpon>TimeAdjustment.xaml</DependentUpon>
     </Compile>
     <Compile Include="Sounds.cs" />
     <Compile Include="Profile.cs" />
@@ -114,6 +120,10 @@
     <Page Include="pages\CreateNewAccount.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\Histroy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="pages\Initialize_2.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -155,6 +165,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="pages\TimeAdjustment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="TVScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -193,6 +207,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="resources\TimeAdjustmentPage\timer_accept.png" />
+    <Resource Include="resources\TimeAdjustmentPage\timer_arrow_down.png" />
+    <Resource Include="resources\TimeAdjustmentPage\timer_arrow_up.png" />
+    <Resource Include="resources\TimeAdjustmentPage\timer_reset.png" />
+    <Resource Include="resources\TimeAdjustmentPage\timer_simicolon.png" />
     <Resource Include="resources\time_limit.png" />
     <Resource Include="resources\bottom.png" />
     <Resource Include="resources\direction_mid_l.png" />
