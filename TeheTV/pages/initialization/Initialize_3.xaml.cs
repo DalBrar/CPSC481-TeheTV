@@ -18,18 +18,19 @@ using System.Windows.Shapes;
 
 namespace TeheTV.pages
 {
-    public partial class Initialize2 : Page
+    public partial class Initialize3 : Page
     {
         MainWindow app;
+        Page initPIN;
         private int _digitPos = 1;
-        private int _dig1 = 0;
-        private int _dig2 = 0;
-        private int _dig3 = 0;
-        private int _dig4 = 0;
+        private int num1 = 0;
+        private int num2 = 0;
+        private int numAnswer = 0;
 
-        public Initialize2(MainWindow instance)
+        public Initialize3(MainWindow instance)
         {
             app = instance;
+            initPIN = new Initialize4pin(instance);
             InitializeComponent();
             resetPage();
             hideModals();
@@ -54,7 +55,7 @@ namespace TeheTV.pages
                 value = -1;
             }
 
-            updateYear(value);
+            updateAnswer(value);
         }
 
         private void btnErrorClicked(object sender, MouseButtonEventArgs e)
@@ -62,7 +63,6 @@ namespace TeheTV.pages
             Sounds.Play(Properties.Resources.soundButtonClick);
             ModalFadeOut();
             resetPage();
-            app.ScreenGoBack();
         }
 
         private void btnCorrNoClicked(object sender, MouseButtonEventArgs e)
@@ -77,13 +77,13 @@ namespace TeheTV.pages
             Sounds.Play(Properties.Resources.soundButtonClick);
             ModalFadeOut();
             resetPage();
-            app.ScreenChangeTo(this, true);
+            app.ScreenChangeTo(initPIN, true);
         }
 
         // ******************
         //  Helper Functions
         // ******************
-        private void updateYear(int n)
+        private void updateAnswer(int n)
         {
             if (n < 0)
                 deleteDigit();
@@ -93,40 +93,34 @@ namespace TeheTV.pages
 
         private void addDigit(int n)
         {
-            if (_digitPos == 1)
+            if (_digitPos < 3)
             {
-                digitONE.Content = n;
-                _dig1 = n * 1000;
+                digitANSWER.Content = ((string)digitANSWER.Content) + n;
                 _digitPos++;
             }
-            else if (_digitPos == 2)
-            {
-                digitTWO.Content = n;
-                _dig2 = n * 100;
-                _digitPos++;
-            }
-            else if (_digitPos == 3)
-            {
-                digitTHREE.Content = n;
-                _dig3 = n * 10;
-                _digitPos++;
-            }
-            else if (_digitPos == 4)
-            {
-                digitFOUR.Content = n;
-                _dig4 = n;
-                _digitPos++;
 
-                int age = getAge();
-                if (age < 16 || age > 100)
+            if (_digitPos == 3)
+            {
+                int ans = int.Parse((string) digitANSWER.Content);
+
+                if (ans == numAnswer)
                 {
-                    ModalFadeIn(errorGrid, false);
+                    ModalFadeIn(correctGrid, true);
                 }
                 else
                 {
-                    textCorrAge.Text = "You were born in the year " + getYear() + ".";
-                    ModalFadeIn(correctGrid, true);
+                    ModalFadeIn(errorGrid, false);
                 }
+            }
+        }
+
+        private void deleteDigit()
+        {
+            if (_digitPos > 1)
+            {
+                string currAnswer = (string) digitANSWER.Content;
+                digitANSWER.Content = currAnswer.Substring(0, currAnswer.Length - 1);
+                _digitPos--;
             }
             else
             {
@@ -134,57 +128,15 @@ namespace TeheTV.pages
             }
         }
 
-        private void deleteDigit()
-        {
-            if (_digitPos == 1)
-            {
-                Sounds.Play(Properties.Resources.soundDelete);
-            }
-            else if (_digitPos == 2)
-            {
-                digitONE.Content = "";
-                _digitPos--;
-            }
-            else if (_digitPos == 3)
-            {
-                digitTWO.Content = "";
-                _digitPos--;
-            }
-            else if (_digitPos == 4)
-            {
-                digitTHREE.Content = "";
-                _digitPos--;
-            }
-            else if (_digitPos == 5)
-            {
-                digitFOUR.Content = "";
-                _digitPos--;
-            }
-        }
-
-        private int getAge()
-        {
-            int cur = DateTime.Now.Year;
-            int par = getYear();
-            return cur - par;
-        }
-
-        private int getYear()
-        {
-            return _dig1 + _dig2 + _dig3 + _dig4;
-        }
-
         private void resetPage()
         {
             _digitPos = 1;
-            _dig1 = 0;
-            _dig2 = 0;
-            _dig3 = 0;
-            _dig4 = 0;
-            digitONE.Content = "";
-            digitTWO.Content = "";
-            digitTHREE.Content = "";
-            digitFOUR.Content = "";
+            digitANSWER.Content = "";
+            Random rnd = new Random();
+            num1 = rnd.Next(5, 11);
+            num2 = rnd.Next(5, 11);
+            numAnswer = num1 * num2;
+            textQuestion.Text = num1 + " x " + num2;
         }
 
         private void hideModals()

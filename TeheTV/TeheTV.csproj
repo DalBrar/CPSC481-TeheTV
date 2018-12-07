@@ -69,6 +69,12 @@
     <Compile Include="pages\Initialize_2.xaml.cs">
       <DependentUpon>Initialize_2.xaml</DependentUpon>
     </Compile>
+    <Compile Include="pages\Initialize_3.xaml.cs">
+      <DependentUpon>Initialize_3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Initialize_4pin.xaml.cs">
+      <DependentUpon>Initialize_4pin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="pages\navigation\NaviTemplate.xaml.cs">
       <DependentUpon>NaviTemplate.xaml</DependentUpon>
     </Compile>
@@ -126,6 +132,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="pages\Initialize_2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\Initialize_3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\Initialize_4pin.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

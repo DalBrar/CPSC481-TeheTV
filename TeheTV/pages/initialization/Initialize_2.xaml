@@ -43,14 +43,14 @@
             <Button x:Name="key0" Content="0" Height="100" Margin="200,360,0,0" Style="{DynamicResource GreenButton}" VerticalAlignment="Top" FontSize="48" FontWeight="ExtraBold" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontFamily="Comic Sans MS" PreviewMouseLeftButtonDown="btnKeypadPressKey" Width="80" HorizontalAlignment="Left"/>
             <Button x:Name="keyDel" Content="Delete" Height="100" Margin="0,360,0,0" Style="{DynamicResource GreenButton}" VerticalAlignment="Top" FontSize="48" FontWeight="ExtraBold" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontFamily="Comic Sans MS" PreviewMouseLeftButtonDown="btnKeypadPressKey" Width="180" HorizontalAlignment="Left"/>
         </Grid>
-        <Grid x:Name="errorGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1024" Height="700">
+        <Grid x:Name="errorGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1024" Height="700" d:IsHidden="True">
             <Rectangle x:Name="rectFadeError" Fill="#BF000000" Stroke="Black"/>
             <Rectangle x:Name="rectRed" Fill="#D8FF3232" Margin="150" RadiusX="50" RadiusY="50" StrokeThickness="0"/>
             <Label x:Name="textErrorHeader" Content="Oops!" HorizontalContentAlignment="Center" FontSize="72" Foreground="White" FontWeight="ExtraBlack" FontFamily="Comic Sans MS" Padding="0" Margin="150"/>
             <TextBlock x:Name="textErrorMsg" TextAlignment="Center" FontSize="36" Foreground="White" FontWeight="ExtraBlack" FontFamily="Comic Sans MS" Padding="0" Margin="150"><Run Text="&#xA;&#xA;&#xA;Looks like you're not old enough."/><LineBreak/><Run Text="Get a parent to continue."/></TextBlock>
             <Button x:Name="btnErrorContinue" Content="Start Over" Height="100" Margin="0,0,0,175" Style="{DynamicResource TealeButton}" VerticalAlignment="Bottom" Width="400" FontSize="48" FontWeight="ExtraBold" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontFamily="Comic Sans MS" PreviewMouseLeftButtonDown="btnErrorClicked"/>
         </Grid>
-        <Grid x:Name="correctGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1024" Height="700">
+        <Grid x:Name="correctGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1024" Height="700" d:IsHidden="True">
             <Rectangle x:Name="rectFadeCorr" Fill="#BF000000" Stroke="Black"/>
             <Rectangle x:Name="rectBlue" Fill="#D83232FF" Margin="150" RadiusX="50" RadiusY="50" StrokeThickness="0"/>
             <Label x:Name="textCorrHeader" Content="Excellent!" HorizontalContentAlignment="Center" FontSize="72" Foreground="White" FontWeight="ExtraBlack" FontFamily="Comic Sans MS" Padding="0" Margin="150"/>
