@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -31,6 +32,7 @@ namespace TeheTV
         {
             InitializeComponent();
             hideNumbers();
+            this.Visibility = Visibility.Hidden;
         }
 
         // ***** Properites *****
@@ -231,6 +233,47 @@ namespace TeheTV
         private void playToggle()
         {
             Sounds.Play(Properties.Resources.soundButtonPress);
+        }
+
+        // ************************
+        //  Slide Animations
+        // ************************
+        private static Int32 _slideMiliSecs = 250;
+        private Grid _grid;
+        // public Thickness (double left, double top, double right, double bottom);
+
+        public void SlideUp()
+        {
+            this.Visibility = Visibility.Visible;
+            ThicknessAnimation animation = new ThicknessAnimation();
+            animation.Duration = TimeSpan.FromMilliseconds(_slideMiliSecs);
+            animation.From = new Thickness(0, 700, 0, 0);
+            animation.To = new Thickness(0, 0, 0, 0);
+            playSound(true);
+            this.BeginAnimation(MarginProperty, animation);
+        }
+        public void SlideDown()
+        {
+            ThicknessAnimation animation = new ThicknessAnimation();
+            animation.Duration = TimeSpan.FromMilliseconds(_slideMiliSecs);
+            animation.From = new Thickness(0, 0, 0, 0);
+            animation.To = new Thickness(0, 700, 0, 0);
+            playSound(false);
+            animation.Completed += Hidekeyboard;
+            this.BeginAnimation(MarginProperty, animation);
+        }
+
+        private void Hidekeyboard(object sender, EventArgs e)
+        {
+            this.Visibility = Visibility.Hidden;
+        }
+
+        private static void playSound(bool _slideUp)
+        {
+            if (_slideUp)
+                Sounds.Play(Properties.Resources.soundSlideUp);
+            else
+                Sounds.Play(Properties.Resources.soundSlideDown);
         }
     }
 }

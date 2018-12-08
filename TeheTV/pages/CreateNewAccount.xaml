@@ -69,6 +69,6 @@
                 </TextBlock.Effect></TextBlock>
             <Button x:Name="btnDone" Content="Done" Height="100" Margin="0,0,50,50" Style="{DynamicResource GreenButton}" VerticalAlignment="Bottom" Width="200" FontSize="48" FontWeight="ExtraBold" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontFamily="Comic Sans MS" HorizontalAlignment="Right"/>
         </Grid>
-        <TeheTV:Keyboard x:Name="keyboard" Margin="0" VerticalAlignment="Top"/>
+        <TeheTV:Keyboard x:Name="keyboard" Margin="0" VerticalAlignment="Bottom"/>
     </Grid>
 </Page>

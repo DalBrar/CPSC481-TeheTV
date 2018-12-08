@@ -33,7 +33,15 @@ namespace TeheTV.pages
         {
             if (!_isUp)
             {
+                _isUp = true;
                 slideGridScreenUpBy(400);
+                keyboard.SlideUp();
+            }
+            else
+            {
+                _isUp = false;
+                slideGridScreenDown();
+                keyboard.SlideDown();
             }
         }
 
