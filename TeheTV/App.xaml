@@ -134,5 +134,41 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <!-- Keyboard Key Button: -->
+        <Style x:Key="KeyboardKeyButton" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <ControlTemplate.Resources>
+                            <Storyboard x:Key="KeyboardKeyStoryboard">
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="btnKey">
+                                    <EasingColorKeyFrame KeyTime="0" Value="White"/>
+                                    <EasingColorKeyFrame KeyTime="0:0:0.1" Value="Gainsboro"/>
+                                    <EasingColorKeyFrame KeyTime="0:0:0.2" Value="White"/>
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </ControlTemplate.Resources>
+                        <Grid>
+                            <Rectangle x:Name="btnKey" Fill="White" RadiusY="25" RadiusX="25" StrokeThickness="0">
+                                <Rectangle.Effect>
+                                    <DropShadowEffect BlurRadius="3" Color="#FF404040" Opacity="0.75"/>
+                                </Rectangle.Effect>
+                            </Rectangle>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <EventTrigger RoutedEvent="UIElement.PreviewMouseLeftButtonDown">
+                                <BeginStoryboard x:Name="KeyboardKeyStoryboard_BeginStoryboard" Storyboard="{StaticResource KeyboardKeyStoryboard}"/>
+                            </EventTrigger>
+                            <Trigger Property="IsFocused" Value="True"/>
+                            <Trigger Property="IsDefaulted" Value="True"/>
+                            <Trigger Property="IsMouseOver" Value="True"/>
+                            <Trigger Property="IsPressed" Value="True"/>
+                            <Trigger Property="IsEnabled" Value="False"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Application.Resources>
 </Application>

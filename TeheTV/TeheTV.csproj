@@ -56,23 +56,25 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="NAVI.cs" />
-    <Compile Include="NaviButton.xaml.cs">
-      <DependentUpon>NaviButton.xaml</DependentUpon>
+    <Compile Include="Animations\GridScreen.cs" />
+    <Compile Include="Animations\Modal.cs" />
+    <Compile Include="Keyboard.xaml.cs">
+      <DependentUpon>Keyboard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NAVI.cs" />
     <Compile Include="pages\CreateNewAccount.xaml.cs">
       <DependentUpon>CreateNewAccount.xaml</DependentUpon>
     </Compile>
     <Compile Include="pages\Histroy.xaml.cs">
       <DependentUpon>Histroy.xaml</DependentUpon>
     </Compile>
-    <Compile Include="pages\Initialize_2.xaml.cs">
+    <Compile Include="pages\initialization\Initialize_2.xaml.cs">
       <DependentUpon>Initialize_2.xaml</DependentUpon>
     </Compile>
-    <Compile Include="pages\Initialize_3.xaml.cs">
+    <Compile Include="pages\initialization\Initialize_3.xaml.cs">
       <DependentUpon>Initialize_3.xaml</DependentUpon>
     </Compile>
-    <Compile Include="pages\Initialize_4pin.xaml.cs">
+    <Compile Include="pages\initialization\Initialize_4pin.xaml.cs">
       <DependentUpon>Initialize_4pin.xaml</DependentUpon>
     </Compile>
     <Compile Include="pages\navigation\NaviTemplate.xaml.cs">
@@ -93,7 +95,7 @@
     <Compile Include="pages\NowPlaying.xaml.cs">
       <DependentUpon>NowPlaying.xaml</DependentUpon>
     </Compile>
-    <Compile Include="pages\Initialize.xaml.cs">
+    <Compile Include="pages\initialization\Initialize.xaml.cs">
       <DependentUpon>Initialize.xaml</DependentUpon>
     </Compile>
     <Compile Include="pages\TimeAdjustment.xaml.cs">
@@ -107,6 +109,10 @@
     <Compile Include="TVScreen.xaml.cs">
       <DependentUpon>TVScreen.xaml</DependentUpon>
     </Compile>
+    <Page Include="Keyboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -119,10 +125,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="NaviButton.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="pages\CreateNewAccount.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -131,15 +133,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="pages\Initialize_2.xaml">
+    <Page Include="pages\initialization\Initialize_2.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="pages\Initialize_3.xaml">
+    <Page Include="pages\initialization\Initialize_3.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="pages\Initialize_4pin.xaml">
+    <Page Include="pages\initialization\Initialize_4pin.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -171,7 +173,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="pages\Initialize.xaml">
+    <Page Include="pages\initialization\Initialize.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -221,6 +223,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="resources\teheTV_tablet_BOT.png" />
+    <Resource Include="resources\teheTV_tablet_LEFT.png" />
+    <Resource Include="resources\teheTV_tablet_RIGHT.png" />
+    <Resource Include="resources\teheTV_tablet_TOP.png" />
     <Resource Include="resources\TimeAdjustmentPage\timer_accept.png" />
     <Resource Include="resources\TimeAdjustmentPage\timer_arrow_down.png" />
     <Resource Include="resources\TimeAdjustmentPage\timer_arrow_up.png" />
@@ -255,6 +261,8 @@
     <None Include="resources\soundToggle.wav" />
     <None Include="resources\soundButtonPress.wav" />
     <None Include="resources\soundUhOh.wav" />
+    <None Include="resources\soundSlideDown.wav" />
+    <None Include="resources\soundSlideUp.wav" />
     <Content Include="resources\TeheTV.wav" />
     <Resource Include="resources\top.png" />
   </ItemGroup>

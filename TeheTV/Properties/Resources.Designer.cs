@@ -154,6 +154,24 @@ namespace TeheTV.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
+        internal static System.IO.UnmanagedMemoryStream soundSlideDown {
+            get {
+                return ResourceManager.GetStream("soundSlideDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream soundSlideUp {
+            get {
+                return ResourceManager.GetStream("soundSlideUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
         internal static System.IO.UnmanagedMemoryStream soundToggle {
             get {
                 return ResourceManager.GetStream("soundToggle", resourceCulture);

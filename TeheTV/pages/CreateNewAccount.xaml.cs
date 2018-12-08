@@ -18,10 +18,52 @@ namespace TeheTV.pages
     public partial class CreateNewAccount : Page
     {
         MainWindow app;
+        private bool _isUp = false;
         public CreateNewAccount(MainWindow instance)
         {
             app = instance;
             InitializeComponent();
+            checkToRevealDoneButton();
+            keyboard.OutputTextBlock = fieldNAME;
+            keyboard.MaxInputLength = 15;
+        }
+
+        // ***** Button Click Functions ****
+        private void fieldNameClicked(object sender, MouseButtonEventArgs e)
+        {
+            if (!_isUp)
+            {
+                slideGridScreenUpBy(400);
+            }
+        }
+
+        // ***** Helper Functions *****
+        private void checkToRevealDoneButton()
+        {
+            string name = fieldNAME.Text;
+            string month = fieldMONTH.Text;
+            string day = fieldDAY.Text;
+            string year = fieldYEAR.Text;
+            if (isEmpty(name) || isEmpty(month) || isEmpty(day) || isEmpty(year))
+                btnDone.Visibility = Visibility.Hidden;
+            else
+                btnDone.Visibility = Visibility.Visible;
+        }
+        private bool isEmpty(string str)
+        {
+            return String.IsNullOrEmpty(str) || String.IsNullOrWhiteSpace(str);
+        }
+
+        private void slideGridScreenUpBy(double amount)
+        {
+            _isUp = true;
+            Animations.GridScreen.SlideUp(gridScreen, amount);
+        }
+
+        private void slideGridScreenDown()
+        {
+            _isUp = false;
+            Animations.GridScreen.SlideDown();
         }
     }
 }

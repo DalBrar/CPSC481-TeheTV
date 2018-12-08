@@ -9,7 +9,7 @@
       Title="Initialize3">
 
     <Grid x:Name="MainGrid">
-        <TextBlock x:Name="textParentHeader" Margin="0,50,0,0" Text="Parent Setup" FontWeight="ExtraBold" FontSize="72" Foreground="Yellow" FontFamily="Comic Sans MS" VerticalAlignment="Top" TextAlignment="Center" Padding="0" d:IsLocked="True">
+        <TextBlock x:Name="textParentHeader" Margin="0,50,0,0" Text="Parent Setup" FontWeight="ExtraBold" FontSize="72" Foreground="Yellow" FontFamily="Comic Sans MS" VerticalAlignment="Top" TextAlignment="Center" Padding="0">
             <TextBlock.Effect>
                 <DropShadowEffect/>
             </TextBlock.Effect>

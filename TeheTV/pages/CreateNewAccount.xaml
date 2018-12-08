@@ -1,14 +1,74 @@
-﻿<Page x:Class="TeheTV.pages.CreateNewAccount"
+﻿<Page
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:TeheTV.pages"
+      xmlns:TeheTV="clr-namespace:TeheTV" x:Name="pageCreateAccount" x:Class="TeheTV.pages.CreateNewAccount"
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="1024"
       Title="CreateNewAccount">
+    <Page.Resources>
+        <Style x:Key="SlideGridScreenUp" TargetType="{x:Type TextBlock}">
+            <Style.Resources>
+                <Storyboard x:Key="SlideGridScreenUpStory">
+                    <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="{x:Null}">
+                        <EasingThicknessKeyFrame KeyTime="0" Value="250,400,50,0"/>
+                        <EasingThicknessKeyFrame KeyTime="0:0:0.2" Value="250,50,50,0"/>
+                    </ThicknessAnimationUsingKeyFrames>
+                </Storyboard>
+            </Style.Resources>
+            <Setter Property="TextWrapping" Value="NoWrap"/>
+            <Setter Property="TextTrimming" Value="None"/>
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="UIElement.PreviewMouseLeftButtonDown">
+                    <BeginStoryboard x:Name="SlideGridScreenUpStory_BeginStoryboard" Storyboard="{StaticResource SlideGridScreenUpStory}"/>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
 
-    <Grid>
-        <TextBlock Margin="0" TextWrapping="Wrap" Text="Placeholder for Create New Profile Screen" FontWeight="Bold" FontSize="72"/>
+    <Grid x:Name="gridCreateAccount">
+        <Grid x:Name="gridScreen">
+            <TextBlock x:Name="textHEADER" Margin="0,25,0,0" Text="Account Creation" FontWeight="ExtraBold" FontSize="72" Foreground="Lime" FontFamily="Comic Sans MS" VerticalAlignment="Top" TextAlignment="Center" Padding="0">
+                <TextBlock.Effect>
+                    <DropShadowEffect/>
+                </TextBlock.Effect>
+            </TextBlock>
+            <TextBlock x:Name="textINSTRUCTION" Margin="25,150,25,0" FontWeight="ExtraBold" FontSize="48" Foreground="White" FontFamily="Comic Sans MS" VerticalAlignment="Top" TextAlignment="Center" Padding="0" TextWrapping="Wrap">
+                <TextBlock.Effect>
+                    <DropShadowEffect/>
+                </TextBlock.Effect><Run Text="To create an account simply enter"/><LineBreak/><Run Text="your child's name and fill in their date of birth. After that click Done."/></TextBlock>
+            <TextBlock x:Name="textNAME" Margin="50,400,0,0" FontWeight="ExtraBold" FontSize="48" Foreground="Lime" FontFamily="Comic Sans MS" VerticalAlignment="Top" Padding="0" TextWrapping="Wrap" Width="200" HorizontalAlignment="Left" Text="Name:">
+                <TextBlock.Effect>
+                    <DropShadowEffect/>
+                </TextBlock.Effect></TextBlock>
+            <TextBlock x:Name="textDOB" Margin="50,500,0,0" FontWeight="ExtraBold" FontSize="48" Foreground="Lime" FontFamily="Comic Sans MS" VerticalAlignment="Top" Padding="0" TextWrapping="Wrap" Width="200" HorizontalAlignment="Left" Text=" DOB:">
+                <TextBlock.Effect>
+                    <DropShadowEffect/>
+                </TextBlock.Effect></TextBlock>
+            <TextBlock x:Name="fieldNAME" FontWeight="ExtraBold" FontSize="48" Foreground="White" FontFamily="Comic Sans MS" VerticalAlignment="Top" Padding="0" TextWrapping="Wrap" Background="#3FC8C8C8" PreviewMouseLeftButtonDown="fieldNameClicked" Margin="250,400,50,0">
+                <TextBlock.Effect>
+                    <DropShadowEffect/>
+                </TextBlock.Effect></TextBlock>
+            <TextBlock x:Name="fieldMONTH" Margin="250,500,0,0" FontWeight="ExtraBold" FontSize="48" Foreground="White" FontFamily="Comic Sans MS" VerticalAlignment="Top" Padding="0" TextWrapping="Wrap" Width="100" HorizontalAlignment="Left" Background="#3FC8C8C8">
+                <TextBlock.Effect>
+                    <DropShadowEffect/>
+                </TextBlock.Effect></TextBlock>
+            <TextBlock x:Name="fieldDAY" Margin="400,500,0,0" FontWeight="ExtraBold" FontSize="48" Foreground="White" FontFamily="Comic Sans MS" VerticalAlignment="Top" Padding="0" TextWrapping="Wrap" Width="75" HorizontalAlignment="Left" Background="#3FC8C8C8">
+                <TextBlock.Effect>
+                    <DropShadowEffect/>
+                </TextBlock.Effect></TextBlock>
+            <TextBlock x:Name="fieldYEAR" Margin="525,500,0,0" FontWeight="ExtraBold" FontSize="48" Foreground="White" FontFamily="Comic Sans MS" VerticalAlignment="Top" Padding="0" TextWrapping="Wrap" Width="125" HorizontalAlignment="Left" Background="#3FC8C8C8">
+                <TextBlock.Effect>
+                    <DropShadowEffect/>
+                </TextBlock.Effect></TextBlock>
+            <TextBlock x:Name="subtextMDY" Margin="250,565,0,0" FontWeight="ExtraBold" FontSize="24" Foreground="#FF969696" FontFamily="Comic Sans MS" VerticalAlignment="Top" Padding="0" TextWrapping="Wrap" Width="400" HorizontalAlignment="Left" Text=" Month        Day          Year">
+                <TextBlock.Effect>
+                    <DropShadowEffect/>
+                </TextBlock.Effect></TextBlock>
+            <Button x:Name="btnDone" Content="Done" Height="100" Margin="0,0,50,50" Style="{DynamicResource GreenButton}" VerticalAlignment="Bottom" Width="200" FontSize="48" FontWeight="ExtraBold" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontFamily="Comic Sans MS" HorizontalAlignment="Right"/>
+        </Grid>
+        <TeheTV:Keyboard x:Name="keyboard" Margin="0" VerticalAlignment="Top"/>
     </Grid>
 </Page>

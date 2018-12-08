@@ -105,7 +105,13 @@
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <Image x:Name="tabletFrame" Margin="0" Source="resources/teheTV_tablet.png" Stretch="Fill" d:IsLocked="True"/>
+        <Frame x:Name="ScreenFrame" Content="" Margin="80" NavigationUIVisibility="Hidden"/>
+        <Grid x:Name="tabletFrame">
+            <Image x:Name="tabletFrame_TOP" Margin="0,0,0,0" Source="resources/teheTV_tablet_TOP.png" VerticalAlignment="Top" d:IsLocked="True"/>
+            <Image x:Name="tabletFrame_BOT" Margin="0,0,0,0" Source="resources/teheTV_tablet_BOT.png" VerticalAlignment="Bottom" d:IsLocked="True"/>
+            <Image x:Name="tabletFrame_LEFT" Margin="0,0,0,0" Source="resources/teheTV_tablet_LEFT.png" HorizontalAlignment="Left" d:IsLocked="True"/>
+            <Image x:Name="tabletFrame_RIGHT" Margin="0,0,0,0" Source="resources/teheTV_tablet_RIGHT.png" HorizontalAlignment="Right" d:IsLocked="True"/>
+        </Grid>
         <Rectangle x:Name="dragbar_left" Fill="#FFF4F4F5"  HorizontalAlignment="Left" Margin="0" Stroke="Black" Width="80" Opacity="0" MouseLeftButtonDown="dragWindow" d:IsLocked="True"/>
         <Rectangle x:Name="dragbar_right" Fill="#FFF4F4F5" HorizontalAlignment="Right" Margin="0" Stroke="Black" Width="80" Opacity="0" MouseLeftButtonDown="dragWindow" d:IsLocked="True"/>
         <Rectangle x:Name="dragbar_top" Fill="#FFF4F4F5"  VerticalAlignment="Top" Margin="0" Stroke="Black" Height="80" Opacity="0" MouseLeftButtonDown="dragWindow" d:IsLocked="True"/>
@@ -114,6 +120,5 @@
             <Button x:Name="btnClose" Content="X" HorizontalAlignment="Right" Height="50" Margin="0,0,0,8" Style="{DynamicResource TabletButton}" Width="50" FontWeight="Bold" FontSize="24" Foreground="#FF999999" PreviewMouseLeftButtonDown="closeApp"/>
             <Button x:Name="btnClose_Copy" Content="--" HorizontalAlignment="Left" Height="50" Margin="0,11,0,19" Style="{DynamicResource TabletButton}" Width="50" FontWeight="Bold" FontSize="24" Foreground="#FF999999" PreviewMouseLeftButtonDown="minimizeApp"/>
         </Grid>
-        <Frame x:Name="ScreenFrame" Content="" Margin="80" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

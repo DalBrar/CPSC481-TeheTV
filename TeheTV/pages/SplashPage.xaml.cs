@@ -48,7 +48,12 @@ namespace TeheTV.pages
         private void ExitSplash(object sender, EventArgs e)
         {
             if (SettingsManager.doesPINexist())
-                app.ScreenChangeTo(SCREEN.ProfileSelector, true);
+            {
+                if (SettingsManager.doProfilesExist())
+                    app.ScreenChangeTo(SCREEN.ProfileSelector, true);
+                else
+                    app.ScreenChangeTo(SCREEN.CreateNewAccount, true);
+            }
             else
                 app.ScreenChangeTo(SCREEN.Initialize, true);
         }

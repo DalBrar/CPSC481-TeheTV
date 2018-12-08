@@ -15,13 +15,13 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using TeheTV.pages;
 
 namespace TeheTV
 {
     public partial class MainWindow : Window
     {
         // add all pages here
-        private static Page createNewAccount;
         private static Page initialize;
         private static Page navigator;
         private static Page nowPlaying;
@@ -36,14 +36,13 @@ namespace TeheTV
             SettingsManager.initialize();
 
             // instantiate all pages here
-            createNewAccount = new pages.CreateNewAccount(this);
-            initialize       = new pages.Initialize(this);
-            navigator        = new pages.Navigator(this);
-            nowPlaying       = new pages.NowPlaying(this);
-            options          = new pages.Options(this);
-            parentSettings   = new pages.ParentSettings(this);
-            profileSelector  = new pages.ProfileSelector(this);
-            splashScreen     = new pages.SplashPage(this);
+            initialize       = new Initialize(this);
+            navigator        = new Navigator(this);
+            nowPlaying       = new NowPlaying(this);
+            options          = new Options(this);
+            parentSettings   = new ParentSettings(this);
+            profileSelector  = new ProfileSelector(this);
+            splashScreen     = new SplashPage(this);
 
             // this is the first screen that loads, do not change
             ScreenFrame.NavigationService.Navigate(splashScreen);
@@ -76,7 +75,7 @@ namespace TeheTV
         public void ScreenChangeTo(SCREEN screen, bool fadeEffect)
         {
             if (screen == SCREEN.CreateNewAccount)
-                ScreenChangeTo(createNewAccount, fadeEffect);
+                ScreenChangeTo(new CreateNewAccount(this), fadeEffect);
             else if (screen == SCREEN.Initialize)
                 ScreenChangeTo(initialize, fadeEffect);
             else if (screen == SCREEN.Navigator)

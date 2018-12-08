@@ -15,6 +15,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TeheTV.Animations;
 
 namespace TeheTV.pages
 {
@@ -62,7 +63,7 @@ namespace TeheTV.pages
         private void btnErrorClicked(object sender, MouseButtonEventArgs e)
         {
             Sounds.Play(Properties.Resources.soundButtonClick);
-            ModalFadeOut();
+            Modal.ModalFadeOut();
             resetPage();
             app.ScreenGoBack();
         }
@@ -70,14 +71,14 @@ namespace TeheTV.pages
         private void btnCorrNoClicked(object sender, MouseButtonEventArgs e)
         {
             Sounds.Play(Properties.Resources.soundButtonClick);
-            ModalFadeOut();
+            Modal.ModalFadeOut();
             resetPage();
         }
 
         private void btnCorrYesClicked(object sender, MouseButtonEventArgs e)
         {
             Sounds.Play(Properties.Resources.soundButtonClick);
-            ModalFadeOut();
+            Modal.ModalFadeOut();
             resetPage();
             app.ScreenChangeTo(nextInit, true);
         }
@@ -122,12 +123,12 @@ namespace TeheTV.pages
                 int age = getAge();
                 if (age < 16 || age > 100)
                 {
-                    ModalFadeIn(errorGrid, false);
+                    Modal.ModalFadeIn(errorGrid, false);
                 }
                 else
                 {
                     textCorrAge.Text = "You were born in the year " + getYear() + ".";
-                    ModalFadeIn(correctGrid, true);
+                    Modal.ModalFadeIn(correctGrid, true);
                 }
             }
             else
@@ -195,48 +196,6 @@ namespace TeheTV.pages
             errorGrid.Opacity = 0;
             correctGrid.Visibility = Visibility.Hidden;
             correctGrid.Opacity = 0;
-        }
-
-        // ******************
-        //  Modal Fade Stuff
-        // ******************
-        private Grid _fadingObj;
-        private bool _success = false;
-
-        private void ModalFadeIn(Grid obj, bool success)
-        {
-            _fadingObj = obj;
-            _success = success;
-
-            _fadingObj.Opacity = 0;
-            _fadingObj.Visibility = Visibility.Visible;
-
-            DoubleAnimation animation = new DoubleAnimation(0, 1, new Duration(TimeSpan.FromMilliseconds(100)));
-            animation.Completed += playSound;
-            _fadingObj.BeginAnimation(Grid.OpacityProperty, animation);
-        }
-        private void ModalFadeOut()
-        {
-            if (_fadingObj != null)
-            {
-                DoubleAnimation animation = new DoubleAnimation(1, 0, new Duration(TimeSpan.FromMilliseconds(100)));
-                animation.Completed += ModalHidden;
-                _fadingObj.BeginAnimation(Grid.OpacityProperty, animation);
-            }
-        }
-
-        private void ModalHidden(object senderNotUsed, EventArgs eNotUsed)
-        {
-            _fadingObj.Opacity = 0;
-            _fadingObj.Visibility = Visibility.Hidden;
-        }
-
-        private void playSound(object senderNotUsed, EventArgs eNotUsed)
-        {
-            if (_success)
-                Sounds.Play(Properties.Resources.soundPassCorrect);
-            else
-                Sounds.Play(Properties.Resources.soundUhOh);
         }
     }
 }
