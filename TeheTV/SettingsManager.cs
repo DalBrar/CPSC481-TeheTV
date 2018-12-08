@@ -173,17 +173,17 @@ namespace TeheTV
                 profileFolders = new List<string>();
             }
 
-            foreach (string prfl in profileFolders)
+            foreach (string prfFolder in profileFolders)
             {
                 string name = "";
                 int month, day, year;
                 month = day = year = 0;
 
                 //MessageBox.Show(prfl);
-                List<string> files = Directory.GetFiles(prfl + "/").ToList();
-                if (files.Contains(prfl + info))
+                List<string> files = Directory.GetFiles(prfFolder + "/").ToList();
+                if (files.Contains(prfFolder + info))
                 {
-                    string[] lines = File.ReadAllLines(prfl + info);
+                    string[] lines = File.ReadAllLines(prfFolder + info);
                     foreach (string line in lines)
                     {
                         if (line.Contains("name= "))

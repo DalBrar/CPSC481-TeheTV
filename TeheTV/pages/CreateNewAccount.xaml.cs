@@ -24,7 +24,7 @@ namespace TeheTV.pages
         {
             app = instance;
             InitializeComponent();
-            checkToRevealDoneButton();
+            btnDone.Visibility = Visibility.Hidden;
 
             keyboard.ReturnKeyText = "Set";
             keyboard.EmptySpaceReturn = false;
@@ -102,40 +102,39 @@ namespace TeheTV.pages
 
         private void doneClicked(object sender, MouseButtonEventArgs e)
         {
-
+            string name = fieldNAME.Text;
+            while (name.EndsWith(" "))
+                name = name.Substring(0, name.Length - 1);
+            int month = getMonthNum(fieldMONTH.Text);
+            int day = int.Parse(fieldDAY.Text);
+            int year = int.Parse(fieldYEAR.Text);
+            SettingsManager.createNewProfile(name, month, day, year);
+            app.ScreenChangeTo(SCREEN.ProfileSelector, true);
         }
 
         // ***** Helper Functions *****
-        private void checkToRevealDoneButton()
-        {
-            string name = fieldNAME.Text;
-            string month = fieldMONTH.Text;
-            string day = fieldDAY.Text;
-            string year = fieldYEAR.Text;
-            if (isEmpty(name) || isEmpty(month) || isEmpty(day) || isEmpty(year))
-                btnDone.Visibility = Visibility.Hidden;
-            else
-                btnDone.Visibility = Visibility.Visible;
-        }
-        private bool isEmpty(string str)
-        {
-            return String.IsNullOrEmpty(str) || String.IsNullOrWhiteSpace(str);
-        }
 
-        private void selectField(TextBlock box)
+        private void selectField(TextBlock field)
         {
+            string name = field.Name;
+            Rectangle box;
+            if (name.Equals("fieldMONTH")) box = fieldMONTHbg;
+            else if (name.Equals("fieldDAY")) box = fieldDAYbg;
+            else if (name.Equals("fieldYEAR")) box = fieldYEARbg;
+            else box = fieldNAMEbg;
+
             deselectFields();
-            box.Background = MainWindow.setBrushColor(100, 255, 255, 255);
+            box.Fill = MainWindow.setBrushColor(100, 255, 255, 255);
             Sounds.Play(Properties.Resources.soundButtonClick);
         }
 
         private void deselectFields()
         {
             byte col = 150;
-            fieldNAME.Background = MainWindow.setBrushColor(63, col, col, col);
-            fieldMONTH.Background = MainWindow.setBrushColor(63, col, col, col);
-            fieldDAY.Background = MainWindow.setBrushColor(63, col, col, col);
-            fieldYEAR.Background = MainWindow.setBrushColor(63, col, col, col);
+            fieldNAMEbg.Fill  = MainWindow.setBrushColor(63, col, col, col);
+            fieldMONTHbg.Fill = MainWindow.setBrushColor(63, col, col, col);
+            fieldDAYbg.Fill   = MainWindow.setBrushColor(63, col, col, col);
+            fieldYEARbg.Fill  = MainWindow.setBrushColor(63, col, col, col);
         }
 
         private void slideGridScreenUpBy(double amount)
@@ -143,15 +142,99 @@ namespace TeheTV.pages
             Animations.GridScreen.SlideUp(gridScreen, amount);
         }
 
-        private void slideGridScreenDown(object sender, EventArgs e)
-        {
-            slideGridScreenDown();
-        }
+        private void slideGridScreenDown(object sender, EventArgs e) {slideGridScreenDown();}
         private void slideGridScreenDown()
         {
             _isUp = false;
             deselectFields();
             Animations.GridScreen.SlideDown();
+            checkToRevealDoneButton();
+        }
+
+        private void checkToRevealDoneButton()
+        {
+            string name = fieldNAME.Text;
+            string month = fieldMONTH.Text;
+            string dayStr = fieldDAY.Text;
+            string yearStr = fieldYEAR.Text;
+
+            int day;
+            try { day = int.Parse(dayStr); }
+            catch { day = 0; }
+
+            int year;
+            try { year = int.Parse(yearStr); }
+            catch { year = -1; }
+
+            bool invalidInfo = false;
+            if (isEmpty(name))
+            {
+                invalidInfo = true;
+                fieldNAMEbg.Fill = MainWindow.setBrushColor(100, 255, 0, 0);
+            }
+            if (isEmpty(month))
+            {
+                invalidInfo = true;
+                fieldMONTHbg.Fill = MainWindow.setBrushColor(100, 255, 0, 0);
+            }
+            if (isEmpty(dayStr) || notValidDay(month, day, year))
+            {
+                invalidInfo = true;
+                fieldDAYbg.Fill = MainWindow.setBrushColor(100, 255, 0, 0);
+            }
+            if (isEmpty(yearStr) || notValidYear(year))
+            {
+                invalidInfo = true;
+                fieldYEARbg.Fill = MainWindow.setBrushColor(100, 255, 0, 0);
+            }
+
+            if (invalidInfo)
+            {
+                Sounds.Play(Properties.Resources.soundPop);
+                btnDone.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                Sounds.Play(Properties.Resources.soundPassCorrect);
+                btnDone.Visibility = Visibility.Visible;
+            }
+        }
+        private bool isEmpty(string str)
+        {
+            return String.IsNullOrEmpty(str) || String.IsNullOrWhiteSpace(str);
+        }
+        private bool notValidYear(int y)
+        {
+            int curY = DateTime.Now.Year;
+            if (y > 0 && y <= curY)
+                return false;
+            else
+                return true;
+        }
+        private bool notValidDay(string m, int d, int y)
+        {
+            if (d == 0) return true;
+            if (y == -1) y = DateTime.Now.Year;
+            int maxDays = DateTime.DaysInMonth(y, getMonthNum(m));
+            if (d >= 1 && d <= maxDays)
+                return false;
+            else
+                return true;
+        }
+        private int getMonthNum(string m)
+        {
+            if (m.Equals("Dec")) return 12;
+            if (m.Equals("Nov")) return 11;
+            if (m.Equals("Oct")) return 10;
+            if (m.Equals("Sep")) return 9;
+            if (m.Equals("Aug")) return 8;
+            if (m.Equals("Jul")) return 7;
+            if (m.Equals("Jun")) return 6;
+            if (m.Equals("May")) return 5;
+            if (m.Equals("Apr")) return 4;
+            if (m.Equals("Mar")) return 3;
+            if (m.Equals("Feb")) return 2;
+            return 1;
         }
     }
 }

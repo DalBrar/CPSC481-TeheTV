@@ -17,6 +17,7 @@ namespace TeheTV
         private int age;
         private string profilePath;
         private static string profileInfoFile;
+        private int folder;
 
         public Profile(string Name, int Month, int Day, int Year)
         {
@@ -24,9 +25,10 @@ namespace TeheTV
             month = Month;
             day = Day;
             year = Year;
-
             age = calculateAge();
-            profilePath = SettingsManager.profilesFolder + getSafeName(name) + "/";
+
+            folder = getNextFolder();
+            profilePath = SettingsManager.profilesFolder + folder + "/";
             profileInfoFile = profilePath + "info.profile";
         }
 
@@ -69,8 +71,19 @@ namespace TeheTV
             return age;
         }
 
-        private string getSafeName(string name)
+        private int getNextFolder()
         {
+            int n = 1;
+            while (Directory.Exists(SettingsManager.profilesFolder + n + "/"))
+                n++;
+            return n;
+        }
+
+        private string DELETE_THIS_getSafeName(string name)
+        {
+            while (name.Contains("  "))
+                name = name.Replace("  ", " ");
+
             return name.Replace(" ", "_");
         }
     }

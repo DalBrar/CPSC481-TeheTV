@@ -154,7 +154,17 @@ namespace TeheTV
 
         private void spacePressed(object sender, MouseButtonEventArgs e)
         {
-            outputKey(" ");
+            int len = output.Text.Length;
+            if (len > 0)
+            {
+                string ch = output.Text.Substring(len - 1, 1);
+                if (ch.Equals(" "))
+                    playError();
+                else
+                    outputKey(" ");
+                return;
+            }
+            playError();
         }
 
         private void delPressed(object sender, MouseButtonEventArgs e)
