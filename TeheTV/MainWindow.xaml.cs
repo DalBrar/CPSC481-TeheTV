@@ -47,6 +47,11 @@ namespace TeheTV
             // this is the first screen that loads, do not change
             ScreenFrame.NavigationService.Navigate(splashScreen);
         }
+
+        public static Brush setBrushColor(byte alpha, byte red, byte green, byte blue)
+        {
+            return (System.Windows.Media.Brush)new SolidColorBrush(System.Windows.Media.Color.FromArgb(alpha, red, green, blue));
+        }
         
         private void dragWindow(object sender, MouseButtonEventArgs e)
         {

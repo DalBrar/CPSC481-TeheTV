@@ -7,6 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="700" d:DesignWidth="1024">
     <Grid x:Name="gridKeyboard">
+        <Rectangle x:Name="invisibleReturnBarrier" Fill="#00F4F4F5" PreviewMouseLeftButtonDown="returnPressed"/>
         <Rectangle x:Name="keyboardBackground" Height="305" VerticalAlignment="Bottom" Stroke="Black">
             <Rectangle.Fill>
                 <RadialGradientBrush>
@@ -15,7 +16,63 @@
                 </RadialGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <Grid x:Name="gridNumerical" Height="300" VerticalAlignment="Bottom">
+        <Grid x:Name="keysetMonths" Height="300" VerticalAlignment="Bottom">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid x:Name="rowM0" Height="75" VerticalAlignment="Top" Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="154"/>
+                    <ColumnDefinition Width="154"/>
+                    <ColumnDefinition Width="154"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="keyJan" Content="Jan" Height="65" Margin="0" Style="{DynamicResource KeyboardKeyButton}" Width="140" PreviewMouseLeftButtonDown="monthPressed" FontFamily="Comic Sans MS" FontWeight="Bold" FontSize="36" Grid.Column="1"/>
+                <Button x:Name="keyFeb" Content="Feb" Height="65" Margin="0" Style="{DynamicResource KeyboardKeyButton}" Width="140" PreviewMouseLeftButtonDown="monthPressed" FontFamily="Comic Sans MS" FontWeight="Bold" FontSize="36" Grid.Column="2"/>
+                <Button x:Name="keyMar" Content="Mar" Height="65" Margin="0" Style="{DynamicResource KeyboardKeyButton}" Width="140" PreviewMouseLeftButtonDown="monthPressed" FontFamily="Comic Sans MS" FontWeight="Bold" FontSize="36" Grid.Column="3"/>
+            </Grid>
+            <Grid x:Name="rowM1" Height="75" VerticalAlignment="Top" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="154"/>
+                    <ColumnDefinition Width="154"/>
+                    <ColumnDefinition Width="154"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="keyApr" Content="Apr" Height="65" Margin="0" Style="{DynamicResource KeyboardKeyButton}" Width="140" PreviewMouseLeftButtonDown="monthPressed" FontFamily="Comic Sans MS" FontWeight="Bold" FontSize="36" Grid.Column="1"/>
+                <Button x:Name="keyMay" Content="May" Height="65" Margin="0" Style="{DynamicResource KeyboardKeyButton}" Width="140" PreviewMouseLeftButtonDown="monthPressed" FontFamily="Comic Sans MS" FontWeight="Bold" FontSize="36" Grid.Column="2"/>
+                <Button x:Name="keyJun" Content="Jun" Height="65" Margin="0" Style="{DynamicResource KeyboardKeyButton}" Width="140" PreviewMouseLeftButtonDown="monthPressed" FontFamily="Comic Sans MS" FontWeight="Bold" FontSize="36" Grid.Column="3"/>
+            </Grid>
+            <Grid x:Name="rowM2" Height="75" VerticalAlignment="Top" Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="154"/>
+                    <ColumnDefinition Width="154"/>
+                    <ColumnDefinition Width="154"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="keyJul" Content="Jul" Height="65" Margin="0" Style="{DynamicResource KeyboardKeyButton}" Width="140" PreviewMouseLeftButtonDown="monthPressed" FontFamily="Comic Sans MS" FontWeight="Bold" FontSize="36" Grid.Column="1"/>
+                <Button x:Name="keyAug" Content="Aug" Height="65" Margin="0" Style="{DynamicResource KeyboardKeyButton}" Width="140" PreviewMouseLeftButtonDown="monthPressed" FontFamily="Comic Sans MS" FontWeight="Bold" FontSize="36" Grid.Column="2"/>
+                <Button x:Name="keySep" Content="Sep" Height="65" Margin="0" Style="{DynamicResource KeyboardKeyButton}" Width="140" PreviewMouseLeftButtonDown="monthPressed" FontFamily="Comic Sans MS" FontWeight="Bold" FontSize="36" Grid.Column="3"/>
+            </Grid>
+            <Grid x:Name="rowM3" Height="75" VerticalAlignment="Top" Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="154"/>
+                    <ColumnDefinition Width="154"/>
+                    <ColumnDefinition Width="154"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="keyOct" Content="Oct" Height="65" Margin="0" Style="{DynamicResource KeyboardKeyButton}" Width="140" PreviewMouseLeftButtonDown="monthPressed" FontFamily="Comic Sans MS" FontWeight="Bold" FontSize="36" Grid.Column="1"/>
+                <Button x:Name="keyNov" Content="Nov" Height="65" Margin="0" Style="{DynamicResource KeyboardKeyButton}" Width="140" PreviewMouseLeftButtonDown="monthPressed" FontFamily="Comic Sans MS" FontWeight="Bold" FontSize="36" Grid.Column="2"/>
+                <Button x:Name="keyDec" Content="Dec" Height="65" Margin="0" Style="{DynamicResource KeyboardKeyButton}" Width="140" PreviewMouseLeftButtonDown="monthPressed" FontFamily="Comic Sans MS" FontWeight="Bold" FontSize="36" Grid.Column="3"/>
+            </Grid>
+        </Grid>
+        <Grid x:Name="keysetNumerical" Height="300" VerticalAlignment="Bottom" d:IsHidden="True">
             <Grid x:Name="rowNum" Height="75" VerticalAlignment="Top">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -41,25 +98,25 @@
                 <Button x:Name="key0" Content="0" Height="65" Margin="0" Style="{DynamicResource KeyboardKeyButton}" Width="90" PreviewMouseLeftButtonDown="keyPressed" FontFamily="Comic Sans MS" FontWeight="Bold" FontSize="36" Grid.Column="9"/>
             </Grid>
         </Grid>
-        <Grid x:Name="gridAlphabet" Height="300" VerticalAlignment="Bottom">
+        <Grid x:Name="keysetAlphabet" Height="300" VerticalAlignment="Bottom" d:IsHidden="True">
             <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid x:Name="row1" Height="75" VerticalAlignment="Top">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Button x:Name="keyQ" Content="q" Height="65" Margin="0" Style="{DynamicResource KeyboardKeyButton}" Width="90" PreviewMouseLeftButtonDown="keyPressed" FontFamily="Comic Sans MS" FontWeight="Bold" FontSize="36" Grid.Column="0"/>
                 <Button x:Name="keyW" Content="w" Height="65" Margin="0" Style="{DynamicResource KeyboardKeyButton}" Width="90" PreviewMouseLeftButtonDown="keyPressed" FontFamily="Comic Sans MS" FontWeight="Bold" FontSize="36" Grid.Column="1"/>
@@ -126,7 +183,7 @@
                 <Button x:Name="keySpace" Content="Space" Height="60" Margin="0" Style="{DynamicResource KeyboardKeyButton}" Width="600" PreviewMouseLeftButtonDown="spacePressed" FontFamily="Comic Sans MS" FontWeight="Bold" FontSize="36" Grid.Column="1"/>
             </Grid>
         </Grid>
-        <Grid x:Name="gridALL" Height="300" VerticalAlignment="Bottom">
+        <Grid x:Name="keysetMain" Height="300" VerticalAlignment="Bottom">
             <Button x:Name="keyNum" Content="Numbers" Height="60" Margin="10,0,0,7" Style="{DynamicResource KeyboardKeyButton}" Width="190" PreviewMouseLeftButtonDown="numPressed" FontFamily="Comic Sans MS" FontWeight="Bold" FontSize="36" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
             <Button x:Name="keyDel" Content="Del" Height="65" Margin="0,75,10,0" Style="{DynamicResource KeyboardKeyButton}" Width="140" PreviewMouseLeftButtonDown="delPressed" FontFamily="Comic Sans MS" FontWeight="Bold" FontSize="36" HorizontalAlignment="Right"/>
             <Button x:Name="keyReturn" Content="Return" Height="60" Margin="0,0,10,7" Style="{DynamicResource KeyboardKeyButton}" Width="190" PreviewMouseLeftButtonDown="returnPressed" FontFamily="Comic Sans MS" FontWeight="Bold" FontSize="36" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>

@@ -114,7 +114,7 @@ namespace TeheTV.pages
                     _hiddenPIN = "";
                     Sounds.Play(Properties.Resources.soundPassCorrect);
                     textINSTRUCTION.Text = "Now re-enter the same PIN:";
-                    textINSTRUCTION.Foreground = (System.Windows.Media.Brush)new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 0, 200, 0));
+                    textINSTRUCTION.Foreground = MainWindow.setBrushColor(255, 0, 200, 0);
                 }
                 else if (_pinStep == 2)
                 {

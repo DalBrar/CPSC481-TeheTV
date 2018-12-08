@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,6 +14,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace TeheTV
 {
@@ -21,9 +23,14 @@ namespace TeheTV
     /// Optional Properties:
     ///      MaxInputLength = int           - Control how long the input is (default 15 characters)
     ///      keyboardStlye = KeyboardStyle  - Control which kinds of keys are available (All, numbers only, alpha only)
+    ///      ReturnKeyText = string         - Change the text of the Return key
+    ///      EmptySpaceReturn = bool        - Whether clicking the empty space functions as clicking return (default true).
+    /// Optional Event:
+    ///      ReturnEven += new EventHandler(customMethod);  - Executes the custom method when the keyboard's return key is pressed.
     /// </summary>
     public partial class Keyboard : UserControl
     {
+        public event EventHandler ReturnEvent;
         private TextBlock output;
         private int _MAXSTRING = 14;
         private bool _isCAPSLOCK = false;
@@ -31,8 +38,16 @@ namespace TeheTV
         public Keyboard()
         {
             InitializeComponent();
-            hideNumbers();
+
+            hideKeyset(keysetNumerical);
+            hideKeyset(keysetMonths);
+
             this.Visibility = Visibility.Hidden;
+        }
+
+        protected virtual void ExecuteReturnEvent()
+        {
+            if (ReturnEvent != null) ReturnEvent(this, EventArgs.Empty);
         }
 
         // ***** Properites *****
@@ -53,22 +68,52 @@ namespace TeheTV
             {
                 if (value == KeyboardStyle.NUMERICAL)
                 {
-                    hideAlphabet();
-                    showNumbers();
-                    keyNum.Visibility = Visibility.Hidden;
+                    showButton(keyDel);
+                    hideKeyset(keysetAlphabet);
+                    hideKeyset(keysetMonths);
+                    showKeyset(keysetNumerical);
+                    hideButton(keyNum);
                 }
                 else if (value == KeyboardStyle.ALPHABET)
                 {
-                    hideNumbers();
-                    showAlhpabet();
-                    keyNum.Visibility = Visibility.Hidden;
+                    showButton(keyDel);
+                    hideKeyset(keysetNumerical);
+                    hideKeyset(keysetMonths);
+                    showKeyset(keysetAlphabet);
+                    hideButton(keyNum);
+                }
+                else if (value == KeyboardStyle.MONTHS)
+                {
+                    hideKeyset(keysetNumerical);
+                    hideKeyset(keysetAlphabet);
+                    showKeyset(keysetMonths);
+                    hideButton(keyDel);
+                    hideButton(keyNum);
                 }
                 else
                 {
-                    keyNum.Visibility = Visibility.Visible;
-                    hideNumbers();
-                    showAlhpabet();
+                    showButton(keyDel);
+                    showButton(keyNum);
+                    hideKeyset(keysetNumerical);
+                    hideKeyset(keysetMonths);
+                    showKeyset(keysetAlphabet);
                 }
+            }
+        }
+
+        public string ReturnKeyText
+        {
+            set { keyReturn.Content = value; }
+        }
+
+        public bool EmptySpaceReturn
+        {
+            set
+            {
+                if (value)
+                    invisibleReturnBarrier.Visibility = Visibility.Visible;
+                else
+                    invisibleReturnBarrier.Visibility = Visibility.Hidden;
             }
         }
 
@@ -76,10 +121,18 @@ namespace TeheTV
         {
             ALL,
             NUMERICAL,
-            ALPHABET
+            ALPHABET,
+            MONTHS
         }
 
         // ***** Key Press Functions *****
+
+        private void monthPressed(object sender, MouseButtonEventArgs e)
+        {
+            string mnth = (string)((Button)sender).Content;
+            output.Text = mnth;
+            playKeypress();
+        }
 
         private void outputKey(string ch)
         {
@@ -185,39 +238,40 @@ namespace TeheTV
         private void numPressed(object sender, MouseButtonEventArgs e)
         {
             playToggle();
-            if (gridNumerical.Visibility == Visibility.Visible)
+            if (keysetNumerical.Visibility == Visibility.Visible)
             {
-                hideNumbers();
-                showAlhpabet();
+                hideKeyset(keysetNumerical);
+                showKeyset(keysetAlphabet);
             }
             else
             {
-                hideAlphabet();
-                showNumbers();
+                hideKeyset(keysetAlphabet);
+                showKeyset(keysetNumerical);
             }
         }
 
         private void returnPressed(object sender, MouseButtonEventArgs e)
         {
-
+            Dispatcher.BeginInvoke(DispatcherPriority.Loaded, (ThreadStart)delegate () { ExecuteReturnEvent(); });
+            SlideDown();
         }
 
-        private void hideNumbers()
+        private void hideKeyset(Grid grid)
         {
-            gridNumerical.Visibility = Visibility.Hidden;
+            grid.Visibility = Visibility.Hidden;
         }
-        private void showNumbers()
+        private void showKeyset(Grid grid)
         {
-            gridNumerical.Visibility = Visibility.Visible;
+            grid.Visibility = Visibility.Visible;
         }
 
-        private void hideAlphabet()
+        private void hideButton(Button btn)
         {
-            gridAlphabet.Visibility = Visibility.Hidden;
+            btn.Visibility = Visibility.Hidden;
         }
-        private void showAlhpabet()
+        private void showButton(Button btn)
         {
-            gridAlphabet.Visibility = Visibility.Visible;
+            btn.Visibility = Visibility.Visible;
         }
 
         private void playKeypress()
@@ -239,7 +293,6 @@ namespace TeheTV
         //  Slide Animations
         // ************************
         private static Int32 _slideMiliSecs = 250;
-        private Grid _grid;
         // public Thickness (double left, double top, double right, double bottom);
 
         public void SlideUp()

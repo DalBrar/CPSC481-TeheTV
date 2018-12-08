@@ -47,28 +47,28 @@
                 <TextBlock.Effect>
                     <DropShadowEffect/>
                 </TextBlock.Effect></TextBlock>
-            <TextBlock x:Name="fieldNAME" FontWeight="ExtraBold" FontSize="48" Foreground="White" FontFamily="Comic Sans MS" VerticalAlignment="Top" Padding="0" TextWrapping="Wrap" Background="#3FC8C8C8" PreviewMouseLeftButtonDown="fieldNameClicked" Margin="250,400,50,0">
+            <TextBlock x:Name="fieldNAME" FontWeight="ExtraBold" FontSize="48" Foreground="White" FontFamily="Comic Sans MS" VerticalAlignment="Top" Padding="15,0,15,5" Background="#3FC8C8C8" PreviewMouseLeftButtonDown="fieldNameClicked" Margin="250,400,50,0" Height="68" TextTrimming="CharacterEllipsis">
                 <TextBlock.Effect>
-                    <DropShadowEffect/>
+                    <DropShadowEffect BlurRadius="10" Direction="135" ShadowDepth="10"/>
                 </TextBlock.Effect></TextBlock>
-            <TextBlock x:Name="fieldMONTH" Margin="250,500,0,0" FontWeight="ExtraBold" FontSize="48" Foreground="White" FontFamily="Comic Sans MS" VerticalAlignment="Top" Padding="0" TextWrapping="Wrap" Width="100" HorizontalAlignment="Left" Background="#3FC8C8C8">
+            <TextBlock x:Name="fieldMONTH" Margin="250,500,0,0" FontWeight="ExtraBold" FontSize="48" Foreground="White" FontFamily="Comic Sans MS" VerticalAlignment="Top" Padding="0,0,0,5" TextWrapping="Wrap" Width="100" HorizontalAlignment="Left" Background="#3FC8C8C8" Height="68" TextAlignment="Center" PreviewMouseLeftButtonDown="fieldMonthClicked">
                 <TextBlock.Effect>
-                    <DropShadowEffect/>
+                    <DropShadowEffect BlurRadius="10" Direction="135" ShadowDepth="10"/>
                 </TextBlock.Effect></TextBlock>
-            <TextBlock x:Name="fieldDAY" Margin="400,500,0,0" FontWeight="ExtraBold" FontSize="48" Foreground="White" FontFamily="Comic Sans MS" VerticalAlignment="Top" Padding="0" TextWrapping="Wrap" Width="75" HorizontalAlignment="Left" Background="#3FC8C8C8">
+            <TextBlock x:Name="fieldDAY" Margin="400,500,0,0" FontWeight="ExtraBold" FontSize="48" Foreground="White" FontFamily="Comic Sans MS" VerticalAlignment="Top" Padding="0,0,0,5" TextWrapping="Wrap" Width="75" HorizontalAlignment="Left" Background="#3FC8C8C8" Height="68" TextAlignment="Center" PreviewMouseLeftButtonDown="fieldDayClicked">
                 <TextBlock.Effect>
-                    <DropShadowEffect/>
+                    <DropShadowEffect BlurRadius="10" Direction="135" ShadowDepth="10"/>
                 </TextBlock.Effect></TextBlock>
-            <TextBlock x:Name="fieldYEAR" Margin="525,500,0,0" FontWeight="ExtraBold" FontSize="48" Foreground="White" FontFamily="Comic Sans MS" VerticalAlignment="Top" Padding="0" TextWrapping="Wrap" Width="125" HorizontalAlignment="Left" Background="#3FC8C8C8">
+            <TextBlock x:Name="fieldYEAR" Margin="525,500,0,0" FontWeight="ExtraBold" FontSize="48" Foreground="White" FontFamily="Comic Sans MS" VerticalAlignment="Top" Padding="0,0,0,5" TextWrapping="Wrap" Width="125" HorizontalAlignment="Left" Background="#3FC8C8C8" Height="68" TextAlignment="Center" PreviewMouseLeftButtonDown="fieldYearClicked">
                 <TextBlock.Effect>
-                    <DropShadowEffect/>
+                    <DropShadowEffect BlurRadius="10" Direction="135" ShadowDepth="10"/>
                 </TextBlock.Effect></TextBlock>
             <TextBlock x:Name="subtextMDY" Margin="250,565,0,0" FontWeight="ExtraBold" FontSize="24" Foreground="#FF969696" FontFamily="Comic Sans MS" VerticalAlignment="Top" Padding="0" TextWrapping="Wrap" Width="400" HorizontalAlignment="Left" Text=" Month        Day          Year">
                 <TextBlock.Effect>
                     <DropShadowEffect/>
                 </TextBlock.Effect></TextBlock>
-            <Button x:Name="btnDone" Content="Done" Height="100" Margin="0,0,50,50" Style="{DynamicResource GreenButton}" VerticalAlignment="Bottom" Width="200" FontSize="48" FontWeight="ExtraBold" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontFamily="Comic Sans MS" HorizontalAlignment="Right"/>
+            <Button x:Name="btnDone" Content="Done" Height="100" Margin="0,0,50,50" Style="{DynamicResource GreenButton}" VerticalAlignment="Bottom" Width="200" FontSize="48" FontWeight="ExtraBold" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontFamily="Comic Sans MS" HorizontalAlignment="Right" PreviewMouseLeftButtonDown="doneClicked"/>
         </Grid>
-        <TeheTV:Keyboard x:Name="keyboard" Margin="0" VerticalAlignment="Bottom"/>
+        <TeheTV:Keyboard x:Name="keyboard" Margin="0"/>
     </Grid>
 </Page>
