@@ -24,6 +24,9 @@ namespace TeheTV.Pages.navigation
         private bool customSearch = false;
         private string searchText = "";
 
+        Point scrollMousePoint = new Point();
+        double hOff = 1;
+
         public NaviTemplate(MainWindow instance, Navigator navigator, string query)
         {
             app = instance;
@@ -66,7 +69,7 @@ namespace TeheTV.Pages.navigation
                     if (t.ToLower().Contains(searchText))
                     {
                         ContentButton button = new ContentButton(app, c);
-                        contentArea.Children.Add(button);
+                        //contentArea.Children.Add(button);
                     }
                 }
             }
@@ -79,7 +82,7 @@ namespace TeheTV.Pages.navigation
                 foreach (Content c in list)
                 {
                     ContentButton button = new ContentButton(app, c);
-                    contentArea.Children.Add(button);
+                    //contentArea.Children.Add(button);
                 }
             }
         }
@@ -111,5 +114,32 @@ namespace TeheTV.Pages.navigation
             Sounds.Play(Properties.Resources.soundButtonClick);
             app.ScreenChangeTo(SCREEN.Options, true);
         }
+
+        // Scrolling methods
+        private void ScrollViewer_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            scrollMousePoint = e.GetPosition(scrollViewer);
+            hOff = scrollViewer.HorizontalOffset;
+            scrollViewer.CaptureMouse();
+        }
+
+        private void ScrollViewer_PreviewMouseMove(object sender, MouseEventArgs e)
+        {
+            if (scrollViewer.IsMouseCaptured)
+            {
+                scrollViewer.ScrollToHorizontalOffset(hOff + (scrollMousePoint.X - e.GetPosition(scrollViewer).X));
+            }
+        }
+
+        private void ScrollViewer_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            scrollViewer.ReleaseMouseCapture();
+        }
+
+        private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            scrollViewer.ScrollToHorizontalOffset(scrollViewer.HorizontalOffset + e.Delta);
+        }
+
     }
 }
