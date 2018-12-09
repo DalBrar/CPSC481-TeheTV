@@ -42,26 +42,23 @@ namespace TeheTV.pages
 
         private Point scrollMousePoint = new Point();
         private double hOff = 1;
-        private bool _mouseDown = false;
 
         private void mouseDown(object sender, MouseButtonEventArgs e)
         {
             scrollMousePoint = e.GetPosition(scrollViewer);
             hOff = scrollViewer.HorizontalOffset;
-            //scrollViewer.CaptureMouse();
-            _mouseDown = true;
+            scrollViewer.CaptureMouse();
+
         }
 
         private void mouseUp(object sender, MouseButtonEventArgs e)
         {
             scrollViewer.ReleaseMouseCapture();
-            _mouseDown = false;
-            MessageBox.Show("mouse up");
         }
 
         private void mouseMove(object sender, MouseEventArgs e)
         {
-            if (_mouseDown)
+            if (scrollViewer.IsMouseCaptured)
             {
                 scrollViewer.ScrollToHorizontalOffset(hOff + (scrollMousePoint.X - e.GetPosition(scrollViewer).X));
             }
@@ -69,12 +66,12 @@ namespace TeheTV.pages
 
         private void mouseWheel(object sender, MouseWheelEventArgs e)
         {
-            //scrollViewer.ScrollToHorizontalOffset(scrollViewer.HorizontalOffset + e.Delta);
+            scrollViewer.ScrollToHorizontalOffset(scrollViewer.HorizontalOffset + e.Delta);
         }
 
         private void mouseMove(object sender, DragEventArgs e)
         {
-            scrollViewer.ScrollToHorizontalOffset(hOff + (scrollMousePoint.X - e.GetPosition(scrollViewer).X));
+        
         }
     }
 }

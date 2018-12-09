@@ -7,79 +7,81 @@
       mc:Ignorable="d"
       d:DesignHeight="700" d:DesignWidth="1024"
       Title="Navigator">
-    
+
     <Grid x:Name="navigatorGrid">
         <Frame x:Name="naviFrame" Content="" Margin="0" NavigationUIVisibility="Hidden" Height="500" VerticalAlignment="Top"/>
-        <Grid Margin="0,500,0,0">
+        <Grid x:Name="naviGrid" Margin="0,500,0,0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="50"/>
-                <ColumnDefinition Width="120"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="30"/>
                 <ColumnDefinition Width="100"/>
-                <ColumnDefinition Width="0"/>
-                <ColumnDefinition Width="100"/>
-                <ColumnDefinition Width="0"/>
-                <ColumnDefinition Width="100"/>
-                <ColumnDefinition Width="0"/>
-                <ColumnDefinition Width="100"/>
-                <ColumnDefinition Width="50"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="120"/>
-                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-
             <Grid.RowDefinitions>
-                <RowDefinition Height="25"/>
-                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="100"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-
-
-            <Button Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="3"
-                    BorderThickness="0"
-                    Opacity="1" Margin="72.4,0.4,15.4,0" >
-                <StackPanel>
-                    <Image Source="/resources/bottom.png"
-                           Height="100" Width="100"/>
-                </StackPanel>
-            </Button>
-
-            <Button Grid.Column="4" Grid.Row="1" Grid.ColumnSpan="5"
-                    BorderThickness="0"
-                    Opacity="1" Margin="69.6,0.4,74.4,0">
-                <StackPanel>
-                    <Image Source="/resources/bottom.png"
-                           Height="100" Width="100"/>
-                </StackPanel>
-            </Button>
-
-            <Button Grid.Column="6" Grid.Row="1" Grid.ColumnSpan="5"
-                    BorderThickness="0"
-                    Opacity="1" Margin="99.6,0.4,31.4,0">
-                <StackPanel>
-                    <Image Source="/resources/bottom.png"
-                           Height="100" Width="100"/>
-                </StackPanel>
-            </Button>
-
-            <Button Grid.Column="10" Grid.Row="1" Grid.ColumnSpan="3"
-                    BorderThickness="0"
-                    Opacity="1" Margin="50.6,0,61.4,0" Height="102" VerticalAlignment="Bottom" >
-                <StackPanel>
-                    <Image Source="/resources/bottom.png"
-                           Height="100" Width="100"/>
-                </StackPanel>
-            </Button>
-
-            <Button Grid.Column="12" Grid.Row="1" Grid.ColumnSpan="2"
-                    BorderThickness="0"
-                    Opacity="1" Margin="102,0.4,0.4,0">
-                <StackPanel>
-                    <Image Source="/resources/search_circle.png"
-                           Height="100" Width="260"/>
-                </StackPanel>
-            </Button>
+            <Grid x:Name="gridTime" Height="100" Width="100" Grid.Row="1" Grid.Column="1">
+                <Image x:Name="imgTime" Height="80" Width="80" Source="resources/navicon_star.png" VerticalAlignment="Top"/>
+            </Grid>
+            <Grid x:Name="gridYoutube" Height="100" Width="100" Grid.Row="1" Grid.Column="3">
+                <Rectangle x:Name="recYoutube" Height="100" Stroke="Black" Width="100" RadiusX="15" RadiusY="15" StrokeThickness="3">
+                    <Rectangle.Fill>
+                        <RadialGradientBrush>
+                            <GradientStop Color="Black" Offset="1"/>
+                            <GradientStop Color="#FF404040"/>
+                        </RadialGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Image x:Name="imgYoutube" Height="100" Width="100" Source="resources/navicon_youtube.png">
+                </Image>
+            </Grid>
+            <Grid x:Name="gridNetflix" Height="100" Width="100" Grid.Row="1" Grid.Column="5">
+                <Rectangle x:Name="recNetflix" Height="100" Stroke="Black" Width="100" RadiusX="15" RadiusY="15" StrokeThickness="3">
+                    <Rectangle.Fill>
+                        <RadialGradientBrush>
+                            <GradientStop Color="Black" Offset="1"/>
+                            <GradientStop Color="#FF404040"/>
+                        </RadialGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Image x:Name="imgNetflix" Height="100" Width="100" Source="resources/navicon_netflix.png"/>
+            </Grid>
+            <Grid x:Name="gridSpotify" Height="100" Width="100" Grid.Row="1" Grid.Column="7">
+                <Rectangle x:Name="recSpotify" Height="100" Stroke="Black" Width="100" RadiusX="15" RadiusY="15" StrokeThickness="3">
+                    <Rectangle.Fill>
+                        <RadialGradientBrush>
+                            <GradientStop Color="Black" Offset="1"/>
+                            <GradientStop Color="#FF404040"/>
+                        </RadialGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Image x:Name="imgSpotify" Height="100" Width="100" Source="resources/navicon_spotify.png"/>
+            </Grid>
+            <Grid x:Name="gridGames" Height="100" Width="100" Grid.Row="1" Grid.Column="9">
+                <Rectangle x:Name="recGames" Height="100" Stroke="Black" Width="100" RadiusX="15" RadiusY="15" StrokeThickness="3">
+                    <Rectangle.Fill>
+                        <RadialGradientBrush>
+                            <GradientStop Color="Black" Offset="1"/>
+                            <GradientStop Color="#FF404040"/>
+                        </RadialGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Image x:Name="imgGames" Height="100" Width="100" Source="resources/navicon_games.png"/>
+            </Grid>
+            <Grid x:Name="gridSearch" Height="100" Width="100" Grid.Row="1" Grid.Column="11">
+                <Image x:Name="imgSearch" Height="100" Width="100" Source="resources/navicon_search.png"/>
+            </Grid>
         </Grid>
     </Grid>
 

@@ -270,6 +270,12 @@
     <None Include="resources\soundUhOh.wav" />
     <None Include="resources\soundSlideDown.wav" />
     <None Include="resources\soundSlideUp.wav" />
+    <None Include="resources\navicon_spotify.png" />
+    <None Include="resources\navicon_youtube.png" />
+    <None Include="resources\navicon_games.png" />
+    <None Include="resources\navicon_netflix.png" />
+    <None Include="resources\navicon_star.png" />
+    <None Include="resources\navicon_search.png" />
     <Content Include="resources\TeheTV.wav" />
     <Resource Include="resources\top.png" />
   </ItemGroup>
