@@ -45,13 +45,9 @@ namespace TeheTV
         /// </summary>
         /// <param name="pin"></param>
         /// <returns></returns>
-        public static bool setPin(string pin)
+        public static bool setPin(int pin)
         {
-            if (string.IsNullOrEmpty(pin) || string.IsNullOrWhiteSpace(pin))
-                return false;
-
             string encryptedPin = encryptString(pin);
-
             File.WriteAllText(pinFilename, encryptedPin);
             return true;
         }
@@ -61,7 +57,7 @@ namespace TeheTV
         /// </summary>
         /// <param name="pin"></param>
         /// <returns></returns>
-        public static bool doesPINmatch(string pin)
+        public static bool doesPINmatch(int pin)
         {
             if (!doesPINexist())
                 return false;
@@ -162,8 +158,9 @@ namespace TeheTV
             return currentProfile;
         }
 
-        private static string encryptString(string str)
+        private static string encryptString(int pin)
         {
+            string str = "" + pin;
             string saltyStr = "teheTV" + str + "salt";
 
             StringBuilder sb = new StringBuilder();

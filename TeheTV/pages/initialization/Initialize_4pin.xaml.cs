@@ -78,8 +78,8 @@ namespace TeheTV.Pages
         {
             Sounds.Play(Properties.Resources.soundButtonClick);
             Modal.ModalFadeOut();
+            SettingsManager.setPin(_pinB);
             resetPage();
-            SettingsManager.setPin("" + _pinB);
             app.ScreenChangeTo(new CreateNewAccount(app), true);
         }
 

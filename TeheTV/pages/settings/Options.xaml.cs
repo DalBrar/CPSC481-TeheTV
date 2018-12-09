@@ -14,6 +14,8 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TeheTV.Animations;
+using static TeheTV.Animations.Wiggle;
 using static TeheTV.Keyboard;
 
 namespace TeheTV.Pages
@@ -56,18 +58,24 @@ namespace TeheTV.Pages
 
         private void checkPIN(string output)
         {
-            passwordGrid.Visibility = Visibility.Hidden;
-
-            if (SettingsManager.doesPINmatch(output))
+            int pin = int.Parse(output);
+            if (SettingsManager.doesPINmatch(pin))
             {
                 Sounds.Play(Properties.Resources.soundPassCorrect);
                 app.ScreenChangeTo(SCREEN.ParentSettings, true);
             } else
             {
                 Sounds.Play(Properties.Resources.soundPassWrong);
-
+                passwordRec.Stroke = MainWindow.setBrushColor(255, 255, 0, 0);
+                Wiggle.Completed += new CustomAnimationEvent(wiggleDone);
+                Wiggle.Run(passwordGrid);
             }
+        }
 
+        private void wiggleDone()
+        {
+            passwordRec.Stroke = MainWindow.setBrushColor(255, 0, 0, 0);
+            passwordGrid.Visibility = Visibility.Hidden;
         }
 
         /*

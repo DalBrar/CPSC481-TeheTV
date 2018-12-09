@@ -10,31 +10,35 @@
       Title="Options">
 
     <Grid x:Name="OptionsGrid">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width ="50"/>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width ="100"/>
-            <ColumnDefinition Width ="50"/>
-        </Grid.ColumnDefinitions>
+
+        <Grid x:Name="OptionsInnerGrid" Margin="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width ="50"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width ="100"/>
+                <ColumnDefinition Width ="50"/>
+            </Grid.ColumnDefinitions>
 
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height ="50"/>
-            <RowDefinition Height ="100"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height ="100"/>
-            <RowDefinition Height="50"/>
-        </Grid.RowDefinitions>
-        <Button x:Name="backBtn" Content="" Grid.Column="1" Height="100" Grid.Row="1" Style="{DynamicResource BackButton}" Width="100" PreviewMouseLeftButtonDown="backBtnPressed"/>
-        <TeheTV:SettingsButton x:Name="profileBtn" Grid.Column="2" Label="Change Profile" ImagePath="/resources/btn_profiles.png" Margin="0" Grid.Row="2" PreviewMouseLeftButtonDown="profilesBtnPressed"/>
-        <TeheTV:SettingsButton x:Name="parentBtn" Grid.Column="3" Label="Parent Settings" ImagePath="/resources/btn_lock.png"  Margin="0" Grid.Row="2" PreviewMouseLeftButtonDown="parentSettingsBtnPressed"/>
-        <TeheTV:Keyboard x:Name="keyboard" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="100" Grid.RowSpan="2" VerticalAlignment="Top" Width="100"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height ="50"/>
+                <RowDefinition Height ="100"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height ="100"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <Button x:Name="backBtn" Content="" Grid.Column="1" Height="100" Grid.Row="1" Style="{DynamicResource BackButton}" Width="100" PreviewMouseLeftButtonDown="backBtnPressed"/>
+            <TeheTV:SettingsButton x:Name="profileBtn" Grid.Column="2" Label="Change Profile" ImagePath="/resources/btn_profiles.png" Margin="0" Grid.Row="2" PreviewMouseLeftButtonDown="profilesBtnPressed"/>
+            <TeheTV:SettingsButton x:Name="parentBtn" Grid.Column="3" Label="Parent Settings" ImagePath="/resources/btn_lock.png"  Margin="0" Grid.Row="2" PreviewMouseLeftButtonDown="parentSettingsBtnPressed"/>
 
-        <Grid x:Name="passwordGrid" Height="100" Margin="0" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Width="400">
-            <Rectangle x:Name="passwordRec" Fill="White" Stroke="Black" StrokeThickness="10"/>
+        </Grid>
+
+        <Grid x:Name="passwordGrid" Height="100" Margin="0" Width="400">
+            <Rectangle x:Name="passwordRec" Fill="White" Stroke="Black" StrokeThickness="10" Width="400" Height="100"/>
             <TextBlock x:Name="passwordField" FontWeight="ExtraBold" FontSize="72" Foreground="Black" FontFamily="Comic Sans MS" Padding="15,0,15,5" Margin="0" TextTrimming="CharacterEllipsis" Height="100" Width="400" ScrollViewer.VerticalScrollBarVisibility="Disabled" Text="Enter PIN" TextAlignment="Center"/>
         </Grid>
+        <TeheTV:Keyboard x:Name="keyboard" Margin="0"/>
     </Grid>
 </Page>

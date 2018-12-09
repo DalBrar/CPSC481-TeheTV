@@ -5,53 +5,66 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Animation;
 
 namespace TeheTV.Animations
 {
     class Wiggle
     {
+        public delegate void CustomAnimationEvent();
+        public static event CustomAnimationEvent Completed;
         // ************************
         //  gridScreen Slide Stuff
         // ************************
-        private static Int32 _slideMiliSecs = 250;
+        private static TimeSpan DURATION = TimeSpan.FromMilliseconds(25);
+        private static double OFFSET = 10;
+        private static int WIGGLEAMOUNT = 5;
         private static Grid _gridObject;
-        private static Thickness _originalPosition;
+        private static double _oL;
+        private static int count;
         // public Thickness (double left, double top, double right, double bottom);
 
-        public static void SlideUp(Grid obj)
+        public static void Run(Grid obj)
         {
             _gridObject = obj;
-            Thickness th = obj.Margin; ;
-            _originalPosition = new Thickness(th.Left, th.Top, th.Right, th.Bottom);
-
-            ThicknessAnimation animation = new ThicknessAnimation();
-            animation.Duration = TimeSpan.FromMilliseconds(_slideMiliSecs);
-            animation.From = new Thickness(0, 0, 0, 0);
-            animation.To = new Thickness(0, 0, 0, 0);
-            playSound(true);
-            _gridObject.BeginAnimation(Grid.MarginProperty, animation);
+            _oL = obj.Margin.Left;
+            count = 0;
+            Start();
         }
-        public static void SlideDown()
+        private static void Start() { moveLeft(null, EventArgs.Empty); }
+
+        private static void moveLeft(object s, EventArgs e)
         {
-            if (_gridObject != null)
+            var left = _oL;
+            TranslateTransform trans = new TranslateTransform();
+            _gridObject.RenderTransform = trans;
+            DoubleAnimation anim = new DoubleAnimation(left, (left - OFFSET), DURATION);
+            anim.Completed += moveRight;
+            trans.BeginAnimation(TranslateTransform.XProperty, anim);
+        }
+        private static void moveRight(object s, EventArgs e)
+        {
+            var left = _oL;
+            TranslateTransform trans = new TranslateTransform();
+            _gridObject.RenderTransform = trans;
+            DoubleAnimation anim = new DoubleAnimation(left, (left + OFFSET), DURATION);
+            anim.Completed += finishOrLoop;
+            trans.BeginAnimation(TranslateTransform.XProperty, anim);
+        }
+
+        private static void finishOrLoop(object s, EventArgs e)
+        {
+            if (count < WIGGLEAMOUNT)
             {
-
-                ThicknessAnimation animation = new ThicknessAnimation();
-                animation.Duration = TimeSpan.FromMilliseconds(_slideMiliSecs);
-                animation.From = new Thickness(0, 0, 0, 0);
-                animation.To = new Thickness(0, 0, 0, 0);
-                playSound(false);
-                _gridObject.BeginAnimation(Grid.MarginProperty, animation);
+                Start();
+                count++;
             }
-        }
-
-        private static void playSound(bool _slideUp)
-        {
-            if (_slideUp)
-                Sounds.Play(Properties.Resources.soundSlideUp);
             else
-                Sounds.Play(Properties.Resources.soundSlideDown);
+            {
+                if (Completed != null) Completed();
+                Completed = null;
+            }
         }
     }
 }
