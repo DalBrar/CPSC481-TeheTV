@@ -43,7 +43,7 @@
                 <TeheTV:SettingsButton x:Name="recommendBtn" Label="Recommendations" ImagePath="/resources/btn_recommendations.png"  Margin="0" PreviewMouseLeftButtonDown="recommendBtnPressed"/>
             </Grid>
             <Grid x:Name="botLeft" Grid.Row="1">
-                <TeheTV:SettingsButton x:Name="logBtn" Label="Profile Log" ImagePath="/resources/btn_log.png"  Margin="0" PreviewMouseLeftButtonDown="logBtnPressed"/>
+                <TeheTV:SettingsButton x:Name="logBtn" Label="Watch History" ImagePath="/resources/btn_log.png"  Margin="0" PreviewMouseLeftButtonDown="logBtnPressed"/>
             </Grid>
             <Grid x:Name="botRight" Grid.Row="1" Grid.Column="1">
                 <TeheTV:SettingsButton x:Name="timeBtn" Label="Time Adjustment" ImagePath="/resources/btn_time.png"  Margin="0" PreviewMouseLeftButtonDown="timeBtnPressed"/>

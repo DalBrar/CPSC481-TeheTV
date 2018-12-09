@@ -24,6 +24,8 @@ namespace TeheTV
         private static MainWindow instance;
         private static TVScreen tvScreen;
 
+        public static int HistorySortCount = 0;
+
         // add all pages here
         private static Page initialize;
         private static Page navigator;
@@ -115,10 +117,8 @@ namespace TeheTV
             changeScreen(nextPage, fadeEffect, false);
         }
 
-        public void ScreenGoBack()
-        {
-            changeScreen(null, true, true);
-        } 
+        public void ScreenGoBack() { ScreenGoBack(true); }
+        public void ScreenGoBack(bool fadeEffect) { changeScreen(null, fadeEffect, true); }
 
         private void changeScreen(Page nextPage, bool fadeEffect, bool goBack)
         {

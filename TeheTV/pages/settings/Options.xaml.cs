@@ -58,9 +58,12 @@ namespace TeheTV.Pages
 
         private void checkPIN(string output)
         {
+            if (string.IsNullOrEmpty(output) || string.IsNullOrWhiteSpace(output)) return;
+
             int pin = int.Parse(output);
             if (SettingsManager.doesPINmatch(pin))
             {
+                passwordGrid.Visibility = Visibility.Hidden;
                 Sounds.Play(Properties.Resources.soundPassCorrect);
                 app.ScreenChangeTo(SCREEN.ParentSettings, true);
             } else

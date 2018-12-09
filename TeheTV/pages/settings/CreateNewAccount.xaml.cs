@@ -26,6 +26,10 @@ namespace TeheTV.Pages
             app = instance;
             InitializeComponent();
             btnDone.Visibility = Visibility.Hidden;
+            backBtn.Visibility = Visibility.Hidden;
+
+            if (SettingsManager.getCurrentProfile() != null)
+                backBtn.Visibility = Visibility.Visible;
 
             keyboard.ReturnKeyText = "Set";
             keyboard.EmptySpaceReturn = false;
@@ -267,6 +271,12 @@ namespace TeheTV.Pages
             if (m.Equals("Mar")) return 3;
             if (m.Equals("Feb")) return 2;
             return 1;
+        }
+
+        private void backBtnPressed(object sender, MouseButtonEventArgs e)
+        {
+            Sounds.Play(Properties.Resources.soundButtonClick);
+            app.ScreenGoBack();
         }
     }
 }

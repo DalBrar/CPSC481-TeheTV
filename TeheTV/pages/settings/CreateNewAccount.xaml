@@ -101,5 +101,6 @@
             <Button x:Name="btnDone" Content="Done" Height="100" Margin="0,0,50,50" Style="{DynamicResource GreenButton}" VerticalAlignment="Bottom" Width="200" FontSize="48" FontWeight="ExtraBold" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontFamily="Comic Sans MS" HorizontalAlignment="Right" PreviewMouseLeftButtonDown="doneClicked"/>
         </Grid>
         <TeheTV:Keyboard x:Name="keyboard" Margin="0"/>
+        <Button x:Name="backBtn" Content="" Height="100" Style="{DynamicResource BackButton}" Width="100" PreviewMouseLeftButtonDown="backBtnPressed" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,25,0,0"/>
     </Grid>
 </Page>

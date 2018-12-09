@@ -51,7 +51,7 @@ namespace TeheTV.Pages
 
         private void logBtnPressed(object sender, MouseButtonEventArgs e)
         {
-
+            app.ScreenChangeTo(new History(app, 1), true);
         }
 
         private void timeBtnPressed(object sender, MouseButtonEventArgs e)
