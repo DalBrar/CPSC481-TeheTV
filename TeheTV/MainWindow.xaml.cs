@@ -78,6 +78,7 @@ namespace TeheTV
             WindowState = WindowState.Minimized;
         }
 
+        public void ScreenChangeTo(SCREEN screen) { ScreenChangeTo(screen, true); }
         /// <summary>
         /// This can be used from any page using the app variable: app.changeScreen(SCREEN.<Screen_you_desire>, bool fadeEffect);
         /// Use this to change the screen frame
@@ -101,7 +102,8 @@ namespace TeheTV
             else if (screen == SCREEN.ProfileSelector)
                 ScreenChangeTo(new ProfileSelector(this), fadeEffect);
         }
-       
+
+        public void ScreenChangeTo(Page nextPage) { ScreenChangeTo(nextPage, true); }
         /// <summary>
         /// This can be used from any page using the app variable:
         ///      app.changeScreen(SCREEN.<Screen_you_desire>, bool fadeEffect);

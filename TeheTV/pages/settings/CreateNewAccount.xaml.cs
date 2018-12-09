@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static TeheTV.Keyboard;
 
 namespace TeheTV.Pages
 {
@@ -28,7 +29,7 @@ namespace TeheTV.Pages
 
             keyboard.ReturnKeyText = "Set";
             keyboard.EmptySpaceReturn = false;
-            keyboard.ReturnEvent += new EventHandler(slideGridScreenDown);
+            keyboard.ReturnEvent += new CustomKeyboardEventHandler(slideGridScreenDown);
         }
 
         // ***** Button Click Functions ****
@@ -163,7 +164,7 @@ namespace TeheTV.Pages
             Animations.GridScreen.SlideUp(gridScreen, amount);
         }
 
-        private void slideGridScreenDown(object sender, EventArgs e) {slideGridScreenDown();}
+        private void slideGridScreenDown(string output) {slideGridScreenDown();}
         private void slideGridScreenDown()
         {
             _isUp = false;

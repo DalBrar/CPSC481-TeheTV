@@ -26,15 +26,19 @@ namespace TeheTV
     ///      ReturnKeyText = string         - Change the text of the Return key
     ///      EmptySpaceReturn = bool        - Whether clicking the empty space functions as clicking return (default true).
     /// Optional Event:
-    ///      ReturnEven += new EventHandler(customMethod);  - Executes the custom method when the keyboard's return key is pressed.
+    ///      ReturnEven += new KeyboardEventHandler(customMethod);  - Executes the custom method when the keyboard's return key is pressed.
     /// </summary>
     public partial class Keyboard : UserControl
     {
-        public event EventHandler ReturnEvent;
-        public event EventHandler TypeEvent;
-        private TextBlock output;
+        public delegate void CustomKeyboardEventHandler(string input);
+        public event CustomKeyboardEventHandler ReturnEvent;
+        public event CustomKeyboardEventHandler TypeEvent;
+        private TextBlock outputTextBlock;
         private int _MAXSTRING = 14;
         private bool _isCAPSLOCK = false;
+        private bool _hideOutput = false;
+        private bool _clearValues = false;
+        private string realInput = "";
 
         public Keyboard()
         {
@@ -48,24 +52,34 @@ namespace TeheTV
 
         protected virtual void ExecuteReturnEvent()
         {
-            if (ReturnEvent != null) ReturnEvent(this, EventArgs.Empty);
+            if (ReturnEvent != null) ReturnEvent(realInput);
         }
 
         protected virtual void ExecuteTypeEvent()
         {
-            if (TypeEvent != null) TypeEvent(this, EventArgs.Empty);
+            if (TypeEvent != null) TypeEvent(realInput);
         }
 
         // ***** Properites *****
         public TextBlock OutputTextBlock
         {
-            set { output = value; }
+            set { outputTextBlock = value; }
         }
 
         public int MaxInputLength
         {
             get { return _MAXSTRING; }
             set { _MAXSTRING = value; }
+        }
+
+        public bool IsPassword
+        {
+            set { _hideOutput = value; }
+        }
+
+        public bool ClearValuesOnSlideUp
+        {
+            set { _clearValues = value; }
         }
 
         public KeyboardStyle keyboardStyle
@@ -136,18 +150,28 @@ namespace TeheTV
         private void monthPressed(object sender, MouseButtonEventArgs e)
         {
             string mnth = (string)((Button)sender).Content;
-            output.Text = mnth;
+            outputTextBlock.Text = mnth;
             playKeypress();
         }
 
         private void outputKey(string ch)
         {
-            int len = output.Text.Length;
+            int len = outputTextBlock.Text.Length;
             if (len < _MAXSTRING)
             {
-                output.Text = output.Text + ch;
-                playKeypress();
-                ExecuteTypeEvent();
+                if (!_hideOutput)
+                {
+                    outputTextBlock.Text = outputTextBlock.Text + ch;
+                    realInput = outputTextBlock.Text;
+                    playKeypress();
+                    ExecuteTypeEvent();
+                } else
+                {
+                    outputTextBlock.Text = outputTextBlock.Text + "*";
+                    realInput = realInput + ch;
+                    playKeypress();
+                    ExecuteTypeEvent();
+                }
             }
             else
                 playError();
@@ -161,10 +185,10 @@ namespace TeheTV
 
         private void spacePressed(object sender, MouseButtonEventArgs e)
         {
-            int len = output.Text.Length;
+            int len = outputTextBlock.Text.Length;
             if (len > 0)
             {
-                string ch = output.Text.Substring(len - 1, 1);
+                string ch = outputTextBlock.Text.Substring(len - 1, 1);
                 if (ch.Equals(" "))
                     playError();
                 else
@@ -176,13 +200,23 @@ namespace TeheTV
 
         private void delPressed(object sender, MouseButtonEventArgs e)
         {
-            string text = output.Text;
+            string text = outputTextBlock.Text;
             int len = text.Length;
             if (len > 0)
             {
-                output.Text = text.Substring(0, len - 1);
-                playKeypress();
-                ExecuteTypeEvent();
+                if (!_hideOutput)
+                {
+                    outputTextBlock.Text = text.Substring(0, len - 1);
+                    realInput = outputTextBlock.Text;
+                    playKeypress();
+                    ExecuteTypeEvent();
+                } else
+                {
+                    outputTextBlock.Text = text.Substring(0, len - 1);
+                    realInput = realInput.Substring(0, len - 1);
+                    playKeypress();
+                    ExecuteTypeEvent();
+                }
             }
             else
                 playError();
@@ -315,6 +349,15 @@ namespace TeheTV
 
         public void SlideUp()
         {
+            if (_clearValues)
+            {
+                outputTextBlock.Text = "";
+                realInput = "";
+            } else
+            {
+                if (string.IsNullOrEmpty(realInput) || string.IsNullOrWhiteSpace(realInput))
+                    realInput = outputTextBlock.Text;
+            }
             this.Visibility = Visibility.Visible;
             ThicknessAnimation animation = new ThicknessAnimation();
             animation.Duration = TimeSpan.FromMilliseconds(_slideMiliSecs);

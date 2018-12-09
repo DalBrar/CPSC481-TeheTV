@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TeheTV.Pages.navigation;
+using static TeheTV.Keyboard;
 
 namespace TeheTV.Pages
 {
@@ -38,8 +39,8 @@ namespace TeheTV.Pages
 
             keyboard.ReturnKeyText = "Search";
             keyboard.EmptySpaceReturn = true;
-            keyboard.ReturnEvent += new EventHandler(hideSearchBar);
-            keyboard.TypeEvent += new EventHandler(doSearch);
+            keyboard.ReturnEvent += new CustomKeyboardEventHandler(hideSearchBar);
+            keyboard.TypeEvent += new CustomKeyboardEventHandler(doSearch);
             keyboard.MaxInputLength = 30;
             keyboard.OutputTextBlock = fieldSearchBar;
             keyboard.keyboardStyle = Keyboard.KeyboardStyle.ALL;
@@ -144,13 +145,13 @@ namespace TeheTV.Pages
         {
             gridSearchBar.Visibility = Visibility.Visible;
         }
-        private void hideSearchBar(object sender, EventArgs e) { hideSearchBar(); }
+        private void hideSearchBar(string output) { hideSearchBar(); }
         private void hideSearchBar()
         {
             gridSearchBar.Visibility = Visibility.Hidden;
         }
 
-        private void doSearch(object sender, EventArgs e) { doSearch(); }
+        private void doSearch(string output) { doSearch(); }
         private void doSearch()
         {
             deslectAllMenuItems();
