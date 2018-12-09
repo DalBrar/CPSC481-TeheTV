@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using TeheTV.pages;
+using static TeheTV.pages.Navigator;
 
 namespace TeheTV
 {
@@ -104,6 +105,11 @@ namespace TeheTV
         public void ScreenChangeTo(Page nextPage, bool fadeEffect)
         {
             changeScreen(nextPage, fadeEffect, false);
+        }
+
+        public void NagivatorInitialScreen()
+        {
+            ((Navigator)navigator).changeNavigationFrame(NAVI.Recommendations);
         }
 
         public void ScreenGoBack()

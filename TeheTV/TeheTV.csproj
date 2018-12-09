@@ -61,7 +61,6 @@
     <Compile Include="Keyboard.xaml.cs">
       <DependentUpon>Keyboard.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NAVI.cs" />
     <Compile Include="pages\CreateNewAccount.xaml.cs">
       <DependentUpon>CreateNewAccount.xaml</DependentUpon>
     </Compile>
@@ -270,12 +269,13 @@
     <None Include="resources\soundUhOh.wav" />
     <None Include="resources\soundSlideDown.wav" />
     <None Include="resources\soundSlideUp.wav" />
-    <None Include="resources\navicon_spotify.png" />
-    <None Include="resources\navicon_youtube.png" />
-    <None Include="resources\navicon_games.png" />
-    <None Include="resources\navicon_netflix.png" />
-    <None Include="resources\navicon_star.png" />
-    <None Include="resources\navicon_search.png" />
+    <Resource Include="navicon_netflix.png" />
+    <Resource Include="resources\navicon_search.png" />
+    <Resource Include="resources\navicon_spotify.png" />
+    <Resource Include="resources\navicon_star.png" />
+    <Resource Include="resources\navicon_youtube.png" />
+    <Resource Include="resources\navicon_games.png" />
+    <Resource Include="resources\navicon_netflix.png" />
     <Content Include="resources\TeheTV.wav" />
     <Resource Include="resources\top.png" />
   </ItemGroup>
