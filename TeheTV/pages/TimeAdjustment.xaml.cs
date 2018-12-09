@@ -20,9 +20,30 @@ namespace TeheTV.pages
     /// </summary>
     public partial class TimeAdjustment : Page
     {
-        public TimeAdjustment()
+        MainWindow app;
+        private Page parentSettings;
+
+        public TimeAdjustment(MainWindow instance)
         {
+            app = instance;
             InitializeComponent();
+            parentSettings = new ParentSettings(app);
+        }
+
+        // implement a pop up window later to confirm and also check the validity of the time they entered. 
+        private void AcceptButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ResetButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ReturnButton_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            app.ScreenChangeTo(parentSettings, true);
         }
     }
 }

@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:TeheTV.pages"
-      mc:Ignorable="d" Background="White"
+      mc:Ignorable="d"
       d:DesignHeight="700" d:DesignWidth="1024"
       Title="ParentSettings">
 
@@ -34,7 +34,9 @@
         </Grid.RowDefinitions>
 
         <Button Grid.Row="1" Grid.Column="1"
-                BorderThickness="0" Background="White">
+                BorderThickness="0" 
+                x:Name="returnButton"
+                PreviewMouseLeftButtonDown="ReturnButton_PreviewMouseLeftButtonDown">
             <StackPanel>
                 <Image Source="/resources/back.png"
                        Width="100" Height="120" />
@@ -42,7 +44,10 @@
         </Button>
 
         <Button Grid.Row="3" Grid.Column="3"
-                BorderThickness="0" Background="White">
+                BorderThickness="0"
+                x:Name="profileButton"
+                PreviewMouseLeftButtonDown="ProfileButton_PreviewMouseLeftButtonDown"
+                >
             <StackPanel>
                 <Image Source="/resources/profiles.png"
                        Width="150" Height="150"/>
@@ -50,7 +55,9 @@
         </Button>
 
         <Button Grid.Row="3" Grid.Column="5"
-                BorderThickness="0" Background="White">
+                BorderThickness="0"
+                x:Name="logButton"
+                PreviewMouseLeftButtonDown="LogButton_PreviewMouseLeftButtonDown">
             <StackPanel>
                 <Image Source="/resources/log.png"
                        Width="150" Height="150"/>
@@ -58,7 +65,9 @@
         </Button>
 
         <Button Grid.Row="5" Grid.Column="3"
-                BorderThickness="0" Background="White">
+                BorderThickness="0"
+                x:Name="recButton"
+                PreviewMouseLeftButtonDown="RecButton_PreviewMouseLeftButtonDown">
             <StackPanel>
                 <Image Source="/resources/recommendations.png"
                        Width="150" Height="150"/>
@@ -66,7 +75,9 @@
         </Button>
 
         <Button Grid.Row="5" Grid.Column="5"
-                BorderThickness="0" Background="White">
+                BorderThickness="0"
+                x:Name="timeResButton"
+                PreviewMouseLeftButtonDown="TimeResButton_PreviewMouseLeftButtonDown">
             <StackPanel>
                 <Image Source="/resources/time_limit.png"
                        Width="150" Height="150"/>

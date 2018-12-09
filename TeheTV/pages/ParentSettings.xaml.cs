@@ -18,10 +18,47 @@ namespace TeheTV.pages
     public partial class ParentSettings : Page
     {
         MainWindow app;
+        private Page option;
+        private Page profile;
+        private Page log;
+        private Page rec;
+        private Page time;
+
         public ParentSettings(MainWindow instance)
         {
             app = instance;
             InitializeComponent();
+            option = new Options(app);
+            profile = new ProfileAdjustment(app);
+            log = new History(app);
+            //rec
+            time = new TimeAdjustment(app);
+
+
+        }
+
+        private void ReturnButton_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            app.ScreenChangeTo(option, true);
+        }
+
+        private void ProfileButton_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            app.ScreenChangeTo(profile, true);
+        }
+
+        private void LogButton_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            app.ScreenChangeTo(log, true);
+        }
+
+        private void RecButton_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+        }
+
+        private void TimeResButton_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            app.ScreenChangeTo(time, true);
         }
     }
 }

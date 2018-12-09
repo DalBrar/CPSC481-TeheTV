@@ -21,11 +21,17 @@ namespace TeheTV.pages
         MainWindow app;
         private string _currentProfile;
         public event PropertyChangedEventHandler PropertyChanged;
+        // return button should navigate back to home
+        private Page home;
+        private Page currentProfile;
+        private Page parentSettings;
 
         public Options(MainWindow instance)
         {
             app = instance;
             InitializeComponent();
+            currentProfile = new ProfileSelector(app);
+            parentSettings = new ParentSettings(app);
         }
 
         public string CurrentProfile
@@ -52,5 +58,14 @@ namespace TeheTV.pages
             }
         }
 
+        private void CurrentProfileButton_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            app.ScreenChangeTo(currentProfile, true);
+        }
+
+        private void ChangeSettings_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            app.ScreenChangeTo(parentSettings, true);
+        }
     }
 }
