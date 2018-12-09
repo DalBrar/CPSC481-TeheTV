@@ -17,7 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TeheTV.Animations;
 
-namespace TeheTV.pages
+namespace TeheTV.Pages
 {
     public partial class Initialize2 : Page
     {

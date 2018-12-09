@@ -197,5 +197,26 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="BackButton" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid x:Name="backGrid">
+                            <Rectangle x:Name="backRec" Style="{DynamicResource SmoothGreenButton}" Height="100" Width="100" Margin="0"/>
+                            <Image x:Name="backImg" Source="/resources/back.png" MaxWidth="100" Height="80" Width="80" Margin="0"/>
+                            <Rectangle x:Name="backBtn" Style="{DynamicResource SmoothGreenButton}" Height="100" Width="100" Margin="0" Fill="#00000000" Stroke="{x:Null}"/>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True"/>
+                            <Trigger Property="IsDefaulted" Value="True"/>
+                            <Trigger Property="IsMouseOver" Value="True"/>
+                            <Trigger Property="IsPressed" Value="True"/>
+                            <Trigger Property="IsEnabled" Value="False"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Application.Resources>
 </Application>

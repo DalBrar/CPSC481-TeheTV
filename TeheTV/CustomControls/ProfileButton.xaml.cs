@@ -15,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
-using TeheTV.pages;
+using TeheTV.Pages;
 
 namespace TeheTV
 {

@@ -3,8 +3,8 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:TeheTV.pages.navigation"
-      xmlns:TeheTV="clr-namespace:TeheTV" x:Name="TemplateControl" x:Class="TeheTV.pages.navigation.NaviTemplate"
+      xmlns:local="clr-namespace:TeheTV.Pages.navigation"
+      xmlns:TeheTV="clr-namespace:TeheTV" x:Name="TemplateControl" x:Class="TeheTV.Pages.navigation.NaviTemplate"
       mc:Ignorable="d" 
       d:DesignHeight="500" d:DesignWidth="1024"
       Title="NaviTemplate">

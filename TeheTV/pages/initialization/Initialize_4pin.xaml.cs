@@ -19,7 +19,7 @@ using System.Windows.Shapes;
 using TeheTV.Animations;
 using Color = System.Drawing.Color;
 
-namespace TeheTV.pages
+namespace TeheTV.Pages
 {
     public partial class Initialize4pin : Page
     {

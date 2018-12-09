@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TeheTV.pages.navigation
+namespace TeheTV.Pages.navigation
 {
     // this template should be used to create Recommended, Youtube, Netflix, Spotify, Games pages.
     public partial class NaviTemplate : Page

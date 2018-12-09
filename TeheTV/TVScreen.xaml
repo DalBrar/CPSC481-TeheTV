@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TeheTV"
         mc:Ignorable="d"
-        Title="TVScreen" Width="656" Height="448" WindowStartupLocation="CenterOwner" ResizeMode="CanMinimize" AllowsTransparency="True" Opacity="1" Background="#FF000000" WindowStyle="None" AutomationProperties.IsOffscreenBehavior="Onscreen">
+        Title="TVScreen" Width="656" Height="448" WindowStartupLocation="CenterOwner" ResizeMode="CanMinimize" Opacity="1" Background="#FF000000" AutomationProperties.IsOffscreenBehavior="Onscreen" WindowStyle="None">
     <Grid x:Name="TVScreenGrid">
         <Image x:Name="TVBorder" Source="resources/tv_screen.png"/>
         <Grid x:Name="TVSections">

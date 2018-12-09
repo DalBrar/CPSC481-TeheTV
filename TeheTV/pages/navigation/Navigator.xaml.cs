@@ -12,9 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TeheTV.pages.navigation;
+using TeheTV.Pages.navigation;
 
-namespace TeheTV.pages
+namespace TeheTV.Pages
 {
     public partial class Navigator : Page
     {

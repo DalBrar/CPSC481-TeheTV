@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TeheTV.pages
+namespace TeheTV.Pages
 {
     public partial class Options : Page
     {
@@ -26,7 +26,7 @@ namespace TeheTV.pages
             InitializeComponent();
         }
 
-        private void homeBtnPressed(object sender, MouseButtonEventArgs e)
+        private void backBtnPressed(object sender, MouseButtonEventArgs e)
         {
             playSound();
             app.ScreenGoBack();

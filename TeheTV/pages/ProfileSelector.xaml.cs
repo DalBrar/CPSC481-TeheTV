@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TeheTV.pages
+namespace TeheTV.Pages
 {
     public partial class ProfileSelector : Page
     {

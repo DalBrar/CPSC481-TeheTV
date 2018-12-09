@@ -34,6 +34,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -58,69 +62,72 @@
     </ApplicationDefinition>
     <Compile Include="Animations\GridScreen.cs" />
     <Compile Include="Animations\Modal.cs" />
-    <Compile Include="Content.cs" />
-    <Compile Include="ContentButton.xaml.cs">
+    <Compile Include="CustomClasses\Content.cs" />
+    <Compile Include="CustomControls\ContentButton.xaml.cs">
       <DependentUpon>ContentButton.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ContentManager.cs" />
-    <Compile Include="Keyboard.xaml.cs">
+    <Compile Include="CustomClasses\ContentManager.cs" />
+    <Compile Include="CustomControls\Keyboard.xaml.cs">
       <DependentUpon>Keyboard.xaml</DependentUpon>
     </Compile>
-    <Compile Include="pages\CreateNewAccount.xaml.cs">
+    <Compile Include="Pages\settings\CreateNewAccount.xaml.cs">
       <DependentUpon>CreateNewAccount.xaml</DependentUpon>
     </Compile>
-    <Compile Include="pages\History.xaml.cs">
+    <Compile Include="Pages\settings\History.xaml.cs">
       <DependentUpon>History.xaml</DependentUpon>
     </Compile>
-    <Compile Include="pages\initialization\Initialize_2.xaml.cs">
+    <Compile Include="Pages\initialization\Initialize_2.xaml.cs">
       <DependentUpon>Initialize_2.xaml</DependentUpon>
     </Compile>
-    <Compile Include="pages\initialization\Initialize_3.xaml.cs">
+    <Compile Include="Pages\initialization\Initialize_3.xaml.cs">
       <DependentUpon>Initialize_3.xaml</DependentUpon>
     </Compile>
-    <Compile Include="pages\initialization\Initialize_4pin.xaml.cs">
+    <Compile Include="Pages\initialization\Initialize_4pin.xaml.cs">
       <DependentUpon>Initialize_4pin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="pages\navigation\NaviTemplate.xaml.cs">
+    <Compile Include="Pages\navigation\NaviTemplate.xaml.cs">
       <DependentUpon>NaviTemplate.xaml</DependentUpon>
     </Compile>
-    <Compile Include="pages\ProfileAdjustment.xaml.cs">
+    <Compile Include="Pages\settings\ProfileAdjustment.xaml.cs">
       <DependentUpon>ProfileAdjustment.xaml</DependentUpon>
     </Compile>
-    <Compile Include="pages\ProfileSelector.xaml.cs">
+    <Compile Include="Pages\ProfileSelector.xaml.cs">
       <DependentUpon>ProfileSelector.xaml</DependentUpon>
     </Compile>
-    <Compile Include="pages\ParentSettings.xaml.cs">
+    <Compile Include="Pages\settings\ParentSettings.xaml.cs">
       <DependentUpon>ParentSettings.xaml</DependentUpon>
     </Compile>
-    <Compile Include="pages\Options.xaml.cs">
+    <Compile Include="Pages\settings\Options.xaml.cs">
       <DependentUpon>Options.xaml</DependentUpon>
     </Compile>
-    <Compile Include="pages\NowPlaying.xaml.cs">
+    <Compile Include="Pages\NowPlaying.xaml.cs">
       <DependentUpon>NowPlaying.xaml</DependentUpon>
     </Compile>
-    <Compile Include="pages\initialization\Initialize.xaml.cs">
+    <Compile Include="Pages\initialization\Initialize.xaml.cs">
       <DependentUpon>Initialize.xaml</DependentUpon>
     </Compile>
-    <Compile Include="pages\TimeAdjustment.xaml.cs">
+    <Compile Include="Pages\TimeAdjustment.xaml.cs">
       <DependentUpon>TimeAdjustment.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ProfileButton.xaml.cs">
+    <Compile Include="CustomControls\ProfileButton.xaml.cs">
       <DependentUpon>ProfileButton.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Sounds.cs" />
-    <Compile Include="Profile.cs" />
-    <Compile Include="SettingsManager.cs" />
-    <Compile Include="SCREEN.cs" />
-    <Compile Include="TimeManager.cs" />
+    <Compile Include="CustomControls\SettingsButton.xaml.cs">
+      <DependentUpon>SettingsButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomClasses\Sounds.cs" />
+    <Compile Include="CustomClasses\Profile.cs" />
+    <Compile Include="CustomClasses\SettingsManager.cs" />
+    <Compile Include="CustomClasses\SCREEN.cs" />
+    <Compile Include="CustomClasses\TimeManager.cs" />
     <Compile Include="TVScreen.xaml.cs">
       <DependentUpon>TVScreen.xaml</DependentUpon>
     </Compile>
-    <Page Include="ContentButton.xaml">
+    <Page Include="CustomControls\ContentButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Keyboard.xaml">
+    <Page Include="CustomControls\Keyboard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -136,67 +143,71 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="pages\CreateNewAccount.xaml">
+    <Page Include="Pages\settings\CreateNewAccount.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="pages\History.xaml">
+    <Page Include="Pages\settings\History.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="pages\initialization\Initialize_2.xaml">
+    <Page Include="Pages\initialization\Initialize_2.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="pages\initialization\Initialize_3.xaml">
+    <Page Include="Pages\initialization\Initialize_3.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="pages\initialization\Initialize_4pin.xaml">
+    <Page Include="Pages\initialization\Initialize_4pin.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="pages\navigation\NaviTemplate.xaml">
+    <Page Include="Pages\navigation\NaviTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="pages\ProfileAdjustment.xaml">
+    <Page Include="Pages\settings\ProfileAdjustment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="pages\ProfileSelector.xaml">
+    <Page Include="Pages\ProfileSelector.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="pages\ParentSettings.xaml">
+    <Page Include="Pages\settings\ParentSettings.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="pages\Options.xaml">
+    <Page Include="Pages\settings\Options.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="pages\Navigator.xaml">
+    <Page Include="Pages\navigation\Navigator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="pages\NowPlaying.xaml">
+    <Page Include="Pages\NowPlaying.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="pages\initialization\Initialize.xaml">
+    <Page Include="Pages\initialization\Initialize.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="pages\SplashPage.xaml">
+    <Page Include="Pages\SplashPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="pages\TimeAdjustment.xaml">
+    <Page Include="Pages\TimeAdjustment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ProfileButton.xaml">
+    <Page Include="CustomControls\ProfileButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\SettingsButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -206,10 +217,10 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="pages\Navigator.xaml.cs">
+    <Compile Include="Pages\navigation\Navigator.xaml.cs">
       <DependentUpon>Navigator.xaml</DependentUpon>
     </Compile>
-    <Compile Include="pages\SplashPage.xaml.cs">
+    <Compile Include="Pages\SplashPage.xaml.cs">
       <DependentUpon>SplashPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -248,24 +259,13 @@
     <Resource Include="resources\TimeAdjustmentPage\timer_arrow_up.png" />
     <Resource Include="resources\TimeAdjustmentPage\timer_reset.png" />
     <Resource Include="resources\TimeAdjustmentPage\timer_simicolon.png" />
-    <Resource Include="resources\time_limit.png" />
-    <Resource Include="resources\bottom.png" />
-    <Resource Include="resources\direction_mid_l.png" />
-    <Resource Include="resources\direction_mid_r.png" />
-    <Resource Include="resources\direction_top_l.png" />
-    <Resource Include="resources\direction_top_r.png" />
-    <Resource Include="resources\middle.png" />
-    <Resource Include="resources\search_circle.png" />
+    <Resource Include="resources\btn_time.png" />
     <Resource Include="resources\Settings-icon.png" />
-    <Resource Include="resources\home.png" />
-    <Resource Include="resources\profiles.png" />
-    <Resource Include="resources\change.png" />
+    <Resource Include="resources\btn_profiles.png" />
     <Resource Include="resources\back.png" />
-    <Resource Include="resources\log.png" />
-    <Resource Include="resources\recommendations.png" />
+    <Resource Include="resources\btn_log.png" />
+    <Resource Include="resources\btn_recommendations.png" />
     <Resource Include="resources\profile-info-change-icon.png" />
-    <Resource Include="profilePics\profilepic.png" />
-    <None Include="resources\profilepic.png" />
     <None Include="resources\soundAlert.wav" />
     <None Include="resources\soundButtonClick.wav" />
     <None Include="resources\soundDelete.wav" />
@@ -288,8 +288,8 @@
     <Resource Include="resources\defaultVideoImage.png" />
     <Resource Include="resources\defaultMusicImage.png" />
     <Resource Include="resources\search_glass.png" />
+    <Resource Include="resources\btn_lock.png" />
     <Content Include="resources\TeheTV.wav" />
-    <Resource Include="resources\top.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="resources\teheTV_tablet.png" />

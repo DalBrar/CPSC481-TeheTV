@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TeheTV"
         mc:Ignorable="d"
-        Title="TeheTV" Height="860" Width="1184" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" AllowsTransparency="True" Opacity="1" Background="#00000000" WindowStyle="None">
+        Title="TeheTV" Height="860" Width="1184" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Opacity="1" Background="#00000000">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">

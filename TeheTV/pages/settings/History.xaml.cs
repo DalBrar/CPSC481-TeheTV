@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TeheTV.pages
+namespace TeheTV.Pages
 {
     /// <summary>
     /// Interaction logic for Histroy.xaml
