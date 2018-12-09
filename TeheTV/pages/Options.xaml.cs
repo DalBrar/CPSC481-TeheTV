@@ -67,5 +67,10 @@ namespace TeheTV.pages
         {
             app.ScreenChangeTo(parentSettings, true);
         }
+
+        private void Home_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }

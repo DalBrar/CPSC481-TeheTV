@@ -16,7 +16,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using TeheTV.pages;
-using static TeheTV.pages.Navigator;
 
 namespace TeheTV
 {
@@ -40,8 +39,8 @@ namespace TeheTV
             initialize       = new Initialize(this);
             navigator        = new Navigator(this);
             nowPlaying       = new NowPlaying(this);
-            options          = new Options(this);
-            parentSettings   = new ParentSettings(this);
+            //options          = new Options(this);
+            //parentSettings   = new ParentSettings(this);
             profileSelector  = new ProfileSelector(this);
             splashScreen     = new SplashPage(this);
 
@@ -109,7 +108,7 @@ namespace TeheTV
 
         public void NagivatorInitialScreen()
         {
-            ((Navigator)navigator).changeNavigationFrame(NAVI.Recommendations);
+            ((Navigator)navigator).changeNavigationFrame(Navigator.NAVI.Recommendations);
         }
 
         public void ScreenGoBack()
