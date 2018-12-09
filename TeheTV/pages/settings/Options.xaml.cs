@@ -28,25 +28,17 @@ namespace TeheTV.Pages
 
         private void backBtnPressed(object sender, MouseButtonEventArgs e)
         {
-            playSound();
             app.ScreenGoBack();
         }
 
         private void profilesBtnPressed(object sender, MouseButtonEventArgs e)
         {
-            playSound();
             app.ScreenChangeTo(SCREEN.ProfileSelector, true);
         }
 
         private void parentSettingsBtnPressed(object sender, MouseButtonEventArgs e)
         {
-            playSound();
             app.ScreenChangeTo(SCREEN.ParentSettings, true);
-        }
-
-        private void playSound()
-        {
-            Sounds.Play(Properties.Resources.soundButtonClick);
         }
     }
 }

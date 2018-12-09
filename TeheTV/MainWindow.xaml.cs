@@ -138,8 +138,6 @@ namespace TeheTV
         // *****************************************
         private Page _nextPage;
         private DependencyProperty _effect = FrameworkElement.OpacityProperty;
-        private double _depToChange = 0;
-        private double _depOffset = 0;
         private Duration _durFadeOut = new Duration(TimeSpan.FromMilliseconds(100));
         private Duration _durFadeIn = new Duration(TimeSpan.FromMilliseconds(750));
         private bool _goBack = false;
@@ -148,11 +146,9 @@ namespace TeheTV
         {
             if (Content != null)
             {
-                _depToChange = ScreenFrame.Opacity;
-
                 DoubleAnimation animation0 = new DoubleAnimation();
-                animation0.From = _depToChange;
-                animation0.To = _depOffset;
+                animation0.From = 1;
+                animation0.To = 0;
                 animation0.Duration = _durFadeOut;
                 animation0.Completed += SlideCompleted;
                 ScreenFrame.BeginAnimation(_effect, animation0);
@@ -170,8 +166,8 @@ namespace TeheTV
                 (ThreadStart)delegate ()
                 {
                     DoubleAnimation animation0 = new DoubleAnimation();
-                    animation0.From = _depOffset;
-                    animation0.To = _depToChange;
+                    animation0.From = 0;
+                    animation0.To = 1;
                     animation0.Duration = _durFadeIn;
                     ScreenFrame.BeginAnimation(_effect, animation0);
                 });

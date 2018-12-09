@@ -17,6 +17,7 @@ namespace TeheTV
 {
     /// <summary>
     /// Set button action with: btn.ButtonAction += new
+    /// Usage: <TeheTV:SettingsButton x:Name="btnName" Label="Button Label" ImagePath="/resources/btn_image.png"  PreviewMouseLeftButtonDown="buttonMethod"/>
     /// </summary>
     public partial class SettingsButton : UserControl
     {
@@ -45,6 +46,7 @@ namespace TeheTV
 
         private void settingsButtonControl_Pressed(object sender, MouseButtonEventArgs e)
         {
+            Sounds.Play(Properties.Resources.soundButtonClick);
             if (ButtonAction != null)
                 ButtonAction();
         }

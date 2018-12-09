@@ -36,13 +36,12 @@ namespace TeheTV.Pages
 
         private void backBtnPressed(object sender, MouseButtonEventArgs e)
         {
-            playSound();
             app.ScreenGoBack();
         }
 
         private void createProfileBtnPressed(object sender, MouseButtonEventArgs e)
         {
-
+            app.ScreenChangeTo(SCREEN.CreateNewAccount, true);
         }
 
         private void recommendBtnPressed(object sender, MouseButtonEventArgs e)
@@ -58,11 +57,6 @@ namespace TeheTV.Pages
         private void timeBtnPressed(object sender, MouseButtonEventArgs e)
         {
 
-        }
-
-        private void playSound()
-        {
-            Sounds.Play(Properties.Resources.soundButtonClick);
         }
     }
 }
