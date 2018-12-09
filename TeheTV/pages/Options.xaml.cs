@@ -16,61 +16,37 @@ using System.Windows.Shapes;
 
 namespace TeheTV.pages
 {
-    public partial class Options : Page, INotifyPropertyChanged
+    public partial class Options : Page
     {
         MainWindow app;
-        private string _currentProfile;
-        public event PropertyChangedEventHandler PropertyChanged;
-        // return button should navigate back to home
-        private Page home;
-        private Page currentProfile;
-        private Page parentSettings;
 
         public Options(MainWindow instance)
         {
             app = instance;
             InitializeComponent();
-            currentProfile = new ProfileSelector(app);
-            parentSettings = new ParentSettings(app);
         }
 
-        public string CurrentProfile
+        private void homeBtnPressed(object sender, MouseButtonEventArgs e)
         {
-            get
-            {
-                return _currentProfile;
-            }
-            set
-            {
-                _currentProfile = value;
-                // If anywhere uses CurrentProfile, then update their information
-                OnPropertyChanged("CurrentProfile");
-            }
+            playSound();
+            app.ScreenGoBack();
         }
 
-        // Create the OnPropertyChanged method to raise the event
-        protected void OnPropertyChanged(string name)
+        private void profilesBtnPressed(object sender, MouseButtonEventArgs e)
         {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(name));
-            }
+            playSound();
+            app.ScreenChangeTo(SCREEN.ProfileSelector, true);
         }
 
-        private void CurrentProfileButton_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void parentSettingsBtnPressed(object sender, MouseButtonEventArgs e)
         {
-            app.ScreenChangeTo(currentProfile, true);
+            playSound();
+            app.ScreenChangeTo(SCREEN.ParentSettings, true);
         }
 
-        private void ChangeSettings_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void playSound()
         {
-            app.ScreenChangeTo(parentSettings, true);
-        }
-
-        private void Home_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-
+            Sounds.Play(Properties.Resources.soundButtonClick);
         }
     }
 }

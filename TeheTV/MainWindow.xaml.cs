@@ -28,8 +28,6 @@ namespace TeheTV
         private static Page initialize;
         private static Page navigator;
         private static Page nowPlaying;
-        private static Page options;
-        private static Page parentSettings;
         private static Page splashScreen;
 
         public MainWindow()
@@ -40,12 +38,10 @@ namespace TeheTV
             SettingsManager.initialize();
 
             // instantiate all pages here
+            splashScreen     = new SplashPage(this);
             initialize       = new Initialize(this);
             navigator        = new Navigator(this);
             nowPlaying       = new NowPlaying(this);
-            //options          = new Options(this);
-            //parentSettings   = new ParentSettings(this);
-            splashScreen     = new SplashPage(this);
 
             // this is the first screen that loads, do not change
             ScreenFrame.NavigationService.Navigate(splashScreen);
@@ -99,9 +95,9 @@ namespace TeheTV
             else if (screen == SCREEN.NowPlaying)
                 ScreenChangeTo(nowPlaying, fadeEffect);
             else if (screen == SCREEN.Options)
-                ScreenChangeTo(options, fadeEffect);
+                ScreenChangeTo(new Options(this), fadeEffect);
             else if (screen == SCREEN.ParentSettings)
-                ScreenChangeTo(parentSettings, fadeEffect);
+                ScreenChangeTo(new ParentSettings(this), fadeEffect);
             else if (screen == SCREEN.ProfileSelector)
                 ScreenChangeTo(new ProfileSelector(this), fadeEffect);
         }

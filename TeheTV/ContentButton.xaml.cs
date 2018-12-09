@@ -22,6 +22,8 @@ namespace TeheTV
     {
         private MainWindow app;
         private Content content;
+        private TVScreen newTV;
+
 
         public ContentButton(MainWindow instance, Content c)
         {
@@ -36,15 +38,23 @@ namespace TeheTV
 
         private void buttonClick(object sender, MouseButtonEventArgs e)
         {
-            Sounds.Play(Properties.Resources.soundButtonPress);
-            TVScreen curTV = MainWindow.TvScreen;
-            if (curTV == null)
+            if (SettingsManager.getCurrentProfile().hasTime())
             {
-                TVScreen newTV = new TVScreen(SettingsManager.getCurrentProfile(), content);
-                MainWindow.TvScreen = newTV;
-            } else
+                Sounds.Play(Properties.Resources.soundButtonPress);
+                TVScreen curTV = MainWindow.TvScreen;
+                if (curTV == null)
+                {
+                    newTV = new TVScreen(SettingsManager.getCurrentProfile(), content);
+                    MainWindow.TvScreen = newTV;
+                }
+                else
+                {
+                    curTV.Update(SettingsManager.getCurrentProfile(), content);
+                }
+            }
+            else
             {
-                curTV.Update(SettingsManager.getCurrentProfile(), content);
+                Sounds.Play(Properties.Resources.soundAlert);
             }
         }
     }

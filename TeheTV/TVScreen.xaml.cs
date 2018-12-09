@@ -21,13 +21,14 @@ namespace TeheTV
     /// </summary>
     public partial class TVScreen : Window
     {
-        public delegate void TVEventHandler();
-
+        public delegate void TVEventHandler(TVScreen tv);
+        
         public event TVEventHandler PlayingEvent;
         public event TVEventHandler StoppedEvent;
         public event TVEventHandler OutOfTimeEvent;
         Profile P;
         Content C;
+        private bool canIStartPlaying = false;
 
         DispatcherTimer timer;
 
@@ -37,9 +38,9 @@ namespace TeheTV
             C = c;
             InitializeComponent();
             this.Show();
-            getFocus();
+            this.Focus();
             initializePlayer();
-            splashAndPlay();
+            wait1Second();
         }
 
         public void Update(Profile p, Content c)
@@ -51,40 +52,46 @@ namespace TeheTV
             mePlayer.Stop();
             P = p;
             C = c;
-            getFocus();
+            this.Focus();
             initializePlayer();
-            splashAndPlay();
+            wait1Second();
         }
 
         public void Play()
         {
-            timer.Start();
-            mePlayer.Play();
+            if (canIStartPlaying)
+            {
+                timer.Start();
+                mePlayer.Play();
+            }
         }
 
         public void Pause()
         {
+            canIStartPlaying = false;
             timer.Stop();
             mePlayer.Pause();
         }
 
         public void Stop()
         {
+            canIStartPlaying = false;
             MainWindow.TvScreen = null;
             timer.Stop();
             mePlayer.Stop();
             this.Close();
         }
-
-        protected virtual void ExecutePlayingEvent() { if (PlayingEvent != null) PlayingEvent(); }
-        protected virtual void ExecuteStoppedEvent() { if (StoppedEvent != null) StoppedEvent(); }
-        protected virtual void ExecuteOutOfTimeEvent() { if (OutOfTimeEvent != null) OutOfTimeEvent(); }
+        
+        protected virtual void ExecutePlayingEvent() { if (PlayingEvent != null) PlayingEvent(this); }
+        protected virtual void ExecuteStoppedEvent() { if (StoppedEvent != null) StoppedEvent(this); }
+        protected virtual void ExecuteOutOfTimeEvent() { if (OutOfTimeEvent != null) OutOfTimeEvent(this); }
 
         private void initializePlayer()
         {
+            canIStartPlaying = false;
             if (timer != null) timer.Stop();
             timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(60);
+            timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += timerTick;
         }
 
@@ -96,6 +103,7 @@ namespace TeheTV
                 ExecutePlayingEvent();
             } else
             {
+                canIStartPlaying = false;
                 ExecuteOutOfTimeEvent();
                 Stop();
             }
@@ -103,13 +111,26 @@ namespace TeheTV
 
         private void stopButtonPressed(object sender, MouseButtonEventArgs e)
         {
+            canIStartPlaying = false;
             Sounds.Play(Properties.Resources.soundButtonPress);
             ExecuteStoppedEvent();
             Stop();
         }
 
+        private void wait1Second()
+        {
+            DoubleAnimation a = new DoubleAnimation();
+            a.Duration = TimeSpan.FromSeconds(1);
+            a.From = 1;
+            a.To = 1;
+            a.Completed += startSplash;
+            TVScreenGrid.BeginAnimation(Grid.OpacityProperty, a);
+        }
+
+        private void startSplash(object s, EventArgs e) { this.Focus(); splashAndPlay(); }
         private void splashAndPlay()
         {
+            canIStartPlaying = true;
             splashLogo.Source = C.Watermark;
             mePlayer.Opacity = 0.0;
             DoubleAnimation a = new DoubleAnimation();
@@ -131,16 +152,6 @@ namespace TeheTV
         {
             if (e.ChangedButton == MouseButton.Left)
                 this.DragMove();
-        }
-
-        private void getFocus()
-        {
-            int i = 0;
-            while (!this.IsFocused && i < 5000)
-            {
-                this.Focus();
-                i++;
-            }
         }
     }
 }

@@ -105,5 +105,11 @@ namespace TeheTV.pages.navigation
                 return "Search Results";
             return "";
         }
+
+        private void gearBtnPressed(object sender, MouseButtonEventArgs e)
+        {
+            Sounds.Play(Properties.Resources.soundButtonClick);
+            app.ScreenChangeTo(SCREEN.Options, true);
+        }
     }
 }

@@ -35,7 +35,7 @@
                     <DropShadowEffect/>
                 </TextBlock.Effect>
             </TextBlock>
-            <Image x:Name="gear" Grid.Row="1" Grid.Column="1" Source="/resources/Settings-icon.png" Width="80" Height="80"/>
+            <Image x:Name="gear" Grid.Row="1" Grid.Column="1" Source="/resources/Settings-icon.png" Width="80" Height="80" PreviewMouseDown="gearBtnPressed"/>
         </Grid>
         <Grid x:Name="gridContent" Grid.Row="1">
             <ScrollViewer x:Name="scrollViewer" Margin="0" HorizontalContentAlignment="Center" Padding="75,25" VerticalScrollBarVisibility="Disabled" VerticalContentAlignment="Center" HorizontalScrollBarVisibility="Auto">
