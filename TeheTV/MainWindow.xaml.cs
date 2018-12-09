@@ -27,13 +27,13 @@ namespace TeheTV
         private static Page nowPlaying;
         private static Page options;
         private static Page parentSettings;
-        private static Page profileSelector;
         private static Page splashScreen;
 
         public MainWindow()
         {
             InitializeComponent();
             SettingsManager.initialize();
+            ContentManager.initialize();
 
             // instantiate all pages here
             initialize       = new Initialize(this);
@@ -41,7 +41,6 @@ namespace TeheTV
             nowPlaying       = new NowPlaying(this);
             //options          = new Options(this);
             //parentSettings   = new ParentSettings(this);
-            profileSelector  = new ProfileSelector(this);
             splashScreen     = new SplashPage(this);
 
             // this is the first screen that loads, do not change
@@ -92,7 +91,7 @@ namespace TeheTV
             else if (screen == SCREEN.ParentSettings)
                 ScreenChangeTo(parentSettings, fadeEffect);
             else if (screen == SCREEN.ProfileSelector)
-                ScreenChangeTo(profileSelector, fadeEffect);
+                ScreenChangeTo(new ProfileSelector(this), fadeEffect);
         }
        
         /// <summary>

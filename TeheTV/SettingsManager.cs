@@ -13,7 +13,7 @@ namespace TeheTV
 {
     class SettingsManager
     {
-        private static string appFolder = Environment.CurrentDirectory + "/appdata/";
+        public static string appFolder = Environment.CurrentDirectory + "/appdata/";
         private static string pinFilename = appFolder + "pin.ini";
         public static string profilesFolder = appFolder + "profiles/";
         private static List<Profile> profiles = new List<Profile>();

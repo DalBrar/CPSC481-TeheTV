@@ -58,6 +58,8 @@
     </ApplicationDefinition>
     <Compile Include="Animations\GridScreen.cs" />
     <Compile Include="Animations\Modal.cs" />
+    <Compile Include="Content.cs" />
+    <Compile Include="ContentManager.cs" />
     <Compile Include="Keyboard.xaml.cs">
       <DependentUpon>Keyboard.xaml</DependentUpon>
     </Compile>
@@ -276,6 +278,8 @@
     <Resource Include="resources\navicon_youtube.png" />
     <Resource Include="resources\navicon_games.png" />
     <Resource Include="resources\navicon_netflix.png" />
+    <Resource Include="resources\defaultVideoImage.png" />
+    <Resource Include="resources\defaultMusicImage.png" />
     <Content Include="resources\TeheTV.wav" />
     <Resource Include="resources\top.png" />
   </ItemGroup>

@@ -63,6 +63,26 @@ namespace TeheTV.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap defaultMusicImage {
+            get {
+                object obj = ResourceManager.GetObject("defaultMusicImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap defaultVideoImage {
+            get {
+                object obj = ResourceManager.GetObject("defaultVideoImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap profilepic {
             get {
                 object obj = ResourceManager.GetObject("profilepic", resourceCulture);

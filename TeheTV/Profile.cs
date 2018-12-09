@@ -58,6 +58,22 @@ namespace TeheTV
             File.WriteAllLines(profileInfoFile, info);
         }
 
+        public List<Content> getNetflixContent() { return getSpecificContent(ContentType.NETFLIX); }
+        public List<Content> getSpotifyContent() { return getSpecificContent(ContentType.SPOTIFY); }
+        public List<Content> getYouTubeContent() { return getSpecificContent(ContentType.YOUTUBE); }
+
+        private List<Content> getSpecificContent(ContentType t)
+        {
+            List<Content> list = ContentManager.getListForAge(age);
+            List<Content> output = new List<Content>();
+            foreach (Content c in list)
+            {
+                if (c.EqualsType(t))
+                    output.Add(c);
+            }
+            return output;
+        }
+
         private int calculateAge()
         {
             var today = DateTime.Today;
@@ -77,14 +93,6 @@ namespace TeheTV
             while (Directory.Exists(SettingsManager.profilesFolder + n + "/"))
                 n++;
             return n;
-        }
-
-        private string DELETE_THIS_getSafeName(string name)
-        {
-            while (name.Contains("  "))
-                name = name.Replace("  ", " ");
-
-            return name.Replace(" ", "_");
         }
     }
 }
