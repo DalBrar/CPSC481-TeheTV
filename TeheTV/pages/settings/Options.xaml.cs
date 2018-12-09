@@ -70,7 +70,7 @@ namespace TeheTV.Pages
 
         }
 
-
+        /*
         public void AnimatePINBox()
         {
             passwordRec.Stroke = MainWindow.setBrushColor(255, 255, 0, 0);
@@ -81,6 +81,6 @@ namespace TeheTV.Pages
             animation.To = new Thickness(0, _slidingAmount, 0, 0);
             playSound(true);
             _slidingGrid.BeginAnimation(Grid.MarginProperty, animation);
-        }
+        }*/
     }
 }

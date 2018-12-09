@@ -62,6 +62,7 @@
     </ApplicationDefinition>
     <Compile Include="Animations\GridScreen.cs" />
     <Compile Include="Animations\Modal.cs" />
+    <Compile Include="Animations\Wiggle.cs" />
     <Compile Include="CustomClasses\Content.cs" />
     <Compile Include="CustomControls\ContentButton.xaml.cs">
       <DependentUpon>ContentButton.xaml</DependentUpon>
