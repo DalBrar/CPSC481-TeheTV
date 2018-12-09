@@ -35,46 +35,69 @@
                     <DropShadowEffect/>
                 </TextBlock.Effect>
             </TextBlock>
-            <TextBlock x:Name="textINSTRUCTION" Margin="25,150,25,0" FontWeight="ExtraBold" FontSize="48" Foreground="White" FontFamily="Comic Sans MS" VerticalAlignment="Top" TextAlignment="Center" Padding="0" TextWrapping="Wrap">
+            <TextBlock x:Name="textINSTRUCTION" Margin="25,125,25,0" FontWeight="ExtraBold" FontSize="48" Foreground="White" FontFamily="Comic Sans MS" VerticalAlignment="Top" TextAlignment="Center" Padding="0" TextWrapping="Wrap">
                 <TextBlock.Effect>
                     <DropShadowEffect/>
                 </TextBlock.Effect><Run Text="To create an account simply enter"/><LineBreak/><Run Text="your child's name and fill in their date of birth. After that click Done."/></TextBlock>
-            <TextBlock x:Name="textNAME" Margin="50,400,0,0" FontWeight="ExtraBold" FontSize="48" Foreground="Lime" FontFamily="Comic Sans MS" VerticalAlignment="Top" Padding="0" TextWrapping="Wrap" Width="200" HorizontalAlignment="Left" Text="Name:">
-                <TextBlock.Effect>
-                    <DropShadowEffect/>
-                </TextBlock.Effect></TextBlock>
-            <TextBlock x:Name="textDOB" Margin="50,500,0,0" FontWeight="ExtraBold" FontSize="48" Foreground="Lime" FontFamily="Comic Sans MS" VerticalAlignment="Top" Padding="0" TextWrapping="Wrap" Width="200" HorizontalAlignment="Left" Text=" DOB:">
-                <TextBlock.Effect>
-                    <DropShadowEffect/>
-                </TextBlock.Effect></TextBlock>
-            <Rectangle x:Name="fieldNAMEbg" VerticalAlignment="Top" Margin="250,400,50,0" Height="68"  Fill="#3FC8C8C8" RadiusX="10" RadiusY="10">
-                <Rectangle.Effect>
-                    <DropShadowEffect/>
-                </Rectangle.Effect>
-            </Rectangle>
-            <TextBlock x:Name="fieldNAME" FontWeight="ExtraBold" FontSize="48" Foreground="White" FontFamily="Comic Sans MS" VerticalAlignment="Top" Padding="15,0,15,5" PreviewMouseLeftButtonDown="fieldNameClicked" Margin="250,400,50,0" Height="68" TextTrimming="CharacterEllipsis"/>
-            <Rectangle x:Name="fieldMONTHbg" VerticalAlignment="Top" Margin="250,500,0,0" Height="68" Width="100" HorizontalAlignment="Left" Fill="#3FC8C8C8" RadiusX="10" RadiusY="10">
-                <Rectangle.Effect>
-                    <DropShadowEffect/>
-                </Rectangle.Effect>
-            </Rectangle>
-            <TextBlock x:Name="fieldMONTH" Margin="250,500,0,0" FontWeight="ExtraBold" FontSize="48" Foreground="White" FontFamily="Comic Sans MS" VerticalAlignment="Top" Padding="0,0,0,5" TextWrapping="Wrap" Width="100" HorizontalAlignment="Left" Height="68" TextAlignment="Center" PreviewMouseLeftButtonDown="fieldMonthClicked"/>
-            <Rectangle x:Name="fieldDAYbg" VerticalAlignment="Top" Margin="400,500,0,0" Height="68" Width="75" HorizontalAlignment="Left" Fill="#3FC8C8C8" RadiusX="10" RadiusY="10">
-                <Rectangle.Effect>
-                    <DropShadowEffect/>
-                </Rectangle.Effect>
-            </Rectangle>
-            <TextBlock x:Name="fieldDAY" Margin="400,500,0,0" FontWeight="ExtraBold" FontSize="48" Foreground="White" FontFamily="Comic Sans MS" VerticalAlignment="Top" Padding="0,0,0,5" TextWrapping="Wrap" Width="75" HorizontalAlignment="Left" Height="68" TextAlignment="Center" PreviewMouseLeftButtonDown="fieldDayClicked"/>
-            <Rectangle x:Name="fieldYEARbg" VerticalAlignment="Top" Margin="525,500,0,0" Height="68" Width="125" HorizontalAlignment="Left" Fill="#3FC8C8C8" RadiusX="10" RadiusY="10">
-                <Rectangle.Effect>
-                    <DropShadowEffect/>
-                </Rectangle.Effect>
-            </Rectangle>
-            <TextBlock x:Name="fieldYEAR" Margin="525,500,0,0" FontWeight="ExtraBold" FontSize="48" Foreground="White" FontFamily="Comic Sans MS" VerticalAlignment="Top" Padding="0,0,0,5" TextWrapping="Wrap" Width="125" HorizontalAlignment="Left" Height="68" TextAlignment="Center" PreviewMouseLeftButtonDown="fieldYearClicked"/>
-            <TextBlock x:Name="subtextMDY" Margin="250,565,0,0" FontWeight="ExtraBold" FontSize="24" Foreground="#FF969696" FontFamily="Comic Sans MS" VerticalAlignment="Top" Padding="0" TextWrapping="Wrap" Width="400" HorizontalAlignment="Left" Text=" Month        Day          Year">
-                <TextBlock.Effect>
-                    <DropShadowEffect/>
-                </TextBlock.Effect></TextBlock>
+            <Grid x:Name="gridFields" Height="300" Margin="50,350,50,0" VerticalAlignment="Top">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid x:Name="row0">
+                    <TextBlock x:Name="textNAME" Margin="0" FontWeight="ExtraBold" FontSize="48" Foreground="Lime" FontFamily="Comic Sans MS" VerticalAlignment="Top" Padding="0" TextWrapping="Wrap" Width="200" HorizontalAlignment="Left" Text="Name:">
+                        <TextBlock.Effect>
+                            <DropShadowEffect/>
+                        </TextBlock.Effect></TextBlock>
+                    <Rectangle x:Name="fieldNAMEbg" VerticalAlignment="Top" Margin="200,0,0,0" Height="68"  Fill="#3FC8C8C8" RadiusX="10" RadiusY="10">
+                        <Rectangle.Effect>
+                            <DropShadowEffect/>
+                        </Rectangle.Effect>
+                    </Rectangle>
+                    <TextBlock x:Name="fieldNAME" FontWeight="ExtraBold" FontSize="48" Foreground="White" FontFamily="Comic Sans MS" VerticalAlignment="Top" Padding="15,0,15,5" PreviewMouseLeftButtonDown="fieldNameClicked" Margin="200,0,0,0" Height="68" TextTrimming="CharacterEllipsis"/>
+                </Grid>
+                <Grid x:Name="row1" Grid.Row="1">
+                    <TextBlock x:Name="textDOB" FontWeight="ExtraBold" FontSize="48" Foreground="Lime" FontFamily="Comic Sans MS" VerticalAlignment="Top" Padding="0" TextWrapping="Wrap" Width="200" HorizontalAlignment="Left" Text=" DOB:" Margin="0">
+                        <TextBlock.Effect>
+                            <DropShadowEffect/>
+                        </TextBlock.Effect></TextBlock>
+                    <Rectangle x:Name="fieldMONTHbg" VerticalAlignment="Top" Margin="200,0,0,0" Height="68" Width="100" HorizontalAlignment="Left" Fill="#3FC8C8C8" RadiusX="10" RadiusY="10">
+                        <Rectangle.Effect>
+                            <DropShadowEffect/>
+                        </Rectangle.Effect>
+                    </Rectangle>
+                    <TextBlock x:Name="fieldMONTH" Margin="200,0,0,0" FontWeight="ExtraBold" FontSize="48" Foreground="White" FontFamily="Comic Sans MS" VerticalAlignment="Top" Padding="0,0,0,5" TextWrapping="Wrap" Width="100" HorizontalAlignment="Left" Height="68" TextAlignment="Center" PreviewMouseLeftButtonDown="fieldMonthClicked"/>
+                    <Rectangle x:Name="fieldDAYbg" VerticalAlignment="Top" Margin="350,0,0,0" Height="68" Width="75" HorizontalAlignment="Left" Fill="#3FC8C8C8" RadiusX="10" RadiusY="10">
+                        <Rectangle.Effect>
+                            <DropShadowEffect/>
+                        </Rectangle.Effect>
+                    </Rectangle>
+                    <TextBlock x:Name="fieldDAY" Margin="350,0,0,0" FontWeight="ExtraBold" FontSize="48" Foreground="White" FontFamily="Comic Sans MS" VerticalAlignment="Top" Padding="0,0,0,5" TextWrapping="Wrap" Width="75" HorizontalAlignment="Left" Height="68" TextAlignment="Center" PreviewMouseLeftButtonDown="fieldDayClicked"/>
+                    <Rectangle x:Name="fieldYEARbg" VerticalAlignment="Top" Margin="475,0,0,0" Height="68" Width="125" HorizontalAlignment="Left" Fill="#3FC8C8C8" RadiusX="10" RadiusY="10">
+                        <Rectangle.Effect>
+                            <DropShadowEffect/>
+                        </Rectangle.Effect>
+                    </Rectangle>
+                    <TextBlock x:Name="fieldYEAR" Margin="475,0,0,0" FontWeight="ExtraBold" FontSize="48" Foreground="White" FontFamily="Comic Sans MS" VerticalAlignment="Top" Padding="0,0,0,5" TextWrapping="Wrap" Width="125" HorizontalAlignment="Left" Height="68" TextAlignment="Center" PreviewMouseLeftButtonDown="fieldYearClicked"/>
+                    <TextBlock x:Name="subtextMDY" Margin="200,65,0,0" FontWeight="ExtraBold" FontSize="24" Foreground="#FF969696" FontFamily="Comic Sans MS" VerticalAlignment="Top" Padding="0" TextWrapping="Wrap" Width="400" HorizontalAlignment="Left" Text=" Month        Day          Year">
+                        <TextBlock.Effect>
+                            <DropShadowEffect/>
+                        </TextBlock.Effect></TextBlock>
+                </Grid>
+                <Grid x:Name="row2" Grid.Row="2">
+                    <TextBlock x:Name="textTIME" Margin="0" FontWeight="ExtraBold" FontSize="48" Foreground="Lime" FontFamily="Comic Sans MS" VerticalAlignment="Top" Padding="0" TextWrapping="Wrap" Width="425" HorizontalAlignment="Left" Text="Viewable Minutes:" Height="68">
+                        <TextBlock.Effect>
+                            <DropShadowEffect/>
+                        </TextBlock.Effect></TextBlock>
+                    <Rectangle x:Name="fieldTIMEbg" VerticalAlignment="Top" Margin="450,0,0,0" Height="68" Width="200" HorizontalAlignment="Left" Fill="#3FC8C8C8" RadiusX="10" RadiusY="10">
+                        <Rectangle.Effect>
+                            <DropShadowEffect/>
+                        </Rectangle.Effect>
+                    </Rectangle>
+                    <TextBlock x:Name="fieldTIME" Margin="450,0,0,0" FontWeight="ExtraBold" FontSize="48" Foreground="White" FontFamily="Comic Sans MS" VerticalAlignment="Top" Padding="0,0,0,5" TextWrapping="Wrap" Width="200" HorizontalAlignment="Left" Height="68" TextAlignment="Center" PreviewMouseLeftButtonDown="fieldTimeClicked" Text="180"/>
+                </Grid>
+            </Grid>
             <Button x:Name="btnDone" Content="Done" Height="100" Margin="0,0,50,50" Style="{DynamicResource GreenButton}" VerticalAlignment="Bottom" Width="200" FontSize="48" FontWeight="ExtraBold" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontFamily="Comic Sans MS" HorizontalAlignment="Right" PreviewMouseLeftButtonDown="doneClicked"/>
         </Grid>
         <TeheTV:Keyboard x:Name="keyboard" Margin="0"/>

@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:TeheTV.pages"
+      xmlns:TeheTV="clr-namespace:TeheTV"
       mc:Ignorable="d"
       d:DesignHeight="700" d:DesignWidth="1024"
       Title="Navigator">
@@ -31,11 +32,11 @@
                 <RowDefinition Height="100"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Grid x:Name="gridTime" Height="150" Width="100" Grid.Row="1" Grid.Column="1" Margin="0,-25,0,0">
+            <Grid x:Name="menugridTime" Height="150" Width="100" Grid.Row="1" Grid.Column="1" Margin="0,-25,0,0">
                 <Rectangle x:Name="recTime" Stroke="Black" Width="100" RadiusX="15" RadiusY="15" StrokeThickness="3" Margin="0" Height="125" VerticalAlignment="Top"/>
                 <Image x:Name="imgTime" Height="80" Width="80" Source="/resources/navicon_star.png" VerticalAlignment="Top" Stretch="Fill" PreviewMouseLeftButtonDown="clickTime"/>
             </Grid>
-            <Grid x:Name="gridYoutube" Height="100" Width="100" Grid.Row="1" Grid.Column="3">
+            <Grid x:Name="menugridYoutube" Height="100" Width="100" Grid.Row="1" Grid.Column="3">
                 <Rectangle x:Name="recYoutube" Height="100" Stroke="Black" Width="100" RadiusX="15" RadiusY="15" StrokeThickness="3">
                     <Rectangle.Fill>
                         <RadialGradientBrush>
@@ -47,7 +48,7 @@
                 <Image x:Name="imgYoutube" Height="100" Width="100" Source="/resources/navicon_youtube.png" PreviewMouseLeftButtonDown="clickYoutube">
                 </Image>
             </Grid>
-            <Grid x:Name="gridNetflix" Height="100" Width="100" Grid.Row="1" Grid.Column="5">
+            <Grid x:Name="menugridNetflix" Height="100" Width="100" Grid.Row="1" Grid.Column="5">
                 <Rectangle x:Name="recNetflix" Height="100" Stroke="Black" Width="100" RadiusX="15" RadiusY="15" StrokeThickness="3">
                     <Rectangle.Fill>
                         <RadialGradientBrush>
@@ -58,7 +59,7 @@
                 </Rectangle>
                 <Image x:Name="imgNetflix" Height="100" Width="100" Source="/resources/navicon_netflix.png" PreviewMouseLeftButtonDown="clickNetflix"/>
             </Grid>
-            <Grid x:Name="gridSpotify" Height="100" Width="100" Grid.Row="1" Grid.Column="7">
+            <Grid x:Name="menugridSpotify" Height="100" Width="100" Grid.Row="1" Grid.Column="7">
                 <Rectangle x:Name="recSpotify" Height="100" Stroke="Black" Width="100" RadiusX="15" RadiusY="15" StrokeThickness="3">
                     <Rectangle.Fill>
                         <RadialGradientBrush>
@@ -69,7 +70,7 @@
                 </Rectangle>
                 <Image x:Name="imgSpotify" Height="100" Width="100" Source="/resources/navicon_spotify.png" PreviewMouseLeftButtonDown="clickSpotify"/>
             </Grid>
-            <Grid x:Name="gridGames" Height="100" Width="100" Grid.Row="1" Grid.Column="9">
+            <Grid x:Name="menugridGames" Height="100" Width="100" Grid.Row="1" Grid.Column="9">
                 <Rectangle x:Name="recGames" Height="100" Stroke="Black" Width="100" RadiusX="15" RadiusY="15" StrokeThickness="3">
                     <Rectangle.Fill>
                         <RadialGradientBrush>
@@ -80,9 +81,17 @@
                 </Rectangle>
                 <Image x:Name="imgGames" Height="100" Width="100" Source="/resources/navicon_games.png" PreviewMouseLeftButtonDown="clickGames"/>
             </Grid>
-            <Grid x:Name="gridSearch" Height="100" Width="100" Grid.Row="1" Grid.Column="11">
-                <Image x:Name="imgSearch" Height="100" Width="100" Source="/resources/navicon_search.png" PreviewMouseLeftButtonDown="clickSearch"/>
+            <Grid x:Name="menugridSearch" Height="100" Width="100" Grid.Row="1" Grid.Column="11">
+                <Ellipse x:Name="recSearch" Stroke="Black" StrokeThickness="3" Height="100"/>
+                <Image x:Name="imgSearch" Height="94" Width="94" Source="/resources/navicon_search.png" PreviewMouseLeftButtonDown="clickSearch"/>
             </Grid>
+        </Grid>
+        <TeheTV:Keyboard x:Name="keyboard" Margin="0"/>
+        <Grid x:Name="gridSearchBar" Height="100" VerticalAlignment="Top" Margin="75,250,75,0">
+            <Rectangle x:Name="recSearchBar" Fill="White" Stroke="Black" StrokeThickness="2"/>
+            <Rectangle x:Name="recSearchSquare" Fill="White" HorizontalAlignment="Left" Stroke="Black" StrokeThickness="2" Width="100"/>
+            <Image x:Name="searchGlass" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Source="/TeheTV;component/resources/search_glass.png"/>
+            <TextBlock x:Name="fieldSearchBar" FontWeight="ExtraBold" FontSize="72" Foreground="Black" FontFamily="Comic Sans MS" Padding="15,0" Margin="100,-5,0,0" TextTrimming="CharacterEllipsis" Height="100"/>
         </Grid>
     </Grid>
 

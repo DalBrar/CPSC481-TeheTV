@@ -44,7 +44,7 @@ namespace TeheTV.pages
             if (!_isUp)
             {
                 _isUp = true;
-                slideGridScreenUpBy(400);
+                slideGridScreenUpBy(350);
                 keyboard.SlideUp();
             }
         }
@@ -61,7 +61,7 @@ namespace TeheTV.pages
             if (!_isUp)
             {
                 _isUp = true;
-                slideGridScreenUpBy(400);
+                slideGridScreenUpBy(350);
                 keyboard.SlideUp();
             }
         }
@@ -78,7 +78,7 @@ namespace TeheTV.pages
             if (!_isUp)
             {
                 _isUp = true;
-                slideGridScreenUpBy(400);
+                slideGridScreenUpBy(350);
                 keyboard.SlideUp();
             }
         }
@@ -95,7 +95,24 @@ namespace TeheTV.pages
             if (!_isUp)
             {
                 _isUp = true;
-                slideGridScreenUpBy(400);
+                slideGridScreenUpBy(350);
+                keyboard.SlideUp();
+            }
+        }
+
+        private void fieldTimeClicked(object sender, MouseButtonEventArgs e)
+        {
+            TextBlock field = (TextBlock)sender;
+
+            selectField(field);
+            keyboard.MaxInputLength = 4;
+            keyboard.OutputTextBlock = field;
+            keyboard.keyboardStyle = Keyboard.KeyboardStyle.NUMERICAL;
+
+            if (!_isUp)
+            {
+                _isUp = true;
+                slideGridScreenUpBy(350);
                 keyboard.SlideUp();
             }
         }
@@ -108,7 +125,9 @@ namespace TeheTV.pages
             int month = getMonthNum(fieldMONTH.Text);
             int day = int.Parse(fieldDAY.Text);
             int year = int.Parse(fieldYEAR.Text);
-            SettingsManager.createNewProfile(name, month, day, year);
+            int time = int.Parse(fieldTIME.Text);
+
+            SettingsManager.createNewProfile(name, month, day, year, time);
             app.ScreenChangeTo(SCREEN.ProfileSelector, true);
         }
 
@@ -121,6 +140,7 @@ namespace TeheTV.pages
             if (name.Equals("fieldMONTH")) box = fieldMONTHbg;
             else if (name.Equals("fieldDAY")) box = fieldDAYbg;
             else if (name.Equals("fieldYEAR")) box = fieldYEARbg;
+            else if (name.Equals("fieldTIME")) box = fieldTIMEbg;
             else box = fieldNAMEbg;
 
             deselectFields();
@@ -135,6 +155,7 @@ namespace TeheTV.pages
             fieldMONTHbg.Fill = MainWindow.setBrushColor(63, col, col, col);
             fieldDAYbg.Fill   = MainWindow.setBrushColor(63, col, col, col);
             fieldYEARbg.Fill  = MainWindow.setBrushColor(63, col, col, col);
+            fieldTIMEbg.Fill  = MainWindow.setBrushColor(63, col, col, col);
         }
 
         private void slideGridScreenUpBy(double amount)
@@ -157,6 +178,7 @@ namespace TeheTV.pages
             string month = fieldMONTH.Text;
             string dayStr = fieldDAY.Text;
             string yearStr = fieldYEAR.Text;
+            string timeStr = fieldTIME.Text;
 
             int day;
             try { day = int.Parse(dayStr); }
@@ -165,6 +187,10 @@ namespace TeheTV.pages
             int year;
             try { year = int.Parse(yearStr); }
             catch { year = -1; }
+
+            int time;
+            try { time = int.Parse(timeStr); }
+            catch { time = 0; }
 
             bool invalidInfo = false;
             if (isEmpty(name))
@@ -186,6 +212,11 @@ namespace TeheTV.pages
             {
                 invalidInfo = true;
                 fieldYEARbg.Fill = MainWindow.setBrushColor(100, 255, 0, 0);
+            }
+            if (time < 5)
+            {
+                invalidInfo = true;
+                fieldTIMEbg.Fill = MainWindow.setBrushColor(100, 255, 0, 0);
             }
 
             if (invalidInfo)

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TeheTV.pages.navigation;
 
 namespace TeheTV.pages
 {
@@ -28,9 +29,20 @@ namespace TeheTV.pages
             InitializeComponent();
 
             // instantiate all pages here
-            template = new pages.navigation.NaviTemplate(this);
+            template = new NaviTemplate(app, this, ContentType.NETFLIX);
 
             recTime.Stroke = MainWindow.setBrushColor(255, 0, 255, 255);
+
+            changeNavigationFrame(NAVI.Recommendations);
+            gridSearchBar.Visibility = Visibility.Hidden;
+
+            keyboard.ReturnKeyText = "Search";
+            keyboard.EmptySpaceReturn = true;
+            keyboard.ReturnEvent += new EventHandler(hideSearchBar);
+            keyboard.TypeEvent += new EventHandler(doSearch);
+            keyboard.MaxInputLength = 30;
+            keyboard.OutputTextBlock = fieldSearchBar;
+            keyboard.keyboardStyle = Keyboard.KeyboardStyle.ALL;
         }
 
         /// <summary>
@@ -38,18 +50,18 @@ namespace TeheTV.pages
         /// </summary>
         /// <param name="instance"></param>
         /// <param name="navi"></param>
-        public void changeNavigationFrame(NAVI navi)
+        private void changeNavigationFrame(NAVI navi)
         {
             if (navi == NAVI.Recommendations)
-                naviFrame.NavigationService.Navigate(template);
-            if (navi == NAVI.YouTube)
-                naviFrame.NavigationService.Navigate(template);
+                naviFrame.NavigationService.Navigate(new NaviTemplate(app, this, ContentType.RECOMMENDED));
             if (navi == NAVI.Netflix)
-                naviFrame.NavigationService.Navigate(template);
+                naviFrame.NavigationService.Navigate(new NaviTemplate(app, this, ContentType.NETFLIX));
             if (navi == NAVI.Spotify)
-                naviFrame.NavigationService.Navigate(template);
+                naviFrame.NavigationService.Navigate(new NaviTemplate(app, this, ContentType.SPOTIFY));
+            if (navi == NAVI.YouTube)
+                naviFrame.NavigationService.Navigate(new NaviTemplate(app, this, ContentType.YOUTUBE));
             if (navi == NAVI.Games)
-                naviFrame.NavigationService.Navigate(template);
+                naviFrame.NavigationService.Navigate(new NaviTemplate(app, this, ContentType.GAMES));
         }
 
         public enum NAVI
@@ -64,31 +76,38 @@ namespace TeheTV.pages
         private void clickTime(object sender, MouseButtonEventArgs e)
         {
             selectMenuItem(sender);
+            changeNavigationFrame(NAVI.Recommendations);
         }
 
         private void clickYoutube(object sender, MouseButtonEventArgs e)
         {
             selectMenuItem(sender);
+            changeNavigationFrame(NAVI.YouTube);
         }
 
         private void clickNetflix(object sender, MouseButtonEventArgs e)
         {
             selectMenuItem(sender);
+            changeNavigationFrame(NAVI.Netflix);
         }
 
         private void clickSpotify(object sender, MouseButtonEventArgs e)
         {
             selectMenuItem(sender);
+            changeNavigationFrame(NAVI.Spotify);
         }
 
         private void clickGames(object sender, MouseButtonEventArgs e)
         {
             selectMenuItem(sender);
+            changeNavigationFrame(NAVI.Games);
         }
 
         private void clickSearch(object sender, MouseButtonEventArgs e)
         {
-
+            playButtonClick();
+            showSearchBar();
+            keyboard.SlideUp();
         }
 
         // ******************
@@ -115,8 +134,29 @@ namespace TeheTV.pages
             recNetflix.Stroke = MainWindow.setBrushColor(255, 0, 0, 0);
             recSpotify.Stroke = MainWindow.setBrushColor(255, 0, 0, 0);
             recGames.Stroke   = MainWindow.setBrushColor(255, 0, 0, 0);
+            recSearch.Stroke = MainWindow.setBrushColor(255, 0, 0, 0);
         }
 
         private void playButtonClick() { Sounds.Play(Properties.Resources.soundButtonClick); }
+
+
+        private void showSearchBar()
+        {
+            gridSearchBar.Visibility = Visibility.Visible;
+        }
+        private void hideSearchBar(object sender, EventArgs e) { hideSearchBar(); }
+        private void hideSearchBar()
+        {
+            gridSearchBar.Visibility = Visibility.Hidden;
+        }
+
+        private void doSearch(object sender, EventArgs e) { doSearch(); }
+        private void doSearch()
+        {
+            deslectAllMenuItems();
+            recSearch.Stroke = MainWindow.setBrushColor(255, 0, 255, 255);
+            string searchText = fieldSearchBar.Text;
+            naviFrame.NavigationService.Navigate(new NaviTemplate(app, this, searchText));
+        }
     }
 }

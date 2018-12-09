@@ -1,0 +1,27 @@
+﻿<UserControl x:Name="ContentButtonControl" x:Class="TeheTV.ContentButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TeheTV"
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="290">
+    <Grid x:Name="ContentButtonGrid" Width="290" Height="200">
+        <Image x:Name="Thumbnail" Height="175" VerticalAlignment="Top" Margin="15,0" Width="260"/>
+        <Image x:Name="Watermark" Height="25" VerticalAlignment="Top" Width="25" Margin="250,0,15,0"/>
+        <Rectangle x:Name="footer" Height="25" VerticalAlignment="Bottom" Margin="15,0" Width="260">
+            <Rectangle.Fill>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FF70C656" Offset="0"/>
+                    <GradientStop Color="#FF53933F" Offset="1"/>
+                </RadialGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Label x:Name="Label" Margin="15,0" Background="{x:Null}" Foreground="White" FontFamily="Comic Sans MS" FontSize="18" Content="" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="25" ScrollViewer.VerticalScrollBarVisibility="Disabled" ClipToBounds="True" IsHitTestVisible="False" VerticalAlignment="Bottom" Padding="0" FontWeight="Bold" Width="260">
+            <Label.Effect>
+                <DropShadowEffect Opacity="0.5"/>
+            </Label.Effect>
+        </Label>
+        <Rectangle x:Name="trigger" Height="200" Width="260" Margin="15,0" Fill="#00000000" PreviewMouseLeftButtonDown="buttonClick"/>
+    </Grid>
+</UserControl>

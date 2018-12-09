@@ -15,21 +15,30 @@ namespace TeheTV
         private int day;
         private int year;
         private int age;
+        private int time;
         private string profilePath;
         private static string profileInfoFile;
-        private int folder;
+        private static string profileWatchedFile;
+        private static string profileRecommendedFile;
+        private List<Content> recommended = new List<Content>();
+        private List<string> watched;
 
-        public Profile(string Name, int Month, int Day, int Year)
+        public Profile(string Name, int Month, int Day, int Year, int Time) : this(Name, Month, Day, Year, Time, "" + getNextFolder()) {}
+        public Profile(string Name, int Month, int Day, int Year, int Time, string folderName)
         {
             name = Name;
             month = Month;
             day = Day;
             year = Year;
             age = calculateAge();
-
-            folder = getNextFolder();
-            profilePath = SettingsManager.profilesFolder + folder + "/";
+            time = Time;
+            recommended = getRecommendations();
+            watched = new List<string>();
+            
+            profilePath = SettingsManager.profilesFolder + folderName + "/";
             profileInfoFile = profilePath + "info.profile";
+            profileWatchedFile = profilePath + "watchHistory.profile";
+            profileRecommendedFile = profilePath + "recommended.profile";
         }
 
         public string Name
@@ -37,11 +46,54 @@ namespace TeheTV
             get { return name; }
         }
 
-        public string getName()
+        public List<Content> Recommendations
         {
-            return name;
+            get { return recommended; }
+            set { recommended = value; }
         }
 
+        public List<string> WatchHistory
+        {
+            get { return watched; }
+            set { watched = value; }
+        }
+
+        public int Time
+        {
+            get { return time; }
+            set { time = value; }
+        }
+
+        public void AddRecommendation(Content c)
+        {
+            recommended.Add(c);
+            saveProfile();
+        }
+
+        public void AddWatched(Content c)
+        {
+            watched.Add(c.toStringFilename());
+            saveProfile();
+        }
+
+        public bool hasTime()
+        {
+            return time > 0;
+        }
+
+        public void AddTime(int t)
+        {
+            time += t;
+            saveProfile();
+        }
+
+        public void ReduceTime()
+        {
+            if (time > 0)
+                time--;
+            saveProfile();
+        }
+        
         public int getAge()
         {
             return age;
@@ -50,19 +102,26 @@ namespace TeheTV
         public void saveProfile()
         {
             Directory.CreateDirectory(profilePath);
+
             List<string> info = new List<string>();
             info.Add("name= " + name);
             info.Add("mm= " + month);
             info.Add("dd= " + day);
             info.Add("yy= " + year);
+            info.Add("time= " + time);
             File.WriteAllLines(profileInfoFile, info);
+
+            List<string> rec = new List<string>();
+            foreach (Content c in recommended)
+            {
+                rec.Add(c.toStringFilename());
+            }
+            File.WriteAllLines(profileRecommendedFile, rec);
+
+            File.WriteAllLines(profileWatchedFile, watched);
         }
-
-        public List<Content> getNetflixContent() { return getSpecificContent(ContentType.NETFLIX); }
-        public List<Content> getSpotifyContent() { return getSpecificContent(ContentType.SPOTIFY); }
-        public List<Content> getYouTubeContent() { return getSpecificContent(ContentType.YOUTUBE); }
-
-        private List<Content> getSpecificContent(ContentType t)
+        public List<Content> getContentForProfile() { return ContentManager.getListForAge(age); }
+        public List<Content> getContentType(ContentType t)
         {
             List<Content> list = ContentManager.getListForAge(age);
             List<Content> output = new List<Content>();
@@ -72,6 +131,35 @@ namespace TeheTV
                     output.Add(c);
             }
             return output;
+        }
+
+        private List<Content> getRecommendations()
+        {
+            List<Content> master = ContentManager.getMasterList();
+            int len = master.Count;
+
+            if (len > 6)
+            {
+                List<Content> rec = new List<Content>();
+                List<int> used = new List<int>();
+                Random rnd = new Random();
+                int n = 0;
+                while (n < 6)
+                {
+                    int i = rnd.Next(0, len);
+                    if (used.Contains(i))
+                        continue;
+                    else
+                    {
+                        used.Add(i);
+                        rec.Add(master[i]);
+                        n++;
+                    }
+                }
+                return rec;
+            }
+            else
+                return master;
         }
 
         private int calculateAge()
@@ -87,7 +175,7 @@ namespace TeheTV
             return age;
         }
 
-        private int getNextFolder()
+        private static int getNextFolder()
         {
             int n = 1;
             while (Directory.Exists(SettingsManager.profilesFolder + n + "/"))

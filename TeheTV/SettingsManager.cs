@@ -25,6 +25,12 @@ namespace TeheTV
             loadProfiles();
         }
 
+        public static void AddWatched(Content c) { if (currentProfile != null) currentProfile.AddWatched(c); }
+        public static void AddRecommended(Content c) { if (currentProfile != null) currentProfile.AddRecommendation(c); }
+        public static void AddTime(int t) { if (currentProfile != null) currentProfile.AddTime(t); }
+        public static void ReduceTime() { if (currentProfile != null) currentProfile.ReduceTime(); }
+        public static int GetTime() { if (currentProfile != null) return currentProfile.Time; return -1; }
+
         /// <summary>
         /// Checks to see if pin file exists.
         /// </summary>
@@ -95,7 +101,7 @@ namespace TeheTV
         {
             foreach (Profile p in profiles)
             {
-                if (p.getName().Equals(name))
+                if (p.Name.Equals(name))
                     return p;
             }
             return null;
@@ -110,7 +116,7 @@ namespace TeheTV
             List<string> names = new List<string>();
             foreach (Profile p in profiles)
             {
-                names.Add(p.getName());
+                names.Add(p.Name);
             }
             return names;
         }
@@ -122,9 +128,9 @@ namespace TeheTV
         /// <param name="month"></param>
         /// <param name="day"></param>
         /// <param name="year"></param>
-        public static void createNewProfile(string name, int month, int day, int year)
+        public static void createNewProfile(string name, int month, int day, int year, int time)
         {
-            Profile p = new Profile(name, month, day, year);
+            Profile p = new Profile(name, month, day, year, time);
             p.saveProfile();
             profiles.Add(p);
         }
@@ -181,6 +187,8 @@ namespace TeheTV
         {
             profiles = new List<Profile>();
             string info = "/info.profile";
+            string watchFile = "/watchHistory.profile";
+            string recmdFile = "/recommended.profile";
 
             List<string> profileFolders;
             try
@@ -191,12 +199,12 @@ namespace TeheTV
             {
                 profileFolders = new List<string>();
             }
-
+            
             foreach (string prfFolder in profileFolders)
             {
                 string name = "";
-                int month, day, year;
-                month = day = year = 0;
+                int month, day, year, time;
+                month = day = year = time = 0;
 
                 //MessageBox.Show(prfl);
                 List<string> files = Directory.GetFiles(prfFolder + "/").ToList();
@@ -215,6 +223,8 @@ namespace TeheTV
                                 day = int.Parse(line.Replace("dd= ", ""));
                             if (line.Contains("yy= "))
                                 year = int.Parse(line.Replace("yy= ", ""));
+                            if (line.Contains("time= "))
+                                time = int.Parse(line.Replace("time= ", ""));
                         }
                         catch (FormatException)
                         {
@@ -223,9 +233,44 @@ namespace TeheTV
                     }
                 }
 
+                List<string> watchedList = null;
+                string w = prfFolder + watchFile;
+                if (files.Contains(w))
+                {
+                    watchedList = new List<string>();
+
+                    string[] lines = File.ReadAllLines(w);
+                    foreach (string line in lines)
+                    {
+                        watchedList.Add(line);
+                    }
+                }
+
+                List<Content> recmdList = null;
+                string r = prfFolder + recmdFile;
+                if (files.Contains(r))
+                {
+                    recmdList = new List<Content>();
+
+                    string[] lines = File.ReadAllLines(r);
+                    foreach (string line in lines)
+                    {
+                        Content c = ContentManager.getContentFromFile(line);
+                        if (c != null && !watchedList.Contains(c.toStringFilename()))
+                            recmdList.Add(c);
+                    }
+                }
+
                 if (!string.IsNullOrEmpty(name) && month != 0 && day != 0 && year != 0)
                 {
-                    Profile p = new Profile(name, month, day, year);
+                    string dirName = new DirectoryInfo(prfFolder).Name;
+                    Profile p = new Profile(name, month, day, year, time, dirName);
+
+                    if (watchedList != null)
+                        p.WatchHistory = watchedList;
+                    if (recmdList != null)
+                        p.Recommendations = recmdList;
+
                     profiles.Add(p);
                 }
             }

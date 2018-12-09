@@ -31,6 +31,7 @@ namespace TeheTV
     public partial class Keyboard : UserControl
     {
         public event EventHandler ReturnEvent;
+        public event EventHandler TypeEvent;
         private TextBlock output;
         private int _MAXSTRING = 14;
         private bool _isCAPSLOCK = false;
@@ -48,6 +49,11 @@ namespace TeheTV
         protected virtual void ExecuteReturnEvent()
         {
             if (ReturnEvent != null) ReturnEvent(this, EventArgs.Empty);
+        }
+
+        protected virtual void ExecuteTypeEvent()
+        {
+            if (TypeEvent != null) TypeEvent(this, EventArgs.Empty);
         }
 
         // ***** Properites *****
@@ -141,6 +147,7 @@ namespace TeheTV
             {
                 output.Text = output.Text + ch;
                 playKeypress();
+                ExecuteTypeEvent();
             }
             else
                 playError();
@@ -175,6 +182,7 @@ namespace TeheTV
             {
                 output.Text = text.Substring(0, len - 1);
                 playKeypress();
+                ExecuteTypeEvent();
             }
             else
                 playError();

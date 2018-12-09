@@ -21,6 +21,9 @@ namespace TeheTV
 {
     public partial class MainWindow : Window
     {
+        private static MainWindow instance;
+        private static TVScreen tvScreen;
+
         // add all pages here
         private static Page initialize;
         private static Page navigator;
@@ -31,9 +34,10 @@ namespace TeheTV
 
         public MainWindow()
         {
+            instance = this;
             InitializeComponent();
-            SettingsManager.initialize();
             ContentManager.initialize();
+            SettingsManager.initialize();
 
             // instantiate all pages here
             initialize       = new Initialize(this);
@@ -46,6 +50,14 @@ namespace TeheTV
             // this is the first screen that loads, do not change
             ScreenFrame.NavigationService.Navigate(splashScreen);
         }
+
+        public static TVScreen TvScreen
+        {
+            get { return tvScreen; }
+            set { tvScreen = value; }
+        }
+
+        public static MainWindow GetInstance() { return instance; }
 
         public static Brush setBrushColor(byte alpha, byte red, byte green, byte blue)
         {
@@ -103,11 +115,6 @@ namespace TeheTV
         public void ScreenChangeTo(Page nextPage, bool fadeEffect)
         {
             changeScreen(nextPage, fadeEffect, false);
-        }
-
-        public void NagivatorInitialScreen()
-        {
-            ((Navigator)navigator).changeNavigationFrame(Navigator.NAVI.Recommendations);
         }
 
         public void ScreenGoBack()

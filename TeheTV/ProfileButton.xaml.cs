@@ -40,8 +40,8 @@ namespace TeheTV
         {
             animateButton();
             SettingsManager.setCurrentProfile(profile);
-            app.ScreenChangeTo(SCREEN.Navigator, true);
-            app.NagivatorInitialScreen();
+            Navigator nav = new Navigator(app);
+            app.ScreenChangeTo(nav, true);
         }
 
         // ************************

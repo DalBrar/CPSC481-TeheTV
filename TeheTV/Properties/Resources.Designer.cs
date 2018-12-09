@@ -91,6 +91,16 @@ namespace TeheTV.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap search_glass {
+            get {
+                object obj = ResourceManager.GetObject("search_glass", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream soundAlert {
@@ -213,6 +223,16 @@ namespace TeheTV.Properties {
         internal static System.IO.UnmanagedMemoryStream TeheTVwav {
             get {
                 return ResourceManager.GetStream("TeheTVwav", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap tv_screen {
+            get {
+                object obj = ResourceManager.GetObject("tv_screen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }
