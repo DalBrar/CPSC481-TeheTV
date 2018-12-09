@@ -39,7 +39,9 @@
 
 
         <Button Grid.Row="1" Grid.Column="1"
-                BorderThickness="0" Background="White">
+                BorderThickness="0" Background="White"
+                x:Name="returnButton"
+                PreviewMouseLeftButtonDown="ReturnButton_PreviewMouseLeftButtonDown">
             <StackPanel>
                 <Image Source="/resources/back.png"
                        Width="100" Height="120" />
@@ -142,7 +144,9 @@
                    />
 
         <Button Grid.Row="8" Grid.Column="3" Grid.ColumnSpan="2"
-                BorderThickness="0" Background="White">
+                BorderThickness="0" Background="White"
+                x:Name="acceptButton"
+                Click="AcceptButton_Click">
             <StackPanel>
                 <Image Source="/resources/TimeAdjustmentPage/timer_accept.png"
                        />
@@ -150,7 +154,9 @@
         </Button>
 
         <Button Grid.Row="8" Grid.Column="6" Grid.ColumnSpan="2"
-                BorderThickness="0" Background="White">
+                BorderThickness="0" Background="White"
+                x:Name="resetButton"
+                Click="ResetButton_Click">
             <StackPanel>
                 <Image Source="/resources/TimeAdjustmentPage/timer_reset.png"
                        />

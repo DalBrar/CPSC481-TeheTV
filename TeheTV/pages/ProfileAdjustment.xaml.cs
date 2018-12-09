@@ -21,14 +21,17 @@ namespace TeheTV.pages
     /// </summary>
     public partial class ProfileAdjustment : Page, INotifyPropertyChanged
     {
-        private string _profileName = "Joseph";
-        public event PropertyChangedEventHandler PropertyChanged;
         MainWindow app;
-
-        public ProfileAdjustment()
+        private string _profileName = "Hi";
+        public event PropertyChangedEventHandler PropertyChanged;
+        private Page parentSettings;
+      
+        public ProfileAdjustment(MainWindow instance)
         {
+            app = instance;
             InitializeComponent();
-            ProfileName = "2";
+            parentSettings = new ParentSettings(app);
+            
         }
 
         public string ProfileName
@@ -53,6 +56,11 @@ namespace TeheTV.pages
             {
                 handler(this, new PropertyChangedEventArgs(name));
             }
+        }
+
+        private void ReturnButton_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            app.ScreenChangeTo(parentSettings, true);
         }
     }
 }

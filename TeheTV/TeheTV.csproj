@@ -65,8 +65,8 @@
     <Compile Include="pages\CreateNewAccount.xaml.cs">
       <DependentUpon>CreateNewAccount.xaml</DependentUpon>
     </Compile>
-    <Compile Include="pages\Histroy.xaml.cs">
-      <DependentUpon>Histroy.xaml</DependentUpon>
+    <Compile Include="pages\History.xaml.cs">
+      <DependentUpon>History.xaml</DependentUpon>
     </Compile>
     <Compile Include="pages\initialization\Initialize_2.xaml.cs">
       <DependentUpon>Initialize_2.xaml</DependentUpon>
@@ -132,7 +132,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="pages\Histroy.xaml">
+    <Page Include="pages\History.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

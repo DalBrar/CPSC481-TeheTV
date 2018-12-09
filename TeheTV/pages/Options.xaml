@@ -31,7 +31,9 @@
         </Grid.RowDefinitions>
 
         <Button Grid.Row="1" Grid.Column="1"
-                BorderThickness="0" >
+                BorderThickness="0" 
+                x:Name="homeButton"
+                PreviewMouseLeftButtonDown="Home_PreviewMouseLeftButtonDown">
             <StackPanel>
                 <Image Source="/resources/home.png"
                        MaxWidth="100" Height="105"/>
@@ -39,11 +41,14 @@
         </Button>
 
         <Button Grid.Row="3" Grid.Column="3"
-                BorderThickness="0">
+                BorderThickness="0"
+                x:Name="currentProfileButton"
+                PreviewMouseLeftButtonDown="CurrentProfileButton_PreviewMouseLeftButtonDown">
+            
             <StackPanel>
                 <!-- Icon changes depends on which child's profile is currently selected -->
                 <!-- The line below can be use for later when we have an attribute that stores the
-                current profile name -->
+                current profile link -->
                 <!-- image is bind to currentProfile attribute, read only -->
                 <Image Source="{Binding Path = CurrentProfile, Mode=OneWay}"/>
 
@@ -54,7 +59,9 @@
         </Button>
 
         <Button Grid.Row="3" Grid.Column="5"
-                BorderThickness="0">
+                BorderThickness="0"
+                x:Name="changeSettings"
+                PreviewMouseLeftButtonDown="ChangeSettings_PreviewMouseLeftButtonDown">
             <StackPanel>
                 <Image Source="/resources/change.png"
                        MaxWidth="200"/>
