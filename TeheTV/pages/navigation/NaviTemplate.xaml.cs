@@ -69,7 +69,7 @@ namespace TeheTV.Pages.navigation
                     if (t.ToLower().Contains(searchText))
                     {
                         ContentButton button = new ContentButton(app, c);
-                        //contentArea.Children.Add(button);
+                        contentArea.Children.Add(button);
                     }
                 }
             }
@@ -82,7 +82,7 @@ namespace TeheTV.Pages.navigation
                 foreach (Content c in list)
                 {
                     ContentButton button = new ContentButton(app, c);
-                    //contentArea.Children.Add(button);
+                    contentArea.Children.Add(button);
                 }
             }
         }
