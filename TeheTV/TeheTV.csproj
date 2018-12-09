@@ -101,6 +101,9 @@
     <Compile Include="pages\TimeAdjustment.xaml.cs">
       <DependentUpon>TimeAdjustment.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ProfileButton.xaml.cs">
+      <DependentUpon>ProfileButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Sounds.cs" />
     <Compile Include="Profile.cs" />
     <Compile Include="SettingsManager.cs" />
@@ -182,6 +185,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="pages\TimeAdjustment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProfileButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

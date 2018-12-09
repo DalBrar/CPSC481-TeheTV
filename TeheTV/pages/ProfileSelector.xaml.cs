@@ -24,8 +24,57 @@ namespace TeheTV.pages
         {
             app = instance;
             InitializeComponent();
+            BindProfiles();
+        }
 
-            ProfilesDataGrid.ItemsSource = SettingsManager.GetProfiles();
+        private void BindProfiles()
+        {
+            foreach (Profile currP in SettingsManager.GetProfiles())
+            {
+                ProfileButton button = new ProfileButton(app, currP);
+                profileArea.Children.Add(button);
+            }
+        }
+
+        // ******************************
+        //  Click and Drag Scrollability
+        // ******************************
+
+        private Point scrollMousePoint = new Point();
+        private double hOff = 1;
+        private bool _mouseDown = false;
+
+        private void mouseDown(object sender, MouseButtonEventArgs e)
+        {
+            scrollMousePoint = e.GetPosition(scrollViewer);
+            hOff = scrollViewer.HorizontalOffset;
+            //scrollViewer.CaptureMouse();
+            _mouseDown = true;
+        }
+
+        private void mouseUp(object sender, MouseButtonEventArgs e)
+        {
+            scrollViewer.ReleaseMouseCapture();
+            _mouseDown = false;
+            MessageBox.Show("mouse up");
+        }
+
+        private void mouseMove(object sender, MouseEventArgs e)
+        {
+            if (_mouseDown)
+            {
+                scrollViewer.ScrollToHorizontalOffset(hOff + (scrollMousePoint.X - e.GetPosition(scrollViewer).X));
+            }
+        }
+
+        private void mouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            //scrollViewer.ScrollToHorizontalOffset(scrollViewer.HorizontalOffset + e.Delta);
+        }
+
+        private void mouseMove(object sender, DragEventArgs e)
+        {
+            scrollViewer.ScrollToHorizontalOffset(hOff + (scrollMousePoint.X - e.GetPosition(scrollViewer).X));
         }
     }
 }

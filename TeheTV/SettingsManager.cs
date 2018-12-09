@@ -17,6 +17,7 @@ namespace TeheTV
         private static string pinFilename = appFolder + "pin.ini";
         public static string profilesFolder = appFolder + "profiles/";
         private static List<Profile> profiles = new List<Profile>();
+        private static Profile currentProfile = null;
 
         public static void initialize()
         {
@@ -135,6 +136,24 @@ namespace TeheTV
         public static void deleteProfile(Profile p)
         {
             profiles.Remove(p);
+        }
+
+        /// <summary>
+        /// Set the Current Profile to be used by all navigation pages
+        /// </summary>
+        /// <param name="p"></param>
+        public static void setCurrentProfile(Profile p)
+        {
+            currentProfile = p;
+        }
+
+        /// <summary>
+        /// Get the current profile being used.
+        /// </summary>
+        /// <returns></returns>
+        public static Profile getCurrentProfile()
+        {
+            return currentProfile;
         }
 
         private static string encryptString(string str)

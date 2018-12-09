@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace TeheTV
 {
-    class Profile
+    public class Profile
     {
         private string name;
         private int month;
