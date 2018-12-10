@@ -130,7 +130,7 @@ namespace TeheTV.Pages
             int month = getMonthNum(fieldMONTH.Text);
             int day = int.Parse(fieldDAY.Text);
             int year = int.Parse(fieldYEAR.Text);
-            int time = int.Parse(fieldTIME.Text);
+            int time = int.Parse(starField.Text);
 
             SettingsManager.createNewProfile(name, month, day, year, time);
             app.ScreenChangeTo(SCREEN.ProfileSelector, true);
@@ -145,7 +145,7 @@ namespace TeheTV.Pages
             if (name.Equals("fieldMONTH")) box = fieldMONTHbg;
             else if (name.Equals("fieldDAY")) box = fieldDAYbg;
             else if (name.Equals("fieldYEAR")) box = fieldYEARbg;
-            else if (name.Equals("fieldTIME")) box = fieldTIMEbg;
+            else if (name.Equals("starField")) box = starRec;
             else box = fieldNAMEbg;
 
             deselectFields();
@@ -160,7 +160,7 @@ namespace TeheTV.Pages
             fieldMONTHbg.Fill = MainWindow.setBrushColor(63, col, col, col);
             fieldDAYbg.Fill   = MainWindow.setBrushColor(63, col, col, col);
             fieldYEARbg.Fill  = MainWindow.setBrushColor(63, col, col, col);
-            fieldTIMEbg.Fill  = MainWindow.setBrushColor(63, col, col, col);
+            starRec.Fill  = MainWindow.setBrushColor(63, col, col, col);
         }
 
         private void slideGridScreenUpBy(double amount)
@@ -183,7 +183,7 @@ namespace TeheTV.Pages
             string month = fieldMONTH.Text;
             string dayStr = fieldDAY.Text;
             string yearStr = fieldYEAR.Text;
-            string timeStr = fieldTIME.Text;
+            string timeStr = starField.Text;
 
             int day;
             try { day = int.Parse(dayStr); }
@@ -221,7 +221,7 @@ namespace TeheTV.Pages
             if (time < 5)
             {
                 invalidInfo = true;
-                fieldTIMEbg.Fill = MainWindow.setBrushColor(100, 255, 0, 0);
+                starRec.Fill = MainWindow.setBrushColor(100, 255, 0, 0);
             }
 
             if (invalidInfo)

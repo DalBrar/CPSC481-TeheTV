@@ -49,7 +49,7 @@ namespace TeheTV
         private void buttonClick(object sender, MouseButtonEventArgs e)
         {
             Profile P = SettingsManager.getCurrentProfile();
-            if (P != null && (isRecommended || P.hasTime()))
+            if (P != null && (isRecommended || P.spendStars(SettingsManager.getStarCostAmount()) == true))
             {
                 Sounds.Play(Properties.Resources.soundButtonPress);
                 TVScreen curTV = MainWindow.TvScreen;

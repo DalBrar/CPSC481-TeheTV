@@ -56,7 +56,7 @@ namespace TeheTV.Pages
 
         private void timeBtnPressed(object sender, MouseButtonEventArgs e)
         {
-
+            app.ScreenChangeTo(new TimeAdjustment(app));
         }
 
         private void recommendBtnPressed(object sender, MouseButtonEventArgs e)

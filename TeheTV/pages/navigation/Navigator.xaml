@@ -35,6 +35,7 @@
             <Grid x:Name="menugridTime" Height="150" Width="100" Grid.Row="1" Grid.Column="1" Margin="0,-25,0,0">
                 <Rectangle x:Name="recTime" Stroke="Black" Width="100" RadiusX="15" RadiusY="15" StrokeThickness="3" Margin="0" Height="125" VerticalAlignment="Top"/>
                 <Image x:Name="imgTime" Height="80" Width="80" Source="/resources/navicon_star.png" VerticalAlignment="Top" Stretch="Fill" PreviewMouseLeftButtonDown="clickTime"/>
+                <Label x:Name="stars" Content="" Background="{x:Null}" Foreground="White" FontFamily="Comic Sans MS" FontWeight="Bold" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20"/>
             </Grid>
             <Grid x:Name="menugridYoutube" Height="100" Width="100" Grid.Row="1" Grid.Column="3">
                 <Rectangle x:Name="recYoutube" Height="100" Stroke="Black" Width="100" RadiusX="15" RadiusY="15" StrokeThickness="3">
@@ -86,7 +87,7 @@
                 <Image x:Name="imgSearch" Height="94" Width="94" Source="/resources/navicon_search.png" PreviewMouseLeftButtonDown="clickSearch"/>
             </Grid>
         </Grid>
-        <TeheTV:Keyboard x:Name="keyboard" Margin="0"/>
+        <TeheTV:Keyboard x:Name="keyboard" Margin="0" Visibility="Hidden"/>
         <Grid x:Name="gridSearchBar" Height="100" VerticalAlignment="Top" Margin="75,250,75,0">
             <Rectangle x:Name="recSearchBar" Fill="White" Stroke="Black" StrokeThickness="2"/>
             <Rectangle x:Name="recSearchSquare" Fill="White" HorizontalAlignment="Left" Stroke="Black" StrokeThickness="2" Width="100"/>

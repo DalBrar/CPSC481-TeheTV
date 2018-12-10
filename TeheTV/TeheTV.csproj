@@ -359,6 +359,7 @@
     <Resource Include="resources\History\Teletubbies.jpg" />
     <Resource Include="resources\btn_delete.png" />
     <Resource Include="resources\btn_pin.png" />
+    <Resource Include="resources\btn_star.png" />
     <Content Include="resources\TeheTV.wav" />
   </ItemGroup>
   <ItemGroup>

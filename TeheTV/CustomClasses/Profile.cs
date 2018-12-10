@@ -16,7 +16,7 @@ namespace TeheTV
         private int day;
         private int year;
         private int age;
-        private int time;
+        private int stars;
         private string profilePath;
         private string profileInfoFile;
         private string profileWatchedFile;
@@ -24,15 +24,15 @@ namespace TeheTV
         private List<Content> recommended = new List<Content>();
         private List<string> watched;
 
-        public Profile(string Name, int Month, int Day, int Year, int Time) : this(Name, Month, Day, Year, Time, "" + getNextFolder()) {}
-        public Profile(string Name, int Month, int Day, int Year, int Time, string folderName)
+        public Profile(string Name, int Month, int Day, int Year, int stars) : this(Name, Month, Day, Year, stars, "" + getNextFolder()) {}
+        public Profile(string Name, int Month, int Day, int Year, int starz, string folderName)
         {
             name = Name;
             month = Month;
             day = Day;
             year = Year;
             age = calculateAge();
-            time = Time;
+            stars = starz;
             recommended = getRecommendations();
             watched = new List<string>();
             
@@ -59,10 +59,10 @@ namespace TeheTV
             set { watched = value; }
         }
 
-        public int Time
+        public int Stars
         {
-            get { return time; }
-            set { time = value; }
+            get { return stars; }
+            set { stars = value; }
         }
 
         public void AddRecommendation(Content c)
@@ -89,22 +89,27 @@ namespace TeheTV
                 saveProfile();
             }
         }
-
-        public bool hasTime()
+        
+        public bool spendStars(int n)
         {
-            return time > 0;
+            if (stars >= n)
+            {
+                stars = stars - n;
+                saveProfile();
+                return true;
+            }
+            return false;
         }
 
-        public void AddTime(int t)
+        public void gainStars(int n)
         {
-            time += t;
+            stars += n;
             saveProfile();
         }
 
-        public void ReduceTime()
+        public void setStars(int n)
         {
-            if (time > 0)
-                time--;
+            stars = n;
             saveProfile();
         }
         
@@ -122,7 +127,7 @@ namespace TeheTV
             info.Add("mm= " + month);
             info.Add("dd= " + day);
             info.Add("yy= " + year);
-            info.Add("time= " + time);
+            info.Add("stars= " + stars);
             File.WriteAllLines(profileInfoFile, info);
 
             List<string> rec = new List<string>();

@@ -86,21 +86,21 @@
                         </TextBlock.Effect></TextBlock>
                 </Grid>
                 <Grid x:Name="row2" Grid.Row="2">
-                    <TextBlock x:Name="textTIME" Margin="0" FontWeight="ExtraBold" FontSize="48" Foreground="Lime" FontFamily="Comic Sans MS" VerticalAlignment="Top" Padding="0" TextWrapping="Wrap" Width="425" HorizontalAlignment="Left" Text="Viewable Minutes:" Height="68">
+                    <TextBlock x:Name="starLabel" Margin="0" FontWeight="ExtraBold" FontSize="48" Foreground="Lime" FontFamily="Comic Sans MS" VerticalAlignment="Top" Padding="0" TextWrapping="Wrap" Width="425" HorizontalAlignment="Left" Text="Starting Stars:" Height="68">
                         <TextBlock.Effect>
                             <DropShadowEffect/>
                         </TextBlock.Effect></TextBlock>
-                    <Rectangle x:Name="fieldTIMEbg" VerticalAlignment="Top" Margin="450,0,0,0" Height="68" Width="200" HorizontalAlignment="Left" Fill="#3FC8C8C8" RadiusX="10" RadiusY="10">
+                    <Rectangle x:Name="starRec" VerticalAlignment="Top" Margin="450,0,0,0" Height="68" Width="200" HorizontalAlignment="Left" Fill="#3FC8C8C8" RadiusX="10" RadiusY="10">
                         <Rectangle.Effect>
                             <DropShadowEffect/>
                         </Rectangle.Effect>
                     </Rectangle>
-                    <TextBlock x:Name="fieldTIME" Margin="450,0,0,0" FontWeight="ExtraBold" FontSize="48" Foreground="White" FontFamily="Comic Sans MS" VerticalAlignment="Top" Padding="0,0,0,5" TextWrapping="Wrap" Width="200" HorizontalAlignment="Left" Height="68" TextAlignment="Center" PreviewMouseLeftButtonDown="fieldTimeClicked" Text="180"/>
+                    <TextBlock x:Name="starField" Margin="450,0,0,0" FontWeight="ExtraBold" FontSize="48" Foreground="White" FontFamily="Comic Sans MS" VerticalAlignment="Top" Padding="0,0,0,5" TextWrapping="Wrap" Width="200" HorizontalAlignment="Left" Height="68" TextAlignment="Center" PreviewMouseLeftButtonDown="fieldTimeClicked" Text="50"/>
                 </Grid>
             </Grid>
             <Button x:Name="btnDone" Content="Done" Height="100" Margin="0,0,50,50" Style="{DynamicResource GreenButton}" VerticalAlignment="Bottom" Width="200" FontSize="48" FontWeight="ExtraBold" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontFamily="Comic Sans MS" HorizontalAlignment="Right" PreviewMouseLeftButtonDown="doneClicked"/>
         </Grid>
-        <TeheTV:Keyboard x:Name="keyboard" Margin="0"/>
+        <TeheTV:Keyboard x:Name="keyboard" Margin="0" Visibility="Hidden"/>
         <Button x:Name="backBtn" Content="" Height="100" Style="{DynamicResource BackButton}" Width="100" PreviewMouseLeftButtonDown="backBtnPressed" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,25,0,0"/>
     </Grid>
 </Page>

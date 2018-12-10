@@ -25,6 +25,7 @@ namespace TeheTV.Pages
         {
             app = instance;
             InitializeComponent();
+            stars.Content = SettingsManager.getCurrentProfile().Stars;
             
             recTime.Stroke = MainWindow.setBrushColor(255, 0, 255, 255);
 

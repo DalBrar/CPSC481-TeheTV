@@ -103,21 +103,7 @@ namespace TeheTV
                 Stop();
             else
             {
-                if (isRecommended)
-                {
-                    ExecutePlayingEvent();
-                }
-                else if (P.hasTime())
-                {
-                    P.ReduceTime();
-                    ExecutePlayingEvent();
-                }
-                else
-                {
-                    canIStartPlaying = false;
-                    throwNotEnoughTimeEvent();
-                    Stop();
-                }
+               ExecutePlayingEvent();
             }
         }
 

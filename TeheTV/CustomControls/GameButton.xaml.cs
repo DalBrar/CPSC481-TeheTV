@@ -44,7 +44,7 @@ namespace TeheTV
         private void buttonClick(object sender, MouseButtonEventArgs e)
         {
             Profile p = SettingsManager.getCurrentProfile();
-            if (p != null && (isRecommended || p.hasTime()))
+            if (p != null && (isRecommended || p.spendStars(SettingsManager.getStarCostAmount()) == true))
             {
                 Sounds.Play(Properties.Resources.soundButtonPress);
                 app.ScreenChangeTo(game, true);

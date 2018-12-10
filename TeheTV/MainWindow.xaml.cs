@@ -30,7 +30,6 @@ namespace TeheTV
 
         // add all pages here
         private static Page initialize;
-        private static Page navigator;
         private static Page nowPlaying;
         private static Page splashScreen;
 
@@ -44,7 +43,6 @@ namespace TeheTV
             // instantiate all pages here
             splashScreen     = new SplashPage(this);
             initialize       = new Initialize(this);
-            navigator        = new Navigator(this);
             nowPlaying       = new NowPlaying(this);
 
             // this is the first screen that loads, do not change
@@ -100,7 +98,7 @@ namespace TeheTV
             else if (screen == SCREEN.Initialize)
                 ScreenChangeTo(initialize, fadeEffect);
             else if (screen == SCREEN.Navigator)
-                ScreenChangeTo(navigator, fadeEffect);
+                ScreenChangeTo(new Navigator(this), fadeEffect);
             else if (screen == SCREEN.NowPlaying)
                 ScreenChangeTo(nowPlaying, fadeEffect);
             else if (screen == SCREEN.Options)

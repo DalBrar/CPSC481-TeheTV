@@ -15,6 +15,8 @@ namespace TeheTV
     {
         public static string appFolder = Environment.CurrentDirectory + "/appdata/";
         private static string pinFilename = appFolder + "pin.ini";
+        private static string starsRewardFile = appFolder + "global.reward.stars";
+        private static string starsCostFile = appFolder + "global.cost.stars";
         public static string profilesFolder = appFolder + "profiles/";
         private static List<Profile> profiles = new List<Profile>();
         private static Profile currentProfile = null;
@@ -27,9 +29,36 @@ namespace TeheTV
 
         public static void AddWatched(Content c) { if (currentProfile != null) currentProfile.AddWatched(c); }
         public static void AddRecommended(Content c) { if (currentProfile != null) currentProfile.AddRecommendation(c); }
-        public static void AddTime(int t) { if (currentProfile != null) currentProfile.AddTime(t); }
-        public static void ReduceTime() { if (currentProfile != null) currentProfile.ReduceTime(); }
-        public static int GetTime() { if (currentProfile != null) return currentProfile.Time; return -1; }
+
+        public static int getStarRewardAmount()
+        {
+            try
+            {
+                string s = File.ReadAllText(starsRewardFile);
+                int n = int.Parse(s);
+                return n;
+            }
+            catch
+            {
+                return 2;
+            }
+        }
+        public static int getStarCostAmount()
+        {
+            try
+            {
+                string s = File.ReadAllText(starsCostFile);
+                int n = int.Parse(s);
+                return n;
+            }
+            catch
+            {
+                return 3;
+            }
+        }
+
+        public static void setStarRewardAmount(int n)  { File.WriteAllText(starsRewardFile, ""+n); }
+        public static void setStarCostAmount(int n ) { File.WriteAllText(starsCostFile, "" + n); }
 
         /// <summary>
         /// Checks to see if pin file exists.
@@ -231,8 +260,8 @@ namespace TeheTV
                                 day = int.Parse(line.Replace("dd= ", ""));
                             if (line.Contains("yy= "))
                                 year = int.Parse(line.Replace("yy= ", ""));
-                            if (line.Contains("time= "))
-                                time = int.Parse(line.Replace("time= ", ""));
+                            if (line.Contains("stars= "))
+                                time = int.Parse(line.Replace("stars= ", ""));
                         }
                         catch (FormatException)
                         {

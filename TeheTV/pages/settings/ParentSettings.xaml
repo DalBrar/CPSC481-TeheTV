@@ -47,7 +47,7 @@
                 <TeheTV:SettingsButton x:Name="delProfBtn" Label="Delete Profile" ImagePath="/resources/btn_delete.png"  Margin="0" PreviewMouseLeftButtonDown="deleteProfileBtnPressed"/>
             </Grid>
             <Grid x:Name="botLeft" Grid.Row="1">
-                <TeheTV:SettingsButton x:Name="timeBtn" Label="Time Adjustment" ImagePath="/resources/btn_time.png"  Margin="0" PreviewMouseLeftButtonDown="timeBtnPressed"/>
+                <TeheTV:SettingsButton x:Name="timeBtn" Label="Star Settings" ImagePath="/resources/btn_star.png"  Margin="0" PreviewMouseLeftButtonDown="timeBtnPressed"/>
             </Grid>
             <Grid x:Name="botMid" Grid.Row="1" Grid.Column="1">
                 <TeheTV:SettingsButton x:Name="recommendBtn" Label="Recommendations" ImagePath="/resources/btn_recommendations.png"  Margin="0" PreviewMouseLeftButtonDown="recommendBtnPressed"/>
