@@ -43,13 +43,16 @@
                 <StackPanel x:Name="profileArea" />
             </Grid>
         </ScrollViewer>
-        <Grid x:Name="cautionGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1024" Height="700" d:IsHidden="True">
+        <Grid x:Name="cautionGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1024" Height="700">
             <Rectangle x:Name="rectFadeError" Fill="#BF000000" Stroke="Black"/>
-            <Rectangle x:Name="rectRed" Fill="#D8FF3232" Margin="150" RadiusX="50" RadiusY="50" StrokeThickness="0"/>
-            <Label x:Name="cautionHeader" Content="Shall we delete?" HorizontalContentAlignment="Center" FontSize="48" Foreground="White" FontWeight="ExtraBlack" FontFamily="Comic Sans MS" Padding="0" Margin="150"/>
-            <TextBlock x:Name="cautionProfileName" TextAlignment="Center" FontSize="72" Foreground="White" FontWeight="ExtraBlack" FontFamily="Comic Sans MS" Padding="0" Margin="150,260,150,150" Text="This Profile"/>
-            <Button x:Name="cancelButton" Content="No" Height="100" Margin="175,0,0,175" Style="{DynamicResource GreenButton}" VerticalAlignment="Bottom" Width="300" FontSize="48" FontWeight="ExtraBold" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontFamily="Comic Sans MS" PreviewMouseLeftButtonDown="cancelBtnClicked" HorizontalAlignment="Left"/>
-            <Button x:Name="confirmButton" Content="Yes" Height="100" Margin="0,0,175,175" Style="{DynamicResource BlueButton}" VerticalAlignment="Bottom" Width="300" FontSize="48" FontWeight="ExtraBold" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontFamily="Comic Sans MS" PreviewMouseLeftButtonDown="confirmBtnClicked" HorizontalAlignment="Right"/>
+            <Grid x:Name="cautionInnerGrid" Margin="0" Width="724" Height="400">
+                <Rectangle x:Name="rectRed" Fill="#D8FF3232" Margin="0" RadiusX="50" RadiusY="50" StrokeThickness="0"/>
+                <Label x:Name="cautionHeader" Content="Shall we delete?" HorizontalContentAlignment="Center" FontSize="48" Foreground="White" FontWeight="ExtraBlack" FontFamily="Comic Sans MS" Padding="0" Margin="0"/>
+                <TextBlock x:Name="cautionProfileName" TextAlignment="Center" FontSize="72" Foreground="White" FontWeight="ExtraBlack" FontFamily="Comic Sans MS" Padding="0" Margin="0,110,0,0" Text="This Profile"/>
+                <Button x:Name="cancelButton" Content="No" Height="100" Margin="25,0,0,25" Style="{DynamicResource GreenButton}" VerticalAlignment="Bottom" Width="300" FontSize="48" FontWeight="ExtraBold" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontFamily="Comic Sans MS" PreviewMouseLeftButtonDown="cancelBtnClicked" HorizontalAlignment="Left"/>
+                <Button x:Name="confirmButton" Content="Yes" Height="100" Margin="0,0,25,25" Style="{DynamicResource BlueButton}" VerticalAlignment="Bottom" Width="300" FontSize="48" FontWeight="ExtraBold" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontFamily="Comic Sans MS" PreviewMouseLeftButtonDown="confirmBtnClicked" HorizontalAlignment="Right"/>
+                <Button x:Name="okButton" Content="OK" Height="100" Margin="0,0,0,25" Style="{DynamicResource BlueButton}" VerticalAlignment="Bottom" Width="300" FontSize="48" FontWeight="ExtraBold" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontFamily="Comic Sans MS" PreviewMouseLeftButtonDown="okBtnClicked"/>
+            </Grid>
         </Grid>
         <Button x:Name="backBtn" Content="" Grid.Column="1" Height="100" Grid.Row="1" Style="{DynamicResource BackButton}" Width="100" PreviewMouseLeftButtonDown="backBtnPressed" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,25,0,0"/>
     </Grid>

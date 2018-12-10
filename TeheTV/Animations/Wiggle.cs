@@ -57,8 +57,8 @@ namespace TeheTV.Animations
         {
             if (count < WIGGLEAMOUNT)
             {
-                Start();
                 count++;
+                Start();
             }
             else
             {

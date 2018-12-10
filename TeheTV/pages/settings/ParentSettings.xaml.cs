@@ -61,7 +61,7 @@ namespace TeheTV.Pages
 
         private void recommendBtnPressed(object sender, MouseButtonEventArgs e)
         {
-
+            app.ScreenChangeTo(new Recommendations(app));
         }
 
         private void logBtnPressed(object sender, MouseButtonEventArgs e)

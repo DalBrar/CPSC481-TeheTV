@@ -26,15 +26,13 @@ namespace TeheTV
         public event TVEventHandler PlayingEvent;
         public event TVEventHandler StoppedEvent;
         public event TVEventHandler OutOfTimeEvent;
-        Profile P;
         Content C;
         private bool canIStartPlaying = false;
 
         DispatcherTimer timer;
 
-        public TVScreen(Profile p, Content c)
+        public TVScreen(Content c)
         {
-            P = p;
             C = c;
             InitializeComponent();
             this.Show();
@@ -43,14 +41,13 @@ namespace TeheTV
             wait1Second();
         }
 
-        public void Update(Profile p, Content c)
+        public void Update(Content c)
         {
             PlayingEvent = null;
             StoppedEvent = null;
             OutOfTimeEvent = null;
             timer.Stop();
             mePlayer.Stop();
-            P = p;
             C = c;
             this.Focus();
             initializePlayer();
@@ -97,15 +94,22 @@ namespace TeheTV
 
         private void timerTick(object sender, EventArgs e)
         {
-            if (P.hasTime())
-            {
-                P.ReduceTime();
-                ExecutePlayingEvent();
-            } else
-            {
-                canIStartPlaying = false;
-                ExecuteOutOfTimeEvent();
+            Profile P = SettingsManager.getCurrentProfile();
+            if (P == null)
                 Stop();
+            else
+            {
+                if (P.hasTime())
+                {
+                    P.ReduceTime();
+                    ExecutePlayingEvent();
+                }
+                else
+                {
+                    canIStartPlaying = false;
+                    ExecuteOutOfTimeEvent();
+                    Stop();
+                }
             }
         }
 

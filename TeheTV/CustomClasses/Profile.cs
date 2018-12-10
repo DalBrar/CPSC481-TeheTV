@@ -18,9 +18,9 @@ namespace TeheTV
         private int age;
         private int time;
         private string profilePath;
-        private static string profileInfoFile;
-        private static string profileWatchedFile;
-        private static string profileRecommendedFile;
+        private string profileInfoFile;
+        private string profileWatchedFile;
+        private string profileRecommendedFile;
         private List<Content> recommended = new List<Content>();
         private List<string> watched;
 

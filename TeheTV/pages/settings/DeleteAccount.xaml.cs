@@ -29,6 +29,7 @@ namespace TeheTV.Pages
             InitializeComponent();
             BindProfiles();
             hideCautionModal();
+            okButton.Visibility = Visibility.Hidden;
         }
 
         private void BindProfiles()
@@ -73,15 +74,40 @@ namespace TeheTV.Pages
 
         private void confirmBtnClicked(object sender, MouseButtonEventArgs e)
         {
-            SettingsManager.deleteProfile(pToDelete);
-            profileArea.Children.Remove(bToDelete);
+            if (pToDelete == SettingsManager.getCurrentProfile() && MainWindow.TvScreen != null)
+            {
+                Sounds.Play(Properties.Resources.soundUhOh);
+                Animations.Wiggle.Run(cautionInnerGrid);
+                cautionProfileName.Text = "";
+                cautionHeader.Content = "This profile is currently\nin use and cannot be\ndeleted. Stop the media\nfirst and try again.";
+                okButton.Visibility = Visibility.Visible;
+                cancelButton.Visibility = Visibility.Hidden;
+                confirmButton.Visibility = Visibility.Hidden;
+            } else
+            {
+                SettingsManager.deleteProfile(pToDelete);
+                profileArea.Children.Remove(bToDelete);
+                pToDelete = null;
+                bToDelete = null;
+                Animations.Modal.ModalFadeOut();
+                cautionProfileName.Text = "This Profile";
+                Sounds.Play(Properties.Resources.soundToggle);
+                if (profileArea.Children.Count <= 0)
+                    app.ScreenChangeTo(SCREEN.CreateNewAccount);
+            }
+        }
+
+        private void okBtnClicked(object sender, MouseButtonEventArgs e)
+        {
             pToDelete = null;
             bToDelete = null;
             Animations.Modal.ModalFadeOut();
+            cautionHeader.Content = "Shall we delete?";
             cautionProfileName.Text = "This Profile";
-            Sounds.Play(Properties.Resources.soundToggle);
-            if (profileArea.Children.Count <= 0)
-                app.ScreenChangeTo(SCREEN.CreateNewAccount);
+            okButton.Visibility = Visibility.Hidden;
+            cancelButton.Visibility = Visibility.Visible;
+            confirmButton.Visibility = Visibility.Visible;
+            Sounds.Play(Properties.Resources.soundButtonClick);
         }
 
         private void hideCautionModal()

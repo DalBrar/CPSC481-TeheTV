@@ -143,7 +143,10 @@ namespace TeheTV
         public static void deleteProfile(Profile p)
         {
             if (currentProfile == p)
+            {
                 currentProfile = null;
+                MainWindow.TvScreen = null;
+            }
             p.DeleteProfile();
             profiles.Remove(p);
         }

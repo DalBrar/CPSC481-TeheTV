@@ -38,18 +38,19 @@ namespace TeheTV
 
         private void buttonClick(object sender, MouseButtonEventArgs e)
         {
-            if (SettingsManager.getCurrentProfile().hasTime())
+            Profile P = SettingsManager.getCurrentProfile();
+            if (P != null && P.hasTime())
             {
                 Sounds.Play(Properties.Resources.soundButtonPress);
                 TVScreen curTV = MainWindow.TvScreen;
                 if (curTV == null)
                 {
-                    newTV = new TVScreen(SettingsManager.getCurrentProfile(), content);
+                    newTV = new TVScreen( content);
                     MainWindow.TvScreen = newTV;
                 }
                 else
                 {
-                    curTV.Update(SettingsManager.getCurrentProfile(), content);
+                    curTV.Update(content);
                 }
             }
             else

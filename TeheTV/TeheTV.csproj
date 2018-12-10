@@ -140,6 +140,9 @@
     <Compile Include="CustomClasses\SettingsManager.cs" />
     <Compile Include="CustomClasses\SCREEN.cs" />
     <Compile Include="CustomClasses\TimeManager.cs" />
+    <Compile Include="Pages\TicTacToe.xaml.cs">
+      <DependentUpon>TicTacToe.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TVScreen.xaml.cs">
       <DependentUpon>TVScreen.xaml</DependentUpon>
     </Compile>
@@ -250,6 +253,10 @@
     <Page Include="CustomControls\SettingsButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\TicTacToe.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="TVScreen.xaml">
       <SubType>Designer</SubType>

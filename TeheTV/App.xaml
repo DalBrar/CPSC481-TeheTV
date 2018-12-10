@@ -184,7 +184,7 @@
                                 <Rectangle.Fill>
                                     <RadialGradientBrush>
                                         <GradientStop Color="#FF3232FF" Offset="0"/>
-                                        <GradientStop Color="#973232FF" Offset="1"/>
+                                        <GradientStop Color="#CC3232FF" Offset="1"/>
                                     </RadialGradientBrush>
                                 </Rectangle.Fill>
                             </Rectangle>
