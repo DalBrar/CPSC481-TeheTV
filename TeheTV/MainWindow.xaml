@@ -95,16 +95,56 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="AnimatedBackground" TargetType="{x:Type Rectangle}">
+            <Style.Resources>
+                <Storyboard x:Key="OnLoaded1">
+                    <DoubleAnimationUsingKeyFrames RepeatBehavior="Forever" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Offset)" Storyboard.TargetName="{x:Null}">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:5" Value="0"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:10" Value="0"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:15" Value="0"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:20" Value="0"/>
+                    </DoubleAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames RepeatBehavior="Forever" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Offset)" Storyboard.TargetName="{x:Null}">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:5" Value="1"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:10" Value="1"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:15" Value="1"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:20" Value="1"/>
+                    </DoubleAnimationUsingKeyFrames>
+                    <PointAnimationUsingKeyFrames RepeatBehavior="Forever" Storyboard.TargetProperty="(Shape.Fill).(LinearGradientBrush.StartPoint)" Storyboard.TargetName="{x:Null}">
+                        <EasingPointKeyFrame KeyTime="0" Value="0,0"/>
+                        <EasingPointKeyFrame KeyTime="0:0:5" Value="0,1"/>
+                        <EasingPointKeyFrame KeyTime="0:0:10" Value="1,0.5"/>
+                        <EasingPointKeyFrame KeyTime="0:0:15" Value="0.5,0"/>
+                        <EasingPointKeyFrame KeyTime="0:0:20" Value="0,0"/>
+                    </PointAnimationUsingKeyFrames>
+                    <PointAnimationUsingKeyFrames RepeatBehavior="Forever" Storyboard.TargetProperty="(Shape.Fill).(LinearGradientBrush.EndPoint)" Storyboard.TargetName="{x:Null}">
+                        <EasingPointKeyFrame KeyTime="0" Value="0.5,1"/>
+                        <EasingPointKeyFrame KeyTime="0:0:5" Value="0,0.5"/>
+                        <EasingPointKeyFrame KeyTime="0:0:10" Value="0,0"/>
+                        <EasingPointKeyFrame KeyTime="0:0:15" Value="1,0"/>
+                        <EasingPointKeyFrame KeyTime="0:0:20" Value="0.5,1"/>
+                    </PointAnimationUsingKeyFrames>
+                </Storyboard>
+            </Style.Resources>
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                    <BeginStoryboard Storyboard="{StaticResource OnLoaded1}"/>
+                </EventTrigger>
+            </Style.Triggers>
+            <Setter Property="Fill">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0,0">
+                        <GradientStop Color="#FF00DDFF"/>
+                        <GradientStop Color="#FF0068FF" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
     <Grid x:Name="tabletGrid">
-        <Rectangle x:Name="background" Height="780" Margin="40" Stroke="Black" Width="1104" RenderTransformOrigin="0,0" d:IsLocked="True">
-            <Rectangle.Fill>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="0.5,1" MappingMode="RelativeToBoundingBox">
-                    <GradientStop Color="Cyan"/>
-                    <GradientStop Color="#FF0068FF" Offset="1"/>
-                </LinearGradientBrush>
-            </Rectangle.Fill>
-        </Rectangle>
+        <Rectangle x:Name="background" Height="780" Margin="40" Stroke="Black" Width="1104" RenderTransformOrigin="0,0" Style="{DynamicResource AnimatedBackground}"/>
         <Frame x:Name="ScreenFrame" Content="" Margin="80" NavigationUIVisibility="Hidden"/>
         <Grid x:Name="tabletFrame">
             <Image x:Name="tabletFrame_TOP" Margin="0,0,0,0" Source="resources/teheTV_tablet_TOP.png" VerticalAlignment="Top" d:IsLocked="True"/>
