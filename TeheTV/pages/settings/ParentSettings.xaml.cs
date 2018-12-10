@@ -51,7 +51,7 @@ namespace TeheTV.Pages
 
         private void deleteProfileBtnPressed(object sender, MouseButtonEventArgs e)
         {
-
+            app.ScreenChangeTo(new DeleteAccount(app));
         }
 
         private void timeBtnPressed(object sender, MouseButtonEventArgs e)

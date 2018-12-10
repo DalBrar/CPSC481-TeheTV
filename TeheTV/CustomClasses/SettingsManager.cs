@@ -117,6 +117,11 @@ namespace TeheTV
             return names;
         }
 
+        public static int getProfilesCount()
+        {
+            return profiles.Count;
+        }
+
         /// <summary>
         /// Creates a new profile and adds it to the profile manager.
         /// </summary>
@@ -137,6 +142,9 @@ namespace TeheTV
         /// <param name="p"></param>
         public static void deleteProfile(Profile p)
         {
+            if (currentProfile == p)
+                currentProfile = null;
+            p.DeleteProfile();
             profiles.Remove(p);
         }
 

@@ -132,6 +132,25 @@ namespace TeheTV
             return output;
         }
 
+        public void DeleteProfile()
+        {
+            EmptyFolder(profilePath);
+        }
+
+        private void EmptyFolder(string path)
+        {
+            foreach (string file in Directory.GetFiles(path))
+            {
+                File.Delete(file);
+            }
+            foreach (string folder in Directory.GetDirectories(path))
+            {
+                EmptyFolder(folder);
+                Directory.Delete(folder);
+            }
+            Directory.Delete(path);
+        }
+
         private List<Content> getRecommendations()
         {
             List<Content> master = ContentManager.getMasterList();
