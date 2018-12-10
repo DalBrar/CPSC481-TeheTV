@@ -76,36 +76,42 @@ namespace TeheTV.Pages
 
         private void clickTime(object sender, MouseButtonEventArgs e)
         {
+            updateStars();
             selectMenuItem(sender);
             changeNavigationFrame(NAVI.Recommendations);
         }
 
         private void clickYoutube(object sender, MouseButtonEventArgs e)
         {
+            updateStars();
             selectMenuItem(sender);
             changeNavigationFrame(NAVI.YouTube);
         }
 
         private void clickNetflix(object sender, MouseButtonEventArgs e)
         {
+            updateStars();
             selectMenuItem(sender);
             changeNavigationFrame(NAVI.Netflix);
         }
 
         private void clickSpotify(object sender, MouseButtonEventArgs e)
         {
+            updateStars();
             selectMenuItem(sender);
             changeNavigationFrame(NAVI.Spotify);
         }
 
         private void clickGames(object sender, MouseButtonEventArgs e)
         {
+            updateStars();
             selectMenuItem(sender);
             changeNavigationFrame(NAVI.Games);
         }
 
         private void clickSearch(object sender, MouseButtonEventArgs e)
         {
+            updateStars();
             playButtonClick();
             showSearchBar();
             keyboard.SlideUp();
