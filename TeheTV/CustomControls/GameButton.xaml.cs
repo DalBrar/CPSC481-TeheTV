@@ -25,7 +25,7 @@ namespace TeheTV
         private Page game;
         private bool isRecommended;
 
-        public GameButton(Navigator navig, MainWindow instance, Page gamePage, string gameTitle, string thumbPath) : this(instance, gamePage, gameTitle, thumbPath, false) { }
+        public GameButton(Navigator navig, MainWindow instance, Page gamePage, string gameTitle, string thumbPath) : this(navig, instance, gamePage, gameTitle, thumbPath, false) { }
         public GameButton(Navigator navig, MainWindow instance, Page gamePage, string gameTitle, string thumbPath, bool recommended)
         {
             app = instance;

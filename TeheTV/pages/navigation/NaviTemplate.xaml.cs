@@ -87,7 +87,7 @@ namespace TeheTV.Pages.navigation
 
                 foreach (Content c in list)
                 {
-                    ContentButton button = new ContentButton(app, c, recommended);
+                    ContentButton button = new ContentButton(app, navi, c, recommended);
                     contentArea.Children.Add(button);
                 }
             }

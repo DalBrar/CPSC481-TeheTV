@@ -29,7 +29,7 @@ namespace TeheTV
         private TVScreen newTV;
         private bool isRecommended;
 
-        public ContentButton(MainWindow instance, Navigator navig, Content c) : this(instance, c, false) { }
+        public ContentButton(MainWindow instance, Navigator navig, Content c) : this(instance, navig, c, false) { }
         public ContentButton(MainWindow instance, Navigator navig, Content c, bool recommended)
         {
             app = instance;
