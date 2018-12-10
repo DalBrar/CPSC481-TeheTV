@@ -56,7 +56,7 @@
             <Rectangle x:Name="rectFadeError" Fill="#BF000000" Stroke="Black"/>
             <Rectangle x:Name="rectRed" Fill="#D8FF3232" Margin="150" RadiusX="50" RadiusY="50" StrokeThickness="0"/>
             <Label x:Name="textErrorHeader" Content="Oh no!" HorizontalContentAlignment="Center" FontSize="72" Foreground="White" FontWeight="ExtraBlack" FontFamily="Comic Sans MS" Padding="0" Margin="150"/>
-            <TextBlock x:Name="textErrorMsg" TextAlignment="Center" FontSize="36" Foreground="White" FontWeight="ExtraBlack" FontFamily="Comic Sans MS" Padding="0" Margin="150" Text="&#xA;&#xA;&#xA;That's not the right answer!"/>
+            <TextBlock x:Name="textErrorMsg" TextAlignment="Center" FontSize="36" Foreground="White" FontWeight="ExtraBlack" FontFamily="Comic Sans MS" Padding="0" Margin="150,275,150,0" Text="That's not the right answer!"/>
         </Grid>
 
 
