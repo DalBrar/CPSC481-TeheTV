@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TeheTV.Pages;
 using static TeheTV.MainWindow;
 
 namespace TeheTV
@@ -20,14 +21,16 @@ namespace TeheTV
     {
         public event TeheTVEvent NotEnoughTimeEvent;
         private MainWindow app;
+        private Navigator navi;
         private Page game;
         private bool isRecommended;
 
-        public GameButton(MainWindow instance, Page gamePage, string gameTitle, string thumbPath) : this(instance, gamePage, gameTitle, thumbPath, false) { }
-        public GameButton(MainWindow instance, Page gamePage, string gameTitle, string thumbPath, bool recommended)
+        public GameButton(Navigator navig, MainWindow instance, Page gamePage, string gameTitle, string thumbPath) : this(instance, gamePage, gameTitle, thumbPath, false) { }
+        public GameButton(Navigator navig, MainWindow instance, Page gamePage, string gameTitle, string thumbPath, bool recommended)
         {
             app = instance;
             game = gamePage;
+            navi = navig;
             isRecommended = recommended;
 
             InitializeComponent();
@@ -46,6 +49,7 @@ namespace TeheTV
             Profile p = SettingsManager.getCurrentProfile();
             if (p != null && (isRecommended || p.spendStars(SettingsManager.getStarCostAmount()) == true))
             {
+                navi.updateStars();
                 Sounds.Play(Properties.Resources.soundButtonPress);
                 app.ScreenChangeTo(game, true);
             }

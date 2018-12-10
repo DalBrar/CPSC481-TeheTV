@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TeheTV.Pages;
 using static TeheTV.MainWindow;
 
 namespace TeheTV
@@ -23,15 +24,17 @@ namespace TeheTV
     {
         public event TeheTVEvent NotEnoughTimeEvent;
         private MainWindow app;
+        private Navigator navi;
         private Content content;
         private TVScreen newTV;
         private bool isRecommended;
 
-        public ContentButton(MainWindow instance, Content c) : this(instance, c, false) { }
-        public ContentButton(MainWindow instance, Content c, bool recommended)
+        public ContentButton(MainWindow instance, Navigator navig, Content c) : this(instance, c, false) { }
+        public ContentButton(MainWindow instance, Navigator navig, Content c, bool recommended)
         {
             app = instance;
             content = c;
+            navi = navig;
             isRecommended = recommended;
 
             InitializeComponent();
@@ -51,6 +54,7 @@ namespace TeheTV
             Profile P = SettingsManager.getCurrentProfile();
             if (P != null && (isRecommended || P.spendStars(SettingsManager.getStarCostAmount()) == true))
             {
+                navi.updateStars();
                 Sounds.Play(Properties.Resources.soundButtonPress);
                 TVScreen curTV = MainWindow.TvScreen;
                 if (curTV == null)

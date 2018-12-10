@@ -65,7 +65,7 @@ namespace TeheTV.Pages.navigation
                     string t = c.Title;
                     if (t.ToLower().Contains(searchText))
                     {
-                        ContentButton button = new ContentButton(app, c);
+                        ContentButton button = new ContentButton(app, navi, c);
                         contentArea.Children.Add(button);
                     }
                 }
@@ -95,8 +95,8 @@ namespace TeheTV.Pages.navigation
 
         private void BindGames()
         {
-            GameButton mathGame = new GameButton(app, new MathGame(app), "Math Game", "/resources/thumb_mathgame.png");
-            GameButton ticTacToe = new GameButton(app, new TicTacToe(app), "Tic Tac Toe", "/resources/thumb_tictactoe.png");
+            GameButton mathGame = new GameButton(navi, app, new MathGame(app), "Math Game", "/resources/thumb_mathgame.png");
+            GameButton ticTacToe = new GameButton(navi, app, new TicTacToe(app), "Tic Tac Toe", "/resources/thumb_tictactoe.png");
             contentArea.Children.Add(mathGame);
             contentArea.Children.Add(ticTacToe);
         }
@@ -120,6 +120,7 @@ namespace TeheTV.Pages.navigation
 
         private void gearBtnPressed(object sender, MouseButtonEventArgs e)
         {
+            navi.updateStars();
             Sounds.Play(Properties.Resources.soundButtonClick);
             app.ScreenChangeTo(SCREEN.Options, true);
         }
@@ -130,6 +131,7 @@ namespace TeheTV.Pages.navigation
 
         private void ScrollViewer_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            navi.updateStars();
             scrollMousePoint = e.GetPosition(scrollViewer);
             hOff = scrollViewer.HorizontalOffset;
             scrollViewer.CaptureMouse();
@@ -137,6 +139,7 @@ namespace TeheTV.Pages.navigation
 
         private void ScrollViewer_PreviewMouseMove(object sender, MouseEventArgs e)
         {
+            navi.updateStars();
             if (scrollViewer.IsMouseCaptured)
             {
                 scrollViewer.ScrollToHorizontalOffset(hOff + (scrollMousePoint.X - e.GetPosition(scrollViewer).X));
@@ -145,11 +148,13 @@ namespace TeheTV.Pages.navigation
 
         private void ScrollViewer_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+            navi.updateStars();
             scrollViewer.ReleaseMouseCapture();
         }
 
         private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
+            navi.updateStars();
             scrollViewer.ScrollToHorizontalOffset(scrollViewer.HorizontalOffset + e.Delta);
         }
     }

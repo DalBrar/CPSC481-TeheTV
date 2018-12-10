@@ -25,7 +25,7 @@ namespace TeheTV.Pages
         {
             app = instance;
             InitializeComponent();
-            stars.Content = SettingsManager.getCurrentProfile().Stars;
+            updateStars();
             
             recTime.Stroke = MainWindow.setBrushColor(255, 0, 255, 255);
 
@@ -58,6 +58,11 @@ namespace TeheTV.Pages
                 naviFrame.NavigationService.Navigate(new NaviTemplate(app, this, ContentType.YOUTUBE));
             if (navi == NAVI.Games)
                 naviFrame.NavigationService.Navigate(new NaviTemplate(app, this, ContentType.GAMES));
+        }
+
+        public void updateStars()
+        {
+            stars.Content = SettingsManager.getCurrentProfile().Stars;
         }
 
         public enum NAVI
