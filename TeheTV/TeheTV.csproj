@@ -78,11 +78,17 @@
     <Compile Include="CustomControls\Keyboard.xaml.cs">
       <DependentUpon>Keyboard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CustomControls\ProfileDeleteButton.xaml.cs">
+      <DependentUpon>ProfileDeleteButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\MathGame.xaml.cs">
       <DependentUpon>MathGame.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\settings\CreateNewAccount.xaml.cs">
       <DependentUpon>CreateNewAccount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\settings\DeleteAccount.xaml.cs">
+      <DependentUpon>DeleteAccount.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\settings\History.xaml.cs">
       <DependentUpon>History.xaml</DependentUpon>
@@ -149,6 +155,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="CustomControls\ProfileDeleteButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -166,6 +176,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\settings\CreateNewAccount.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\settings\DeleteAccount.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

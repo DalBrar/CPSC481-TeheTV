@@ -21,16 +21,10 @@ namespace TeheTV.Pages
     {
         private MainWindow app;
 
-        // add all navigation pages here
-        private static Page template;
-
         public Navigator(MainWindow instance)
         {
             app = instance;
             InitializeComponent();
-
-            // instantiate all pages here
-            template = new NaviTemplate(app, this, ContentType.NETFLIX);
 
             recTime.Stroke = MainWindow.setBrushColor(255, 0, 255, 255);
 

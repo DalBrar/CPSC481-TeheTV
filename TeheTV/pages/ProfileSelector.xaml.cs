@@ -36,12 +36,6 @@ namespace TeheTV.Pages
             }
         }
 
-        private void gearBtnPressed(object sender, MouseButtonEventArgs e)
-        {
-            Sounds.Play(Properties.Resources.soundButtonClick);
-            app.ScreenChangeTo(SCREEN.Options, true);
-        }
-
         // Scrolling methods
         Point scrollMousePoint = new Point();
         double vOff = 1;

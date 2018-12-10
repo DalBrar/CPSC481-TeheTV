@@ -161,6 +161,49 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <!-- Replace these:
+				Name  : BlueButton
+				Main  : 3232FF
+				Stroke: 2626A8
+				Dark  : 181875
+        -->
+        <Style x:Key="BlueButton" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <ControlTemplate.Resources>
+                            <Storyboard x:Key="BlueButtonStoryboard">
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+                                    <EasingColorKeyFrame KeyTime="0" Value="#181875"/>
+                                    <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#D83232FF"/>
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </ControlTemplate.Resources>
+                        <Grid>
+                            <Rectangle x:Name="rectangle" RadiusY="25" RadiusX="25" Stroke="#2626A8" StrokeThickness="3">
+                                <Rectangle.Fill>
+                                    <RadialGradientBrush>
+                                        <GradientStop Color="#FF3232FF" Offset="0"/>
+                                        <GradientStop Color="#973232FF" Offset="1"/>
+                                    </RadialGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <EventTrigger RoutedEvent="UIElement.PreviewMouseLeftButtonDown">
+                                <BeginStoryboard x:Name="BlueButtonStoryboard_BeginStoryboard" Storyboard="{StaticResource BlueButtonStoryboard}"/>
+                            </EventTrigger>
+                            <Trigger Property="IsFocused" Value="True"/>
+                            <Trigger Property="IsDefaulted" Value="True"/>
+                            <Trigger Property="IsMouseOver" Value="True"/>
+                            <Trigger Property="IsPressed" Value="True"/>
+                            <Trigger Property="IsEnabled" Value="False"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <!-- Keyboard Key Button: -->
         <Style x:Key="KeyboardKeyButton" TargetType="{x:Type Button}">
             <Setter Property="Template">
