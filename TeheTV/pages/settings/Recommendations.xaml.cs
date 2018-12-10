@@ -51,6 +51,15 @@ namespace TeheTV.Pages
         private void updateSearchResults(string output)
         {
             resultContent.Children.Clear();
+            List<Content> ser = ContentManager.getMasterList();
+            foreach (Content c in ser)
+            {
+                string t = c.Title;
+                if (t.ToLower().Contains(output.ToLower()))
+                {
+                    RecommendedContentControl r = new RecommendedContentControl(c, resultContent, reccdContent, false);
+                }
+            }
         }
 
         private void initializeStackPanels()

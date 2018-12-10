@@ -72,7 +72,7 @@ namespace TeheTV.Pages
                 textErrorMsg.Text = "Draw game, better luck next time!";
                 Modal.ModalFadeIn(errorGrid, true);
             }
-            Task.Delay(3000).ContinueWith(t => cleanAfterWin());
+            Task.Delay(1500).ContinueWith(t => cleanAfterWin());
         }
 
         private void cleanAfterWin()

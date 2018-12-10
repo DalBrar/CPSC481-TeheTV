@@ -25,7 +25,7 @@ namespace TeheTV.Pages
         {
             app = instance;
             InitializeComponent();
-
+            
             recTime.Stroke = MainWindow.setBrushColor(255, 0, 255, 255);
 
             changeNavigationFrame(NAVI.Recommendations);

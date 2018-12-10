@@ -12,27 +12,39 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static TeheTV.MainWindow;
 
 namespace TeheTV
 {
     public partial class GameButton : UserControl
     {
+        public event TeheTVEvent NotEnoughTimeEvent;
         private MainWindow app;
         private Page game;
+        private bool isRecommended;
 
-        public GameButton(MainWindow instance, Page gamePage, string gameTitle, string thumbPath)
+        public GameButton(MainWindow instance, Page gamePage, string gameTitle, string thumbPath) : this(instance, gamePage, gameTitle, thumbPath, false) { }
+        public GameButton(MainWindow instance, Page gamePage, string gameTitle, string thumbPath, bool recommended)
         {
             app = instance;
             game = gamePage;
+            isRecommended = recommended;
+
             InitializeComponent();
 
             Thumbnail.Source = getImgSource(thumbPath);
             Label.Content = gameTitle;
         }
 
+        private void throwNotEnoughTimeEvent()
+        {
+            if (NotEnoughTimeEvent != null) NotEnoughTimeEvent();
+        }
+
         private void buttonClick(object sender, MouseButtonEventArgs e)
         {
-            if (SettingsManager.getCurrentProfile().hasTime())
+            Profile p = SettingsManager.getCurrentProfile();
+            if (p != null && (isRecommended || p.hasTime()))
             {
                 Sounds.Play(Properties.Resources.soundButtonPress);
                 app.ScreenChangeTo(game, true);
@@ -40,6 +52,7 @@ namespace TeheTV
             else
             {
                 Sounds.Play(Properties.Resources.soundAlert);
+                throwNotEnoughTimeEvent();
             }
         }
 

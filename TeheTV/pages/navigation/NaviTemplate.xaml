@@ -63,5 +63,11 @@
                 <StackPanel x:Name="contentArea"  Orientation="Horizontal"/>
             </-->
         </Grid>
+        <Grid x:Name="timeModal" Margin="0" Grid.RowSpan="3" Visibility="Hidden">
+            <Rectangle x:Name="rectFadeCorr" Fill="#BF000000" Stroke="Black" Margin="0"/>
+            <Rectangle x:Name="rectBlue" Fill="#D8ECFF32" Margin="0" RadiusX="50" RadiusY="50" StrokeThickness="0" Width="724" Height="400"/>
+            <Label x:Name="textCorrHeader" Content="No More Stars" HorizontalContentAlignment="Center" FontSize="72" Foreground="#FF3232FF" FontWeight="ExtraBlack" FontFamily="Comic Sans MS" Padding="0" Margin="0,50,0,0" VerticalAlignment="Top" Width="724"/>
+            <TextBlock x:Name="textCorrect" TextAlignment="Center" FontSize="48" Foreground="#FF3232FF" FontWeight="ExtraBlack" FontFamily="Comic Sans MS" Padding="0" Margin="0" VerticalAlignment="Center" Width="724"><Run Text="Checkout the Recommended"/><LineBreak/><Run Text="section to get more Stars!"/></TextBlock>
+        </Grid>
     </Grid>
 </Page>

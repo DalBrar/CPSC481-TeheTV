@@ -13,6 +13,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using static TeheTV.MainWindow;
 
 namespace TeheTV
 {
@@ -22,18 +23,20 @@ namespace TeheTV
     public partial class TVScreen : Window
     {
         public delegate void TVEventHandler(TVScreen tv);
-        
+
+        public event TeheTVEvent NotEnoughTimeEvent;
         public event TVEventHandler PlayingEvent;
         public event TVEventHandler StoppedEvent;
-        public event TVEventHandler OutOfTimeEvent;
-        Content C;
         private bool canIStartPlaying = false;
+        private bool isRecommended;
+        private Content C;
 
         DispatcherTimer timer;
 
-        public TVScreen(Content c)
+        public TVScreen(Content c, bool recommended)
         {
             C = c;
+            isRecommended = recommended;
             InitializeComponent();
             this.Show();
             this.Focus();
@@ -41,14 +44,15 @@ namespace TeheTV
             wait1Second();
         }
 
-        public void Update(Content c)
+        public void Update(Content c, bool recommended)
         {
             PlayingEvent = null;
             StoppedEvent = null;
-            OutOfTimeEvent = null;
+            NotEnoughTimeEvent = null;
             timer.Stop();
             mePlayer.Stop();
             C = c;
+            isRecommended = recommended;
             this.Focus();
             initializePlayer();
             wait1Second();
@@ -79,9 +83,9 @@ namespace TeheTV
             this.Close();
         }
         
+        private void throwNotEnoughTimeEvent() { if (NotEnoughTimeEvent != null) NotEnoughTimeEvent(); }
         protected virtual void ExecutePlayingEvent() { if (PlayingEvent != null) PlayingEvent(this); }
         protected virtual void ExecuteStoppedEvent() { if (StoppedEvent != null) StoppedEvent(this); }
-        protected virtual void ExecuteOutOfTimeEvent() { if (OutOfTimeEvent != null) OutOfTimeEvent(this); }
 
         private void initializePlayer()
         {
@@ -99,7 +103,11 @@ namespace TeheTV
                 Stop();
             else
             {
-                if (P.hasTime())
+                if (isRecommended)
+                {
+                    ExecutePlayingEvent();
+                }
+                else if (P.hasTime())
                 {
                     P.ReduceTime();
                     ExecutePlayingEvent();
@@ -107,7 +115,7 @@ namespace TeheTV
                 else
                 {
                     canIStartPlaying = false;
-                    ExecuteOutOfTimeEvent();
+                    throwNotEnoughTimeEvent();
                     Stop();
                 }
             }

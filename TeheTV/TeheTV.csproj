@@ -310,6 +310,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="resources\thumb_tictactoe.png" />
     <Resource Include="resources\thumb_mathgame.png" />
     <Resource Include="resources\tv_screen.png" />
     <Resource Include="resources\teheTV_tablet_BOT.png" />

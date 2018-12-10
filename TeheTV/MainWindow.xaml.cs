@@ -21,6 +21,8 @@ namespace TeheTV
 {
     public partial class MainWindow : Window
     {
+        public delegate void TeheTVEvent(params object[] args);
+
         private static MainWindow instance;
         private static TVScreen tvScreen;
 

@@ -73,12 +73,21 @@ namespace TeheTV.Pages.navigation
             else
             {
                 List<Content> list;
-                if (content == ContentType.RECOMMENDED) list = SettingsManager.getCurrentProfile().Recommendations;
-                else list = SettingsManager.getCurrentProfile().getContentType(content);
+                bool recommended;
+                if (content == ContentType.RECOMMENDED)
+                {
+                    list = SettingsManager.getCurrentProfile().Recommendations;
+                    recommended = true;
+                }
+                else
+                {
+                    list = SettingsManager.getCurrentProfile().getContentType(content);
+                    recommended = false;
+                }
 
                 foreach (Content c in list)
                 {
-                    ContentButton button = new ContentButton(app, c);
+                    ContentButton button = new ContentButton(app, c, recommended);
                     contentArea.Children.Add(button);
                 }
             }
