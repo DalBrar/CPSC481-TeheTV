@@ -1,0 +1,54 @@
+﻿<Page x:Class="TeheTV.Pages.MathGame"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TeheTV.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="1024"
+      Title="MathGame">
+
+    <Grid x:Name="MainGrid">
+        <Button x:Name="backBtn" Style="{DynamicResource BackButton}" PreviewMouseLeftButtonDown="BackBtn_PreviewMouseLeftButtonDown" Margin="50,10,829,549"/>
+        
+        <TextBlock x:Name="textParentHeader" Margin="200,50,192,0" Text="MATH FUN!" FontWeight="ExtraBold" FontSize="72" Foreground="Yellow" FontFamily="Comic Sans MS" VerticalAlignment="Top" TextAlignment="Center" Padding="0">
+            <TextBlock.Effect>
+                <DropShadowEffect/>
+            </TextBlock.Effect>
+        </TextBlock>
+
+        <TextBlock x:Name="textQuestion" Margin="50,183,0,0" FontWeight="ExtraBold" FontSize="48" Foreground="White" FontFamily="Comic Sans MS" VerticalAlignment="Top" TextAlignment="Center" Padding="0" TextWrapping="Wrap" Width="913" HorizontalAlignment="Left" Text="QuestionText" Height="85">
+            <TextBlock.Effect>
+                <DropShadowEffect/>
+            </TextBlock.Effect>
+        </TextBlock>
+
+        <Button x:Name="choice1" Height="193" Style="{DynamicResource GreenButton}" Content="2"
+                VerticalAlignment="Top" FontSize="48" FontWeight="ExtraBold" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontFamily="Comic Sans MS" 
+                PreviewMouseLeftButtonDown="Choice1_PreviewMouseLeftButtonDown" Width="215" HorizontalAlignment="Left" Margin="716,330,0,0"></Button>
+        <Button x:Name="choice2" Height="193" Style="{DynamicResource GreenButton}" Content="2"
+                VerticalAlignment="Top" FontSize="48" FontWeight="ExtraBold" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontFamily="Comic Sans MS" 
+                PreviewMouseLeftButtonDown="Choice2_PreviewMouseLeftButtonDown" Width="217" HorizontalAlignment="Left" Margin="400,330,0,0"></Button>
+        <Button x:Name="choice3" Height="193" Style="{DynamicResource GreenButton}" Content="2" 
+                VerticalAlignment="Top" FontSize="48" FontWeight="ExtraBold" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontFamily="Comic Sans MS" 
+                PreviewMouseLeftButtonDown="Choice3_PreviewMouseLeftButtonDown" Width="216" HorizontalAlignment="Right" RenderTransformOrigin="2.217,1.855" Margin="0,330,732,0"></Button>
+
+        <Grid x:Name="errorGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1024" Height="700" d:IsHidden="True">
+            <Rectangle x:Name="rectFadeError" Fill="#BF000000" Stroke="Black"/>
+            <Rectangle x:Name="rectRed" Fill="#D8FF3232" Margin="150" RadiusX="50" RadiusY="50" StrokeThickness="0"/>
+            <Label x:Name="textErrorHeader" Content="Oops!" HorizontalContentAlignment="Center" FontSize="72" Foreground="White" FontWeight="ExtraBlack" FontFamily="Comic Sans MS" Padding="0" Margin="150"/>
+            <TextBlock x:Name="textErrorMsg" TextAlignment="Center" FontSize="36" Foreground="White" FontWeight="ExtraBlack" FontFamily="Comic Sans MS" Padding="0" Margin="150" Text="&#xA;&#xA;&#xA;That's not the right answer!"/>
+            <Button x:Name="btnErrorContinue" Content="Try Again" Height="100" Margin="0,0,0,175" Style="{DynamicResource TealeButton}" VerticalAlignment="Bottom" Width="400" FontSize="48" FontWeight="ExtraBold" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontFamily="Comic Sans MS" PreviewMouseLeftButtonDown="btnErrorClicked"/>
+        </Grid>
+        <Grid x:Name="correctGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1024" Height="700" d:IsHidden="True">
+            <Rectangle x:Name="rectFadeCorr" Fill="#BF000000" Stroke="Black"/>
+            <Rectangle x:Name="rectBlue" Fill="#D83232FF" Margin="150" RadiusX="50" RadiusY="50" StrokeThickness="0"/>
+            <Label x:Name="textCorrHeader" Content="Excellent!" HorizontalContentAlignment="Center" FontSize="72" Foreground="White" FontWeight="ExtraBlack" FontFamily="Comic Sans MS" Padding="0" Margin="150"/>
+            <TextBlock x:Name="textCorrect" TextAlignment="Center" FontSize="36" Foreground="White" FontWeight="ExtraBlack" FontFamily="Comic Sans MS" Padding="0" Margin="150,275,150,0" Text="You got the right answer!" VerticalAlignment="Top"/>
+        </Grid>
+
+
+
+
+    </Grid>
+</Page>
