@@ -36,42 +36,39 @@ namespace TeheTV.Pages
             }
         }
 
-        // ******************************
-        //  Click and Drag Scrollability
-        // ******************************
-
-        private Point scrollMousePoint = new Point();
-        private double hOff = 1;
-
-        private void mouseDown(object sender, MouseButtonEventArgs e)
+        private void gearBtnPressed(object sender, MouseButtonEventArgs e)
         {
-            scrollMousePoint = e.GetPosition(scrollViewer);
-            hOff = scrollViewer.HorizontalOffset;
-            scrollViewer.CaptureMouse();
-
+            Sounds.Play(Properties.Resources.soundButtonClick);
+            app.ScreenChangeTo(SCREEN.Options, true);
         }
 
-        private void mouseUp(object sender, MouseButtonEventArgs e)
+        // Scrolling methods
+        Point scrollMousePoint = new Point();
+        double vOff = 1;
+
+        private void ScrollViewer_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            scrollMousePoint = e.GetPosition(scrollViewer);
+            vOff = scrollViewer.VerticalOffset;
+            scrollViewer.CaptureMouse();
+        }
+
+        private void ScrollViewer_PreviewMouseMove(object sender, MouseEventArgs e)
+        {
+            if (scrollViewer.IsMouseCaptured)
+            {
+                scrollViewer.ScrollToVerticalOffset(vOff + (scrollMousePoint.Y - e.GetPosition(scrollViewer).Y));
+            }
+        }
+
+        private void ScrollViewer_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             scrollViewer.ReleaseMouseCapture();
         }
 
-        private void mouseMove(object sender, MouseEventArgs e)
+        private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
-            if (scrollViewer.IsMouseCaptured)
-            {
-                scrollViewer.ScrollToHorizontalOffset(hOff + (scrollMousePoint.X - e.GetPosition(scrollViewer).X));
-            }
-        }
-
-        private void mouseWheel(object sender, MouseWheelEventArgs e)
-        {
-            scrollViewer.ScrollToHorizontalOffset(scrollViewer.HorizontalOffset + e.Delta);
-        }
-
-        private void mouseMove(object sender, DragEventArgs e)
-        {
-        
+            scrollViewer.ScrollToVerticalOffset(scrollViewer.VerticalOffset + e.Delta);
         }
     }
 }

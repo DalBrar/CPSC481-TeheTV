@@ -38,6 +38,9 @@
     <StartupObject>
     </StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -290,11 +293,18 @@
     <Resource Include="resources\defaultMusicImage.png" />
     <Resource Include="resources\search_glass.png" />
     <Resource Include="resources\btn_lock.png" />
+    <Resource Include="resources\icon.ico" />
+    <Resource Include="icon.ico" />
+    <Resource Include="resources\History\Bill_Nye.jpg" />
+    <Resource Include="resources\History\Polite_Words.jpg" />
+    <Resource Include="resources\History\Teletubbies.jpg" />
     <Content Include="resources\TeheTV.wav" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="resources\teheTV_tablet.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Pages\settings\history\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

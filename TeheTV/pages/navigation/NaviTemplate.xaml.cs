@@ -24,9 +24,6 @@ namespace TeheTV.Pages.navigation
         private bool customSearch = false;
         private string searchText = "";
 
-        Point scrollMousePoint = new Point();
-        double hOff = 1;
-
         public NaviTemplate(MainWindow instance, Navigator navigator, string query)
         {
             app = instance;
@@ -116,6 +113,9 @@ namespace TeheTV.Pages.navigation
         }
 
         // Scrolling methods
+        Point scrollMousePoint = new Point();
+        double hOff = 1;
+
         private void ScrollViewer_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             scrollMousePoint = e.GetPosition(scrollViewer);
@@ -140,6 +140,5 @@ namespace TeheTV.Pages.navigation
         {
             scrollViewer.ScrollToHorizontalOffset(scrollViewer.HorizontalOffset + e.Delta);
         }
-
     }
 }

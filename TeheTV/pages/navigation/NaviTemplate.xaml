@@ -38,16 +38,22 @@
             </TextBlock>
             <Image x:Name="gear" Grid.Row="1" Grid.Column="1" Source="/resources/Settings-icon.png" Width="80" Height="80" PreviewMouseDown="gearBtnPressed"/>
         </Grid>
-        
+
         <Grid x:Name="gridContent" Grid.Row="1"
-              Margin="0,50,0,0">
+              Margin="0" Grid.RowSpan="2">
             <ScrollViewer x:Name="scrollViewer" Grid.Row="1" HorizontalScrollBarVisibility="Hidden" CanContentScroll="True"
                           VerticalScrollBarVisibility="Hidden" 
                           PreviewMouseLeftButtonDown="ScrollViewer_PreviewMouseLeftButtonDown"
                           PreviewMouseLeftButtonUp="ScrollViewer_PreviewMouseLeftButtonUp"
                           PreviewMouseMove="ScrollViewer_PreviewMouseMove"
-                          PreviewMouseWheel="ScrollViewer_PreviewMouseWheel"
+                          PreviewMouseWheel="ScrollViewer_PreviewMouseWheel" Margin="0"
                           >
+                <ScrollViewer.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" Opacity="0.15">
+                        <GradientStop Color="#FF0068FF"/>
+                        <GradientStop Color="Cyan" Offset="1"/>
+                    </LinearGradientBrush>
+                </ScrollViewer.Background>
                 <Grid x:Name="galleryGrid" ShowGridLines="False">
                     <StackPanel x:Name="contentArea"  Orientation="Horizontal"/>
                 </Grid>
