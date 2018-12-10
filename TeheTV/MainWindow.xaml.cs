@@ -61,7 +61,11 @@ namespace TeheTV
         {
             return (System.Windows.Media.Brush)new SolidColorBrush(System.Windows.Media.Color.FromArgb(alpha, red, green, blue));
         }
-        
+        public static System.Windows.Media.Color setMediaColor(byte alpha, byte red, byte green, byte blue)
+        {
+            return System.Windows.Media.Color.FromArgb(alpha, red, green, blue);
+        }
+
         private void dragWindow(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)

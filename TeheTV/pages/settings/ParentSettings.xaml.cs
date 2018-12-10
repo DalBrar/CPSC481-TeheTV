@@ -39,9 +39,24 @@ namespace TeheTV.Pages
             app.ScreenGoBack();
         }
 
+        private void pinBtnPressed(object sender, MouseButtonEventArgs e)
+        {
+            app.ScreenChangeTo(new PinChange(app), true);
+        }
+
         private void createProfileBtnPressed(object sender, MouseButtonEventArgs e)
         {
             app.ScreenChangeTo(SCREEN.CreateNewAccount, true);
+        }
+
+        private void deleteProfileBtnPressed(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void timeBtnPressed(object sender, MouseButtonEventArgs e)
+        {
+
         }
 
         private void recommendBtnPressed(object sender, MouseButtonEventArgs e)
@@ -54,9 +69,5 @@ namespace TeheTV.Pages
             app.ScreenChangeTo(new History(app, 1), true);
         }
 
-        private void timeBtnPressed(object sender, MouseButtonEventArgs e)
-        {
-
-        }
     }
 }

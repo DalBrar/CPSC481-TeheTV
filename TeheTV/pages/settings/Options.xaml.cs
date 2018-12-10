@@ -58,7 +58,11 @@ namespace TeheTV.Pages
 
         private void checkPIN(string output)
         {
-            if (string.IsNullOrEmpty(output) || string.IsNullOrWhiteSpace(output)) return;
+            if (string.IsNullOrEmpty(output) || string.IsNullOrWhiteSpace(output))
+            {
+                passwordGrid.Visibility = Visibility.Hidden;
+                return;
+            }
 
             int pin = int.Parse(output);
             if (SettingsManager.doesPINmatch(pin))
@@ -80,18 +84,5 @@ namespace TeheTV.Pages
             passwordRec.Stroke = MainWindow.setBrushColor(255, 0, 0, 0);
             passwordGrid.Visibility = Visibility.Hidden;
         }
-
-        /*
-        public void AnimatePINBox()
-        {
-            passwordRec.Stroke = MainWindow.setBrushColor(255, 255, 0, 0);
-
-            ThicknessAnimation animation = new ThicknessAnimation();
-            animation.Duration = TimeSpan.FromMilliseconds(_slideMiliSecs);
-            animation.From = new Thickness(0, 0, 0, 0);
-            animation.To = new Thickness(0, _slidingAmount, 0, 0);
-            playSound(true);
-            _slidingGrid.BeginAnimation(Grid.MarginProperty, animation);
-        }*/
     }
 }
