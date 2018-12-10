@@ -72,8 +72,14 @@
       <DependentUpon>ContentButton.xaml</DependentUpon>
     </Compile>
     <Compile Include="CustomClasses\ContentManager.cs" />
+    <Compile Include="CustomControls\GameButton.xaml.cs">
+      <DependentUpon>GameButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CustomControls\Keyboard.xaml.cs">
       <DependentUpon>Keyboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MathGame.xaml.cs">
+      <DependentUpon>MathGame.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\settings\CreateNewAccount.xaml.cs">
       <DependentUpon>CreateNewAccount.xaml</DependentUpon>
@@ -114,7 +120,7 @@
     <Compile Include="Pages\initialization\Initialize.xaml.cs">
       <DependentUpon>Initialize.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\TimeAdjustment.xaml.cs">
+    <Compile Include="Pages\settings\TimeAdjustment.xaml.cs">
       <DependentUpon>TimeAdjustment.xaml</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\ProfileButton.xaml.cs">
@@ -135,6 +141,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="CustomControls\GameButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="CustomControls\Keyboard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -151,6 +161,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\MathGame.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Pages\settings\CreateNewAccount.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -211,7 +225,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\TimeAdjustment.xaml">
+    <Page Include="Pages\settings\TimeAdjustment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -261,6 +275,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="resources\thumb_mathgame.png" />
     <Resource Include="resources\tv_screen.png" />
     <Resource Include="resources\teheTV_tablet_BOT.png" />
     <Resource Include="resources\teheTV_tablet_LEFT.png" />
@@ -313,8 +328,6 @@
   <ItemGroup>
     <Resource Include="resources\teheTV_tablet.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Pages\settings\history\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

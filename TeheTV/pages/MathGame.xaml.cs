@@ -80,7 +80,7 @@ namespace TeheTV.Pages
 
         private void BackBtn_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            app.ScreenChangeTo(SCREEN.Initialize, true);
+            app.ScreenGoBack();
         }
 
         private void Choice3_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -94,6 +94,7 @@ namespace TeheTV.Pages
             else
             {
                 Modal.ModalFadeIn(errorGrid, false);
+                Task.Delay(1000).ContinueWith(t => cleanAfterSuccess());
             }
         }
 
@@ -118,6 +119,7 @@ namespace TeheTV.Pages
             else
             { 
                 Modal.ModalFadeIn(errorGrid, false);
+                Task.Delay(1000).ContinueWith(t => cleanAfterSuccess());
             }
         
         }
@@ -133,6 +135,7 @@ namespace TeheTV.Pages
             else
             {
                 Modal.ModalFadeIn(errorGrid, false);
+                Task.Delay(1000).ContinueWith(t => cleanAfterSuccess());
             }
         }
 

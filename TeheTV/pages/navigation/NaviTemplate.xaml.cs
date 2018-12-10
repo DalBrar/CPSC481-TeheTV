@@ -86,7 +86,8 @@ namespace TeheTV.Pages.navigation
 
         private void BindGames()
         {
-
+            GameButton mathGame = new GameButton(app, new MathGame(app), "Math Game", "/resources/thumb_mathgame.png");
+            contentArea.Children.Add(mathGame);
         }
 
         private string getTitleText()
