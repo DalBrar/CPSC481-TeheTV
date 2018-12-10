@@ -1,0 +1,59 @@
+﻿<UserControl x:Name="RecommendedCC" x:Class="TeheTV.RecommendedContentControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TeheTV"
+             mc:Ignorable="d" 
+             d:DesignHeight="225" d:DesignWidth="260">
+    <Grid x:Name="RecommendedContent" Height="225" Width="260">
+        <Image x:Name="Thumbnail" Height="175" Width="260" VerticalAlignment="Top"/>
+        <Image x:Name="Watermark" HorizontalAlignment="Right" Height="50" VerticalAlignment="Top" Width="50" Margin="0,5,5,0"/>
+        <Grid x:Name="plus" Margin="5" Width="50" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Rectangle x:Name="plusV" Height="50" Width="15" Margin="0">
+                <Rectangle.Fill>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#FF00AA08" Offset="1"/>
+                        <GradientStop Color="#FF00E60A"/>
+                    </RadialGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Rectangle x:Name="plusH" Height="15" Width="50" Margin="0">
+                <Rectangle.Fill>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#FF00AA08" Offset="1"/>
+                        <GradientStop Color="#FF00E60A"/>
+                    </RadialGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Grid>
+        <Grid x:Name="minus" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="50" Margin="5">
+            <Rectangle x:Name="minusR" Height="15" Width="50" Margin="0">
+                <Rectangle.Fill>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#FFAA0800" Offset="1"/>
+                        <GradientStop Color="#FFE60A00"/>
+                    </RadialGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Grid>
+        <Rectangle x:Name="BaseBlack" Height="50" Stroke="Black" VerticalAlignment="Bottom" Width="260">
+            <Rectangle.Fill>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FF232323" Offset="1"/>
+                    <GradientStop Color="#FF3C3C3C"/>
+                </RadialGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle x:Name="BaseBlue" Height="50" Stroke="Black" VerticalAlignment="Bottom" Width="260">
+            <Rectangle.Fill>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FF0B057C" Offset="1"/>
+                    <GradientStop Color="#FF250ACD"/>
+                </RadialGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Label x:Name="Title" Content="" VerticalAlignment="Bottom" Width="260" Height="50" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="3" ScrollViewer.VerticalScrollBarVisibility="Disabled" FontSize="20" FontFamily="Comic Sans MS"/>
+        <Rectangle x:Name="Trigger" Width="260" Height="225" Fill="#00000000" PreviewMouseLeftButtonDown="triggerClicked"/>
+    </Grid>
+</UserControl>

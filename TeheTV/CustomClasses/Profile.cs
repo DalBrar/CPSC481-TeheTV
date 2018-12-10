@@ -67,14 +67,27 @@ namespace TeheTV
 
         public void AddRecommendation(Content c)
         {
-            recommended.Add(c);
+            if (!recommended.Contains(c))
+            {
+                recommended.Add(c);
+                saveProfile();
+            }
+        }
+
+        public void RemoveRecommendation(Content c)
+        {
+            recommended.Remove(c);
             saveProfile();
         }
 
         public void AddWatched(Content c)
         {
-            watched.Add(c.toStringFilename());
-            saveProfile();
+            if (!watched.Contains(c.toStringFilename()))
+            {
+                watched.Add(c.toStringFilename());
+                recommended.Remove(c);
+                saveProfile();
+            }
         }
 
         public bool hasTime()

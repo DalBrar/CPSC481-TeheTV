@@ -21,6 +21,7 @@
                 <Rectangle x:Name="searchBarSquare" Fill="White" HorizontalAlignment="Left" Stroke="Black" StrokeThickness="2" Width="100"/>
                 <Image x:Name="searchBarGlass" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Source="/TeheTV;component/resources/search_glass.png"/>
                 <TextBlock x:Name="searchBarField" FontWeight="ExtraBold" FontSize="72" Foreground="Black" FontFamily="Comic Sans MS" Padding="15,0" Margin="100,-5,0,0" TextTrimming="CharacterEllipsis" Height="100"/>
+                <Rectangle x:Name="searchBarTrigger" Fill="#00000000" StrokeThickness="2" PreviewMouseLeftButtonDown="searchbarClicked"/>
             </Grid>
             <Button x:Name="backBtn" Content="" Height="100" Style="{DynamicResource BackButton}" Width="100" PreviewMouseLeftButtonDown="backBtnPressed" Margin="25,25,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         </Grid>
@@ -33,12 +34,12 @@
                           PreviewMouseWheel="ScrollViewer_PreviewMouseWheel" Margin="0"
                           >
                 <ScrollViewer.Background>
-                    <LinearGradientBrush StartPoint="0,0" EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" Opacity="0.15">
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" Opacity="0.25">
                         <GradientStop Color="#FF0068FF"/>
                         <GradientStop Color="Cyan" Offset="1"/>
                     </LinearGradientBrush>
                 </ScrollViewer.Background>
-                <Grid x:Name="resultGrid" ShowGridLines="False">
+                <Grid x:Name="resultGrid" ShowGridLines="False" Height="225" VerticalAlignment="Top">
                     <StackPanel x:Name="resultContent"  Orientation="Horizontal"/>
                 </Grid>
             </ScrollViewer>
@@ -51,11 +52,11 @@
                           PreviewMouseMove="ScrollViewer_PreviewMouseMove"
                           PreviewMouseWheel="ScrollViewer_PreviewMouseWheel" Margin="0"
                           >
-                <Grid x:Name="reccdGrid" ShowGridLines="False">
+                <Grid x:Name="reccdGrid" ShowGridLines="False" Height="225" VerticalAlignment="Bottom">
                     <StackPanel x:Name="reccdContent"  Orientation="Horizontal"/>
                 </Grid>
             </ScrollViewer>
         </Grid>
-        <TeheTV:Keyboard x:Name="keyboard" Margin="0" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+        <TeheTV:Keyboard x:Name="keyboard" Margin="0" Grid.RowSpan="3"/>
     </Grid>
 </Page>

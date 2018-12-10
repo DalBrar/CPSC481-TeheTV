@@ -126,6 +126,9 @@
     <Compile Include="Pages\initialization\Initialize.xaml.cs">
       <DependentUpon>Initialize.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\settings\Recommendations.xaml.cs">
+      <DependentUpon>Recommendations.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\settings\TimeAdjustment.xaml.cs">
       <DependentUpon>TimeAdjustment.xaml</DependentUpon>
     </Compile>
@@ -142,6 +145,9 @@
     <Compile Include="CustomClasses\TimeManager.cs" />
     <Compile Include="Pages\TicTacToe.xaml.cs">
       <DependentUpon>TicTacToe.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\RecommendedContentControl.xaml.cs">
+      <DependentUpon>RecommendedContentControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="TVScreen.xaml.cs">
       <DependentUpon>TVScreen.xaml</DependentUpon>
@@ -238,6 +244,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Pages\settings\Recommendations.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\SplashPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -257,6 +267,10 @@
     <Page Include="Pages\TicTacToe.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CustomControls\RecommendedContentControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TVScreen.xaml">
       <SubType>Designer</SubType>

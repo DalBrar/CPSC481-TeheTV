@@ -37,13 +37,68 @@ namespace TeheTV.Pages
             keyboard.keyboardStyle = Keyboard.KeyboardStyle.ALL;
             keyboard.ReturnEvent += new CustomKeyboardEventHandler(updateSearchResults);
             keyboard.TypeEvent += new CustomKeyboardEventHandler(updateSearchResults);
+
+            initializeStackPanels();
         }
 
         private void backBtnPressed(object sender, MouseButtonEventArgs e) { app.ScreenGoBack(); }
+        
+        private void searchbarClicked(object sender, MouseButtonEventArgs e)
+        {
+            keyboard.SlideUp();
+        }
 
         private void updateSearchResults(string output)
         {
+            resultContent.Children.Clear();
+        }
 
+        private void initializeStackPanels()
+        {
+            List<Content> rec = SettingsManager.getCurrentProfile().Recommendations.ToList();
+            List<Content> ser = ContentManager.getMasterList();
+
+            foreach (Content c in ser)
+            {
+                if (!rec.Contains(c))
+                    new RecommendedContentControl(c, resultContent, reccdContent, false);
+            }
+
+            foreach (Content c in rec)
+                new RecommendedContentControl(c, resultContent, reccdContent, true);
+        }
+
+        // Scrolling methods
+        Point scrollMousePoint = new Point();
+        double hOff = 1;
+
+        private void ScrollViewer_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            ScrollViewer scrollViewer = (ScrollViewer)sender;
+            scrollMousePoint = e.GetPosition(scrollViewer);
+            hOff = scrollViewer.HorizontalOffset;
+            scrollViewer.CaptureMouse();
+        }
+
+        private void ScrollViewer_PreviewMouseMove(object sender, MouseEventArgs e)
+        {
+            ScrollViewer scrollViewer = (ScrollViewer)sender;
+            if (scrollViewer.IsMouseCaptured)
+            {
+                scrollViewer.ScrollToHorizontalOffset(hOff + (scrollMousePoint.X - e.GetPosition(scrollViewer).X));
+            }
+        }
+
+        private void ScrollViewer_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            ScrollViewer scrollViewer = (ScrollViewer)sender;
+            scrollViewer.ReleaseMouseCapture();
+        }
+
+        private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            ScrollViewer scrollViewer = (ScrollViewer)sender;
+            scrollViewer.ScrollToHorizontalOffset(scrollViewer.HorizontalOffset + e.Delta);
         }
     }
 }
