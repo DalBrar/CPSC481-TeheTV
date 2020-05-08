@@ -1,11 +1,7 @@
 # TeheTV 
 
-for CPSC 481 T01 Group 1
+An app build to mimic a tablet with a kids app for watching movies, tv shows, and educational content.
 
-## Notes
+## Setup
 
-Remember to:
-1) ALWAYS pull before you start working.
-2) Let everyone on slack know which file you are currently working on.
-3) ALWAYS push soon as you are done.
-	- please use descriptive info in your pushes.
+Load project into Microsoft Visual Studio and build executable exe.
